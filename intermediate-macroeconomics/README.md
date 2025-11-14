@@ -1,7 +1,7 @@
 # Intermediate Macroeconomics Notes
 
 - `src/intermediate-macroeconomics.tex`: primary LaTeX notes.
-- `scans/`: 60-page handwritten packet scans plus per-page PNG/TXT OCR dumps and checksum.
+- `refs/`: 60-page handwritten packet scans, OCR dumps, and supplemental outlines.
 - `build/`: compiled PDF + LaTeX auxiliary files.
 
 Build with:

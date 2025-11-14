@@ -4,24 +4,27 @@ Two parallel transcription projects live here. Each keeps LaTeX sources, build p
 
 ## intermediate-macroeconomics
 - `src/` holds `intermediate-macroeconomics.tex`.
-- `scans/` stores the raw 60-page scan (`*-scan.pdf`) plus the per-page PNG/TXT exports and checksum.
+- `refs/` stores the raw 60-page scan (`*-scan.pdf`) plus the per-page PNG/TXT exports, checksum, and other outlines.
 - `build/` contains the compiled PDF and LaTeX auxiliaries.
 
 Build with:
 ```
-cd intermediate-macroeconomics
-latexmk -pdf -output-directory=build src/intermediate-macroeconomics.tex
+./bin/build.sh intermediate-macroeconomics
 ```
 
 ## real-analysis
 - `src/` contains `intro_real_analysis_rosenlicht.tex`.
-- `references/` keeps OCR dumps (`rosenlicht-source.txt`, chapter excerpts, etc.).
+- `refs/` keeps OCR dumps (`rosenlicht-source.txt`, chapter excerpts, etc.).
 - `build/` holds the generated PDF and auxiliary files.
 
 Build with:
 ```
-cd real-analysis
-latexmk -pdf -output-directory=build src/intro_real_analysis_rosenlicht.tex
+./bin/build.sh real-analysis
 ```
 
-Use `latexmk -c` inside either project if you want to clean the build tree (the reference/scan folders are the long-term assets).
+Use `latexmk -c` inside either project if you want to clean the build tree (the `refs/` folders are the long-term assets).
+
+### Shortcuts
+- `bin/build.sh <project> [main.tex]` wraps `latexmk -pdf -output-directory=build` and assumes there is a single `.tex` entry point inside `project/src/`.
+- `make build-real-analysis` / `make build-macro` call the script for you.
+- `make references` regenerates `real-analysis/refs/rosenlicht-source.txt` from the Dropbox PDF (configurable via the `ROSENLICHT_PDF` Makefile variable).
