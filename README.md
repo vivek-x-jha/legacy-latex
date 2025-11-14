@@ -10,6 +10,8 @@ Two parallel transcription projects live here. Each keeps LaTeX sources, build p
 Build with:
 ```
 ./bin/build.sh intermediate-macroeconomics
+# or
+make build-macro
 ```
 
 ## real-analysis
@@ -20,6 +22,8 @@ Build with:
 Build with:
 ```
 ./bin/build.sh real-analysis
+# or
+make build-real-analysis
 ```
 
 Use `latexmk -c` inside either project if you want to clean the build tree (the `refs/` folders are the long-term assets).
