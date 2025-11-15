@@ -9,6 +9,7 @@
 \usepackage{amsthm}
 \usepackage{amssymb}
 \usepackage{bm}
+\usepackage{hyperref}
 
 \newtheorem{definition}{Definition}[section]
 \newtheorem{theorem}{Theorem}[section]
@@ -21,8 +22,8 @@
 	\maketitle
 	\tableofcontents
 	
-\section{Notions from Set Theory}
-	\subsection{Sets and Elements. Subsets}
+\section{Notions from Set Theory}\label{sec:set-theory}
+	\subsection{Sets and Elements. Subsets}\label{subsec:sets-elements}
 	Set theory supplies the basic language for all that follows, so we fix the most common conventions.
 	We will not attempt to ``define'' the word set; informally a set is simply a collection of objects, called its \textit{elements}.
 	Typical sets are the students enrolled at a particular university, the straight lines in the plane, or the real numbers.
@@ -48,7 +49,7 @@
 	are two subsets of the real numbers $\mathbb{R}$.
 	The symbol $\varnothing$ denotes the empty set, the unique set with no elements.
 
-	\begin{definition}[Subset]
+	\begin{definition}[Subset]\label{def:subset}
 		If $X$ and $S$ are sets we write $X \subseteq S$ when every element of $X$ is also an element of $S$; that is
 		\[
 			X \subseteq S \quad \Longleftrightarrow \quad \forall x \,(x \in X \Rightarrow x \in S).
@@ -59,10 +60,10 @@
 	The relation $X \subseteq S$ is always true when $X=S$, and is vacuously true when $X=\varnothing$ because there are no elements that violate the implication.
 	A frequent source of confusion is mixing up the symbols $\subseteq$ and $\in$; for example $\{2,3\} \subseteq \{1,2,3\}$, whereas $2 \in \{1,2,3\}$.
 
-	\subsection{Operations on Sets}
+	\subsection{Operations on Sets}\label{subsec:set-operations}
 	The standard operations on sets are intersection, union, and complement.
 
-	\begin{definition}[Intersection and Union]
+	\begin{definition}[Intersection and Union]\label{def:union-intersection}
 		If $X$ and $Y$ are sets their intersection and union are
 		\[
 			X \cap Y = \{x : x \in X \text{ and } x \in Y\}, \qquad X \cup Y = \{x : x \in X \text{ or } x \in Y\}.
@@ -70,7 +71,7 @@
 		The word ``or'' is inclusive: $x$ belongs to $X \cup Y$ when it lies in $X$, or in $Y$, or in both sets.
 	\end{definition}
 
-	\begin{definition}[Complement and Difference]
+	\begin{definition}[Complement and Difference]\label{def:complement}
 		If $X$ is a subset of a fixed ``ambient'' set $S$, the complement of $X$ in $S$ is
 		\[
 			S \setminus X = \{x \in S : x \notin X\},
@@ -98,7 +99,7 @@
 	\]
 	In particular, if each $X_i \subseteq S$, then $(\bigcap_{i \in I} X_i)^c = \bigcup_{i \in I} X_i^c$.
 
-	\begin{definition}[Ordered Pair and Cartesian Product]
+	\begin{definition}[Ordered Pair and Cartesian Product]\label{def:orderedpair}
 		The ordered pair $(a,b)$ records $a$ as the first component and $b$ as the second; $(a,b)=(c,d)$ if and only if $a=c$ and $b=d$.
 		One possible set-theoretic realization is due to Kuratowski:
 		\[
@@ -111,8 +112,8 @@
 		is the set of all ordered pairs whose first coordinate comes from $X$ and second from $Y$.
 	\end{definition}
 
-	\subsection{Functions}
-	\begin{definition}[Function]
+	\subsection{Functions}\label{subsec:functions}
+	\begin{definition}[Function]\label{def:function}
 		If $X$ and $Y$ are sets, a \emph{function} $f$ from $X$ to $Y$ is a rule that assigns to each $x \in X$ a definite element $f(x) \in Y$.
 		We encode this by writing $f : X \to Y$, and call $X$ the domain and $Y$ the codomain of $f$.
 		Two functions $f,g : X \to Y$ are equal when $f(x)=g(x)$ for every $x \in X$.
@@ -131,7 +132,7 @@
 	Given $f : X \to Y$ and $g : Y \to Z$, the composition $g \circ f : X \to Z$ is given by $(g \circ f)(x) = g(f(x))$.
 	The identity map on $X$ is denoted $i_X : X \to X$, $i_X(x)=x$.
 
-	\begin{definition}[Injective, Surjective, Bijective]
+	\begin{definition}[Injective, Surjective, Bijective]\label{def:bijective}
 		A function $f : X \to Y$ is \emph{injective} (or one-to-one) if $f(x_1)=f(x_2)$ implies $x_1=x_2$.
 		It is \emph{surjective} (onto) if every $y \in Y$ equals $f(x)$ for some $x \in X$.
 		A bijection is both injective and surjective, and hence establishes a one-to-one correspondence between $X$ and $Y$.
@@ -145,9 +146,9 @@
 	are called the image of $X'$ and the inverse image (or preimage) of $Y'$, respectively.
 	When $f$ is bijective these two uses of $f^{-1}$ are compatible: $f^{-1}(\{y\})$ is the singleton containing $f^{-1}(y)$.
 
-	\subsection{Finite and Infinite Sets}
+	\subsection{Finite and Infinite Sets}\label{subsec:finite-infinite}
 	Let $\mathbb{N} = \{1,2,3,\dots\}$ denote the positive integers.
-	\begin{definition}[Finite Set]
+	\begin{definition}[Finite Set]\label{def:finite-set}
 		A set $X$ is \emph{finite} if either $X=\varnothing$ or there exists $n \in \mathbb{N}$ together with a bijection between $X$ and $\{1,2,\dots,n\}$.
 		In that case we write $|X| = n$ and call $n$ the number of elements of $X$.
 	\end{definition}
@@ -156,7 +157,7 @@
 	A set is \emph{infinite} when it is not finite: intuitively we can keep choosing distinct elements without ever exhausting the set.
 	The following characterization is often useful.
 
-	\begin{theorem}
+	\begin{theorem}\label{thm:infinite-bijection}
 		A set $X$ is infinite if and only if it can be put into a one-to-one correspondence with a proper subset of itself.
 	\end{theorem}
 	\begin{proof}
@@ -171,11 +172,11 @@
 	An $n$-tuple of elements of a set $X$ is a function from $\{1,2,\dots,n\}$ to $X$; we usually write it as $(x_1,x_2,\dots,x_n)$.
 	An infinite sequence (or simply a sequence) of elements of $X$ is a function from $\mathbb{N}$ to $X$, often denoted $(x_1,x_2,x_3,\dots)$.
 
- \section{The Real Number System}
-	\subsection{The Field Properties}
+\section{The Real Number System}\label{sec:real-numbers}
+	\subsection{The Field Properties}\label{subsec:field-properties}
 	Analysis rests on the exact algebraic and order structure of the real numbers. We begin by recording the axioms they satisfy.
 
-	\begin{definition}[Group]
+	\begin{definition}[Group]\label{def:group}
 		A \emph{group} is a nonempty set $G$ equipped with a binary operation $\cdot$ such that:
 		\begin{enumerate}
 			\item $x\cdot y \in G$ for all $x,y \in G$ (closure).
@@ -186,7 +187,7 @@
 		The group is \emph{Abelian} if additionally $x\cdot y = y\cdot x$ for all $x,y$.
 	\end{definition}
 
-	\begin{definition}[Field]
+	\begin{definition}[Field]\label{def:field}
 		A \emph{field} is a set $\mathbb{F}$ together with two binary operations, addition and multiplication, such that
 		\begin{enumerate}
 			\item $(\mathbb{F},+)$ is an Abelian group with identity $0_\mathbb{F}$.
@@ -198,7 +199,7 @@
 		\end{enumerate}
 	\end{definition}
 
-	\begin{definition}[Real Numbers]
+	\begin{definition}[Real Numbers]\label{def:reals}
 		The \emph{real number system} $\mathbb{R}$ is the unique (up to isomorphism) complete ordered field. Practically we view $\mathbb{R}$ as a set endowed with addition, multiplication, and an order relation satisfying the axioms listed in this section.
 	\end{definition}
 
@@ -243,7 +244,7 @@
 		so subtracting $x\cdot 0$ from both sides shows $x\cdot 0=0$. The other items are similar.
 	\end{proof}
 
-	\subsection{Order}
+	\subsection{Order}\label{subsec:order}
 	To do analysis, the field must also be ordered.
 
 	\begin{definition}[Ordered field]
@@ -257,45 +258,45 @@
 
 	We write $x\le y$ when $x<y$ or $x=y$ and denote the set of positive elements by $\mathbb{F}_{>0} = \{x : x>0\}$. The order interacts with addition and multiplication exactly as intuition dictates.
 
-	\begin{lemma}[Order manipulations]
+	\begin{lemma}[Order manipulations]\label{lem:order}
 		If $x>0$ and $y>0$, then $x+y>0$ and $xy>0$. If $x<y$ and $z<w$, then $x+z<y+w$. Multiplying by a negative element reverses inequalities.
 	\end{lemma}
 
 	In an ordered field we define intervals, rays, and the absolute value $|x| = \max\{x,-x\}$. These capture the geometric idea of distance on the number line.
 
-	\subsection{Completeness and Bounds}
+	\subsection{Completeness and Bounds}\label{subsec:completeness}
 	The property that distinguishes $\mathbb{R}$ from $\mathbb{Q}$ is completeness.
 
-	\begin{definition}[Bounds]
+	\begin{definition}[Bounds]\label{def:bounds}
 		Let $S\subseteq \mathbb{R}$. A number $u$ is an \emph{upper bound} if $x\le u$ for all $x\in S$. If $u$ is an upper bound and $u\le v$ for every upper bound $v$, then $u$ is the \emph{supremum} $\sup S$. Lower bounds and the infimum $\inf S$ are defined similarly.
 	\end{definition}
 
-	\begin{theorem}[Least Upper Bound Axiom]
+	\begin{theorem}[Least Upper Bound Axiom]\label{thm:lub}
 		Every nonempty subset of $\mathbb{R}$ that is bounded above has a supremum in $\mathbb{R}$; every nonempty subset bounded below has an infimum.
 	\end{theorem}
 
-	\begin{theorem}[Monotone convergence]
+	\begin{theorem}[Monotone convergence]\label{thm:monotone}
 		If $\{a_n\}$ is increasing and bounded above, then $a_n\to \sup\{a_n\}$.
 	\end{theorem}
 	\begin{proof}
 		Let $s=\sup\{a_n\}$. Given $\varepsilon>0$, $s-\varepsilon$ is not an upper bound, so some $N$ satisfies $a_N>s-\varepsilon$. For $n\ge N$ we have $s-\varepsilon<a_n\le s$, proving $a_n\to s$.
 	\end{proof}
 
-	\begin{theorem}[Archimedean property]
+	\begin{theorem}[Archimedean property]\label{thm:archimedean}
 		For every $x>0$ there exists $n\in\mathbb{N}$ with $n>x$.
 	\end{theorem}
 	\begin{proof}
 		Suppose no such $n$ exists. Then the set $\mathcal{A}=\{n : n\in\mathbb{N}\}$ is bounded above by $x$, so $s=\sup\mathcal{A}$ exists. But $s-1$ is not an upper bound, so some $m\in\mathbb{N}$ satisfies $m>s-1$, i.e., $m+1>s$. Since $m+1\in \mathbb{N}$, we contradict the definition of $s$.
 	\end{proof}
 
-	\begin{theorem}[Density of $\mathbb{Q}$]
+	\begin{theorem}[Density of $\mathbb{Q}$]\label{thm:density}
 		If $a<b$ in $\mathbb{R}$, then there exists $q\in\mathbb{Q}$ with $a<q<b$.
 	\end{theorem}
 	\begin{proof}
 		Consider $(b-a)>0$. By the Archimedean property choose $n$ with $n(b-a)>1$. There exists an integer $m$ such that $na<m<nb$, and then $m/n\in\mathbb{Q}$ satisfies $a<m/n<b$.
 	\end{proof}
 
-	\subsection{The Existence of Square Roots}
+	\subsection{The Existence of Square Roots}\label{subsec:square-roots}
 	Completeness quickly yields the fundamental fact that positive numbers possess square roots.
 
 	\begin{theorem}
@@ -317,8 +318,8 @@
 	The existence of square roots supplies the positive branch of the absolute value and, together with the field axioms, completes the algebraic description of $\mathbb{R}$.
 
 
-\section{Metric Spaces}
-\subsection{Definition and Examples}
+\section{Metric Spaces}\label{sec:metric-spaces}
+	\subsection{Definition and Examples}\label{subsec:metric-examples}
 Metric spaces generalize familiar geometric notions of distance.
 \begin{definition}[Metric Space]\label{def:metric-space}
 A \emph{metric space} is a pair $(M,d)$ consisting of a set $M$ and a function $d\colon M\times M\to \mathbb{R}$ satisfying for all $x,y,z\in M$:
@@ -359,10 +360,10 @@ These inequalities turn the metric into a powerful bookkeeping device for estima
 
 \paragraph{Subspaces.} If $E\subseteq M$, the restriction of $d$ to $E\times E$ makes $E$ into a metric space; this is the \emph{subspace metric}.
 
-\subsection{Open Sets, Closed Sets, and Neighborhoods}
+	\subsection{Open Sets, Closed Sets, and Neighborhoods}\label{subsec:open-closed}
 For $p\in M$ and $r>0$ define the open ball $B_r(p)=\{x : d(x,p)<r\}$ and the closed ball $\overline{B}_r(p)=\{x : d(x,p)\le r\}$.
 
-\begin{definition}
+\begin{definition}\label{def:open-closed}
 	A subset $U\subseteq M$ is \emph{open} if for every $x\in U$ there exists $r>0$ with $B_r(x)\subseteq U$. A subset $F\subseteq M$ is \emph{closed} if its complement is open. The empty set and $M$ are both open and closed.
 \end{definition}
 
@@ -385,7 +386,7 @@ Let $\{U_\alpha\}_{\alpha\in A}$ be open subsets of $M$ and $F_1,\dots,F_n$ clos
 \end{theorem}
 
 \paragraph{Limit points, interior, and closure.}
-\begin{definition}
+\begin{definition}\label{def:limit-point}
 	A point $x$ is a \emph{limit point} of $E\subseteq M$ if every ball about $x$ intersects $E\setminus\{x\}$. The set of all limit points is denoted $E'$. The \emph{closure} $\overline{E}=E\cup E'$ is the smallest closed set containing $E$, and the \emph{interior} $\mathrm{int}(E)$ is the largest open set contained in $E$.
 \end{definition}
 
@@ -396,12 +397,12 @@ $E$ is closed if and only if it contains its limit points; equivalently $E=\over
 If $E$ is closed and $x\in E'$ then every ball around $x$ meets $E$, hence $x$ cannot lie in the open complement. Conversely, if $E$ contains its limit points, $E^c$ is open: given $x\in E^c$, there exists $r>0$ with $B_r(x)\cap E=\varnothing$, so $B_r(x)\subseteq E^c$.
 \end{proof}
 
-\begin{proposition}
+\begin{proposition}\label{prop:oscillation}
 In $\mathbb{R}$ the open balls are intervals $(a,b)$, while closed balls are $[a,b]$. In $\mathbb{R}^n$ rectangular boxes $\prod_{i=1}^n (a_i,b_i)$ are open, their closures $\prod [a_i,b_i]$ are closed, and both are bounded.
 \end{proposition}
 
-\subsection{Boundedness and Extremal Points}
-\begin{definition}[Bounded Set]\label{def:bounded}
+	\subsection{Boundedness and Extremal Points}\label{subsec:bounded}
+\begin{definition}[Bounded Set]\label{def:bounded-set}
 A subset $S$ is \emph{bounded} if $S\subseteq \overline{B}_r(p)$ for some $p$ and $r$.
 \end{definition}
 Balls witness boundedness, so finite unions of bounded sets are bounded. In $\mathbb{R}^n$ closed rectangles are bounded because each coordinate difference is bounded.
@@ -410,20 +411,20 @@ Balls witness boundedness, so finite unions of bounded sets are bounded. In $\ma
 A nonempty closed subset of $\mathbb{R}$ that is bounded above has a maximum; one bounded below has a minimum.
 \end{theorem}
 
-\subsection{Convergent Sequences}
+	\subsection{Convergent Sequences}\label{subsec:metric-convergence}
 \begin{definition}[Convergence]\label{def:sequence-limit}
 A sequence $\{p_n\}$ converges to $p$ if for every $\varepsilon>0$ there exists $N$ with $d(p_n,p)<\varepsilon$ for $n\ge N$.
 \end{definition}
 Limits are unique. A sequence converges to $p$ if and only if every subsequence has a further subsequence converging to $p$. Open and closed sets can be characterized via sequences:
 
-\begin{proposition}
+\begin{proposition}\label{prop:log-exp}
 	\begin{enumerate}
 		\item $U$ is open if and only if no sequence entirely outside $U$ converges to a point of $U$.
 		\item $F$ is closed if and only if whenever $p_n\in F$ and $p_n\to p$, then $p\in F$.
 	\end{enumerate}
 \end{proposition}
 
-\subsection{Completeness}
+	\subsection{Completeness}\label{subsec:metric-completeness}
 \begin{definition}[Cauchy Sequence]
 A sequence $\{p_n\}$ is \emph{Cauchy} if for every $\varepsilon>0$ there exists $N$ with $d(p_n,p_m)<\varepsilon$ for all $m,n\ge N$. A metric space is \emph{complete} if every Cauchy sequence converges.
 \end{definition}
@@ -439,7 +440,7 @@ Each coordinate of a Cauchy sequence is Cauchy in $\mathbb{R}$, hence convergent
 A subspace $E\subseteq M$ is complete if and only if it is closed in $M$ (when $M$ itself is complete).
 \end{theorem}
 
-\subsection{Compactness}
+	\subsection{Compactness}\label{subsec:compactness}
 \begin{definition}[Compactness]
 A subset $K\subseteq M$ is \emph{compact} if every open cover $\{U_\alpha\}$ of $K$ admits a finite subcover. Equivalently, $K$ is compact if every sequence in $K$ has a convergent subsequence with limit in $K$ (sequential compactness).
 \end{definition}
@@ -452,7 +453,7 @@ A subset of $\mathbb{R}^n$ is compact if and only if it is closed and bounded.
 Closed subsets of compact sets are compact, and continuous images of compact sets are compact.
 \end{proposition}
 
-\subsection{Connectedness}
+	\subsection{Connectedness}\label{subsec:connectedness}
 \begin{definition}[Connected Set]
 A metric space $M$ is \emph{connected} if it cannot be written as the union of two disjoint nonempty open sets. A subset $E\subseteq M$ is connected if it is connected with the subspace metric.
 \end{definition}
@@ -462,12 +463,12 @@ Intervals in $\mathbb{R}$ are connected, and any connected subset of $\mathbb{R}
 \end{proposition}
 
 Connectedness ensures that intermediate values cannot be skipped; this feeds directly into the Intermediate Value Theorem in the next chapter.
-\section{Continuous Functions}
+\section{Continuous Functions}\label{sec:continuous-functions}
 Continuous functions will carry the weight of the topological results developed in Chapter~3. Rosenlicht treats functions between arbitrary metric spaces; the real- and vector-valued cases fall out as specializations.
 
-\subsection{Definition of Continuity. Examples}
+\subsection{Definition of Continuity. Examples}\label{subsec:continuity-definition}
 Let $(E,d)$ and $(E',d')$ be metric spaces.
-\begin{definition}[Continuity at a point]
+\begin{definition}[Continuity at a point]\label{def:continuity}
 	A function $f\colon E \to E'$ is \emph{continuous at $p_0\in E$} if for every $\varepsilon>0$ there exists $\delta>0$ such that $d(p,p_0)<\delta$ implies $d'(f(p),f(p_0))<\varepsilon$. It is \emph{continuous} if it is continuous at every point.
 \end{definition}
 
@@ -487,13 +488,13 @@ The definition admits two equivalent reformulations.
 
 These criteria prove continuity for the functions encountered in calculus: polynomials are continuous everywhere, rational functions are continuous on their domain, absolute value and maximum/minimum are continuous combinations of basic operations, and so on.
 
-\subsection{Continuity and Limits}
+\subsection{Continuity and Limits}\label{subsec:continuity-limits}
 Continuity aligns perfectly with function limits.
 \begin{theorem}[Sequential characterization]\label{thm:cont-limit}
 	If $f\colon E\to E'$ and $p\in E$, then $f$ is continuous at $p$ if and only if for every sequence $p_n\to p$ we have $f(p_n)\to f(p)$.
 \end{theorem}
 
-\begin{theorem}[Composition and restriction]
+\begin{theorem}[Composition and restriction]\label{thm:composition}
 	If $f\colon E\to E'$ is continuous at $p\in E$ and $g\colon E'\to E''$ is continuous at $f(p)$, then $g\circ f$ is continuous at $p$. If $A\subseteq E$ carries the subspace metric and $f$ is continuous on $E$, then the restriction $f|_A$ is continuous on $A$.
 \end{theorem}
 
@@ -503,7 +504,7 @@ Continuity aligns perfectly with function limits.
 
 Continuity also respects monotone bijections between intervals: if $U,V\subseteq \mathbb{R}$ are intervals and $f\colon U\to V$ is strictly increasing and onto, then both $f$ and $f^{-1}$ are continuous.
 
-\subsection{Rational Operations and Vector-Valued Functions}
+\subsection{Rational Operations and Vector-Valued Functions}\label{subsec:rational-operations}
 The algebra of continuous real-valued functions mimics the algebra of real numbers.
 \begin{theorem}[Algebra of continuous functions]\label{thm:rational-ops}
 	Let $f,g\colon E\to \mathbb{R}$ be continuous and let $\varphi\colon \mathbb{R}\to \mathbb{R}$ be continuous. Then the functions $f+g$, $f-g$, $fg$, and $\varphi\circ f$ are continuous. If $g(p)\neq 0$ for all $p$, then $f/g$ is continuous.
@@ -513,7 +514,7 @@ The algebra of continuous real-valued functions mimics the algebra of real numbe
 	Polynomials and rational functions (on the domain where the denominator is nonzero) are continuous. If $\mathbf{f}\colon E\to \mathbb{R}^n$ is given by $\mathbf{f}(p)=(f_1(p),\dots,f_n(p))$, then $\mathbf{f}$ is continuous if and only if each coordinate function $f_k$ is continuous.
 \end{corollary}
 
-\subsection{Continuous Functions on Compact Metric Spaces}
+\subsection{Continuous Functions on Compact Metric Spaces}\label{subsec:cont-compact}
 Compactness translates topological information into quantitative statements.
 \begin{theorem}[Continuous images of compact sets]\label{thm:cont-image-compact}
 	If $K\subseteq E$ is compact and $f\colon E\to E'$ is continuous, then $f(K)\subseteq E'$ is compact.
@@ -537,7 +538,7 @@ Uniform continuity guarantees that Cauchy sequences of function values behave we
 \]
 turns $C(K,E')$ (continuous maps $K\to E'$) into a metric space. When $K$ is compact and $E'$ is complete, $C(K,E')$ is complete under $d_\infty$: a uniformly Cauchy sequence of continuous functions converges uniformly to a continuous function.
 
-\subsection{Continuous Functions on Connected Metric Spaces}
+\subsection{Continuous Functions on Connected Metric Spaces}\label{subsec:cont-connected}
 Connectedness rules out ``jumps''.
 \begin{theorem}[Image of a connected set]\label{thm:connected-image}
 	If $E$ is connected and $f\colon E\to E'$ is continuous, then $f(E)$ is connected.
@@ -550,9 +551,9 @@ In $\mathbb{R}$ the connected subsets are intervals; applying Theorem~\ref{thm:c
 
 Further consequences include: a continuous function on an interval that never changes sign is either strictly positive, strictly negative, or identically zero; a continuous bijection from a compact interval to an interval is monotone with a continuous inverse.
 
-\subsection{Sequences of Functions}
+\subsection{Sequences of Functions}\label{subsec:seq-functions}
 Finally we examine sequences of continuous functions. Let $(f_n)$ be functions $E\to E'$.
-\begin{definition}[Uniform convergence]
+\begin{definition}[Uniform convergence]\label{def:uniform-convergence}
 	$f_n$ converges \emph{uniformly} to $f$ if for every $\varepsilon>0$ there exists $N$ with $d'(f_n(p),f(p))<\varepsilon$ for all $p\in E$ whenever $n\ge N$.
 \end{definition}
 
@@ -570,67 +571,462 @@ Finally we examine sequences of continuous functions. Let $(f_n)$ be functions $
 Uniform convergence is naturally encoded by the sup metric on $C(K,E')$ discussed earlier: $f_n\to f$ uniformly if and only if $d_\infty(f_n,f)\to 0$. When $K$ is compact and $E'$ complete, $C(K,E')$ is itself complete under $d_\infty$.
 
 Examples include Fourier-type partial sums converging uniformly on compact subsets, or piecewise linear approximations to continuous paths. This perspective will be revisited in the later chapters on series and approximations.
-	
-	\section{Differentiation}
-		\subsection{Definition of the Derivative}
 		
-		\subsection{Rules of Differentiation}		
+\section{Differentiation}\label{sec:differentiation}
+Differentiation returns us to single-variable calculus, but armed with the metric machinery from the previous chapters we can present the proofs succinctly.
+
+\subsection{Definition of the Derivative}\label{subsec:derivative-definition}
+Let $U\subseteq \mathbb{R}$ be open and $f\colon U\to \mathbb{R}$.
+\begin{definition}[Derivative]\label{def:derivative}
+	$f$ is \emph{differentiable} at $x_0\in U$ if the limit
+	\[
+		f'(x_0) = \lim_{x\to x_0} \frac{f(x)-f(x_0)}{x-x_0}
+	\]
+	exists. The function $f'$ defined on the set of points where the limit exists is the \emph{derivative} of $f$.
+\end{definition}
+
+Equivalently, differentiability means there exists a linear function $L(x)=f(x_0)+f'(x_0)(x-x_0)$ such that
+\[
+	\lim_{x\to x_0} \frac{f(x)-L(x)}{x-x_0} = 0.
+\]
+The graph of $f$ near $x_0$ therefore hugs its tangent line.
+
+\begin{proposition}\label{prop:diff-continuous}
+	If $f$ is differentiable at $x_0$, then $f$ is continuous at $x_0$.
+\end{proposition}
+\begin{proof}
+	Using the definition with $\varepsilon$–$\delta$ notation,
+	\[
+		|f(x)-f(x_0)| \le |x-x_0|\left|\frac{f(x)-f(x_0)}{x-x_0}\right|,
+	\]
+	and the quotient tends to $|f'(x_0)|$, so $f(x)\to f(x_0)$.
+\end{proof}
+
+\subsection{Rules of Differentiation}\label{subsec:differentiation-rules}
+The derivative behaves linearly and obeys the product and chain rules familiar from calculus.
+\begin{theorem}[Algebraic rules]\label{thm:diff-algebra}
+	If $f,g$ are differentiable at $x_0$ and $c\in \mathbb{R}$, then so are $f+g$, $cf$, and $fg$, with
+	\[
+	(f+g)'(x_0) = f'(x_0)+g'(x_0), \qquad (cf)'(x_0)=cf'(x_0), \qquad (fg)'(x_0)=f'(x_0)g(x_0)+f(x_0)g'(x_0).
+	\]
+	If $g(x_0)\neq 0$, then $\left(\frac{f}{g}\right)'(x_0)=\frac{f'(x_0)g(x_0)-f(x_0)g'(x_0)}{g(x_0)^2}$.
+\end{theorem}
+
+\begin{theorem}[Chain rule]\label{thm:chain}
+	If $f$ is differentiable at $x_0$ and $g$ is differentiable at $f(x_0)$, then $g\circ f$ is differentiable at $x_0$ with
+	\[
+		(g\circ f)'(x_0) = g'(f(x_0))\cdot f'(x_0).
+	\]
+\end{theorem}
+
+Using these rules we recover the standard derivatives: polynomials differentiate via the binomial theorem, rational functions differentiate wherever they are defined, and so on.
+
+\subsection{The Mean Value Theorem}\label{subsec:mvt}
+We now reach the central estimate for differentiable functions.
+
+\begin{theorem}[Rolle]\label{thm:rolle}
+	If $f\colon [a,b]\to \mathbb{R}$ is continuous, differentiable on $(a,b)$, and satisfies $f(a)=f(b)$, then there exists $c\in (a,b)$ with $f'(c)=0$.
+\end{theorem}
+\begin{proof}
+	$[a,b]$ is compact, so $f$ attains a maximum and minimum. If either extremum occurs at an interior point $c$, then near $c$ the function cannot increase or decrease, forcing $f'(c)=0$. Otherwise $f$ is constant.
+\end{proof}
+
+\begin{theorem}[Mean Value Theorem]\label{thm:mvt}
+	If $f\colon [a,b]\to \mathbb{R}$ is continuous and differentiable on $(a,b)$, then there exists $c\in (a,b)$ such that
+	\[
+		f'(c) = \frac{f(b)-f(a)}{b-a}.
+	\]
+\end{theorem}
+\begin{proof}
+	Apply Rolle's theorem to $g(x)=f(x) - \frac{f(b)-f(a)}{b-a}(x-a)$ after noting that $g(a)=g(b)$.
+\end{proof}
+
+\begin{corollary}\label{cor:zero-derivative}
+	If $f'(x)=0$ for all $x$ in an interval $I$, then $f$ is constant on $I$.
+\end{corollary}
+
+\begin{corollary}\label{cor:derivative-sign}
+	If $f'(x)\ge 0$ (respectively $>0$) on an interval, then $f$ is nondecreasing (respectively strictly increasing).
+\end{corollary}
+
+\begin{corollary}[Cauchy mean value theorem]\label{cor:cauchy-mvt}
+	If $f,g$ are continuous on $[a,b]$ and differentiable on $(a,b)$ with $g'(x)\neq 0$, then there exists $c$ such that
+	\[
+		\frac{f(b)-f(a)}{g(b)-g(a)} = \frac{f'(c)}{g'(c)}.
+	\]
+\end{corollary}
+
+The mean value theorem underlies standard inequalities, e.g., the Lipschitz bound $|f(b)-f(a)|\le M|b-a|$ when $|f'|\le M$ on the interval, and L'Hospital's rule for $0/0$ forms (derived using Cauchy's version).
+
+\subsection{Taylor's Theorem}\label{subsec:taylor}
+Repeated differentiation grants finer control via Taylor polynomials.
+\begin{definition}[Higher derivatives]\label{def:higher-derivative}
+	If $f^{(n-1)}$ exists on an open interval, we say $f$ is $n$ times differentiable when $f^{(n-1)}$ is differentiable; the new derivative is $f^{(n)}$.
+\end{definition}
+
+\begin{theorem}[Taylor's formula with remainder]\label{thm:taylor}
+	Suppose $f$ has $n+1$ continuous derivatives on $[a,b]$. For any $x\in [a,b]$ there exists $\xi$ between $x$ and $a$ such that
+	\[
+		f(x) = f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \cdots + \frac{f^{(n)}(a)}{n!}(x-a)^n + \frac{f^{(n+1)}(\xi)}{(n+1)!}(x-a)^{n+1}.
+	\]
+\end{theorem}
+\begin{proof}
+	Define $P_n$ to be the $n$th-degree Taylor polynomial at $a$. Consider
+	\[
+		g(t) = f(t) - P_n(t) - \frac{f^{(n+1)}(x)}{(n+1)!}(t-a)^{n+1}.
+	\]
+	Rolle's theorem applied repeatedly to appropriate combinations of $g$ shows that $g^{(n+1)}$ vanishes somewhere between $a$ and $x$, yielding the claimed $\xi$.
+\end{proof}
+
+\begin{corollary}[Estimates]\label{cor:taylor-estimate}
+	If $|f^{(n+1)}(t)|\le M$ on $[a,b]$, then
+	\[
+		\left|f(x) - \sum_{k=0}^n \frac{f^{(k)}(a)}{k!}(x-a)^k \right| \le \frac{M}{(n+1)!}|x-a|^{n+1}.
+	\]
+\end{corollary}
+
+Taylor's theorem recovers power series expansions for elementary functions and provides precise error estimates for approximations.
 		
-		\subsection{The Mean Value Theorem}
+\section{Riemann Integration}\label{sec:riemann-integration}
+Riemann integration assigns areas to graphs of real-valued functions on intervals and underpins the rest of analysis.
+
+\subsection{Definition and Examples}\label{subsec:riemann-definition}
+Let $[a,b]$ be a closed interval.
+\begin{definition}[Partition]\label{def:partition}
+	A \emph{partition} of $[a,b]$ is a finite sequence $P = \{x_0,\dots,x_N\}$ with $a=x_0<x_1<\dots<x_N=b$. Its \emph{mesh} is $|P| = \max_{1\le i\le N}(x_i - x_{i-1})$.
+\end{definition}
+
+\begin{definition}[Riemann sum]\label{def:riemann-sum}
+	If $f:[a,b]\to \mathbb{R}$ and $P$ is a partition, a \emph{Riemann sum} of $f$ with respect to $P$ is
+	\[
+		S(P,f) = \sum_{i=1}^N f(\xi_i)(x_i - x_{i-1}),
+	\]
+	where each $\xi_i \in [x_{i-1},x_i]$.
+\end{definition}
+
+\begin{definition}[Riemann integrability]\label{def:riemann-integrable}
+	$f$ is \emph{Riemann integrable} on $[a,b]$ if there exists $A\in \mathbb{R}$ such that for every $\varepsilon>0$ there is $\delta>0$ with $|S(P,f)-A|<\varepsilon$ whenever $|P|<\delta$. The number $A$ is the Riemann integral $\int_a^b f(x)\,dx$.
+\end{definition}
+
+Upper and lower Darboux sums provide a more practical criterion. For a partition $P$ let
+\[
+	U(P,f) = \sum_{i=1}^N \left(\sup_{x\in [x_{i-1},x_i]} f(x)\right)(x_i - x_{i-1}), \qquad
+	L(P,f) = \sum_{i=1}^N \left(\inf_{x\in [x_{i-1},x_i]} f(x)\right)(x_i - x_{i-1}).
+\]
+Then $f$ is integrable if and only if $\sup_P L(P,f) = \inf_P U(P,f)$; the common value equals the integral.
+
+Continuous functions on $[a,b]$, monotone functions, and piecewise continuous functions are all integrable. Functions with jump discontinuities at finitely many points are integrable; the sign function is not integrable at a removable discontinuity unless we restrict the interval.
+
+\subsection{Linearity and Order Properties}\label{subsec:riemann-linearity}
+\begin{theorem}[Linearity]\label{thm:riemann-linearity}
+	If $f,g$ are integrable on $[a,b]$ and $c\in \mathbb{R}$, then $cf$ and $f+g$ are integrable, and
+	\[
+		\int_a^b cf(x)\,dx = c \int_a^b f(x)\,dx, \qquad \int_a^b (f+g)(x)\,dx = \int_a^b f(x)\,dx + \int_a^b g(x)\,dx.
+	\]
+\end{theorem}
+
+\begin{theorem}[Order properties]\label{thm:riemann-order}
+	If $f\le g$ on $[a,b]$, then $\int_a^b f \le \int_a^b g$. Moreover
+	\[
+		\left|\int_a^b f(x)\,dx\right| \le \int_a^b |f(x)|\,dx \le (b-a)\sup_{x\in[a,b]} |f(x)|.
+	\]
+\end{theorem}
+
+\begin{theorem}[Additivity]\label{thm:additivity}
+	If $a<c<b$ and $f$ is integrable on $[a,b]$, then $f$ is integrable on $[a,c]$ and $[c,b]$ and
+	\[
+		\int_a^b f = \int_a^c f + \int_c^b f.
+	\]
+\end{theorem}
+
+\subsection{Existence Criteria}\label{subsec:riemann-existence}
+To show $f$ is integrable it suffices to show the upper and lower sums can be made arbitrarily close.
+\begin{proposition}
+	If $f$ is bounded on $[a,b]$ and for every $\varepsilon>0$ there exists $\delta>0$ with $U(P,f)-L(P,f) < \varepsilon$ whenever $|P|<\delta$, then $f$ is integrable.
+\end{proposition}
+
+Continuity ensures this condition: given $\varepsilon>0$, uniform continuity of $f$ provides $\delta$ so that each subinterval of $P$ with mesh $<\delta$ has oscillation $<\varepsilon/(b-a)$, forcing $U(P,f)-L(P,f) < \varepsilon$.
+
+Monotone functions are integrable because the oscillation on each subinterval is at most the difference of endpoint values, which can be controlled by making the mesh small.
+
+\subsection{The Fundamental Theorem of Calculus}\label{subsec:ftc}
+Integration and differentiation are inverse processes for continuous functions.
+\begin{theorem}[First Fundamental Theorem]\label{thm:ftc1}
+	If $f$ is integrable on $[a,b]$ and we define $F(x) = \int_a^x f(t)\,dt$, then $F$ is continuous on $[a,b]$ and differentiable at every point where $f$ is continuous; moreover $F'(x)=f(x)$ at such points.
+\end{theorem}
+\begin{proof}
+	Continuity of $F$ follows from the inequality $|F(x)-F(y)| \le \int_y^x |f|\le M|x-y|$ for $M=\sup|f|$. Differentiability uses the Mean Value Theorem and the fact that $f$ is continuous at the point in question.
+\end{proof}
+
+\begin{theorem}[Second Fundamental Theorem]\label{thm:ftc2}
+	If $f$ is continuous on $[a,b]$ and $F$ is any antiderivative of $f$, then
+	\[
+		\int_a^b f(x)\,dx = F(b) - F(a).
+	\]
+\end{theorem}
+\begin{proof}
+	By Theorem~\ref{thm:ftc1}, $F(x) = \int_a^x f(t)\,dt$ is an antiderivative. Any other antiderivative differs by a constant, so evaluating at $x=b$ gives the desired equality.
+\end{proof}
+
+The Fundamental Theorem reduces many definite integrals to antiderivatives and shows that continuous functions possess antiderivatives.
+
+\subsection{Logarithms and Exponentials}\label{subsec:log-exp}
+As an application, we construct the logarithm and exponential functions via integrals.
+\begin{definition}\label{def:log}
+	For $x>0$ define
+	\[
+		\log x = \int_1^x \frac{1}{t}\,dt.
+	\]
+	Then $\log$ is continuous, strictly increasing, and differentiable with $\log'(x)=1/x$. Set $\exp$ to be the inverse function: $\exp(\log x)=x$.
+	Extend $\exp$ to all real numbers via $\exp(x) = \sum_{n=0}^\infty x^n/n!$ if desired; it satisfies $\exp'(x)=\exp(x)$ and $\exp(\log x)=x$.
+\end{definition}
+
+\begin{proposition}
+	The function $\log$ satisfies $\log(xy)=\log x + \log y$, $\log(1)=0$, and $\log(x^r)=r\log x$ for rational $r$. Exponentiation obeys $\exp(x+y)=\exp(x)\exp(y)$, $\exp(0)=1$, and $\exp$ is the unique solution of $y' = y$, $y(0)=1$.
+\end{proposition}
+
+These definitions agree with the familiar power-series constructions and yield the usual properties rigorously from the Riemann integral.
+
+\section{Interchange of Limit Operations}\label{sec:limit-operations}
+	Limit processes rarely occur in isolation. We often encounter sequences of functions for which we wish to integrate, differentiate, or otherwise take limits term by term. This chapter records the situations where interchanging these operations is justified.
+
+\subsection{Integration and Differentiation of Sequences of Functions}\label{subsec:integration-sequences}
+Let $\{f_n\}$ be functions on a closed interval $[a,b]$.
+
+\begin{theorem}[Integration of uniformly convergent sequences]\label{thm:uniform-integral}
+	If each $f_n$ is Riemann integrable on $[a,b]$ and $f_n \to f$ uniformly, then $f$ is integrable and
+	\[
+		\lim_{n\to\infty} \int_a^b f_n(x)\,dx = \int_a^b f(x)\,dx.
+	\]
+\end{theorem}
+\begin{proof}
+	Uniform convergence implies the difference $|f_n-f|$ can be made uniformly small, hence the difference of integrals is bounded by $(b-a)\sup|f_n-f|$, which tends to zero.
+\end{proof}
+
+\begin{theorem}[Term-by-term differentiation]\label{thm:termwise-derivative}
+	Suppose each $f_n$ is differentiable on $[a,b]$, that $(f_n(x_0))$ converges for some $x_0\in [a,b]$, and that $f_n'$ converges uniformly on $[a,b]$ to a function $g$. Then $f_n$ converges uniformly to a differentiable function $f$, and $f'=g$.
+\end{theorem}
+\begin{proof}
+	Integrating $f_n'$ from $x_0$ to $x$ shows $f_n(x)=f_n(x_0)+\int_{x_0}^x f_n'(t)\,dt$. Uniform convergence of the derivatives implies uniform convergence of the integrals, hence the $f_n$ converge uniformly to $f(x)=\lim f_n(x_0)+\int_{x_0}^x g(t)\,dt$, whose derivative is $g$.
+\end{proof}
+
+\subsection{Infinite Series}\label{subsec:infinite-series}
+Series are sequences written additively. Let $\sum_{n=1}^\infty a_n$ denote the series with partial sums $s_n = \sum_{k=1}^n a_k$.
+
+\begin{definition}\label{def:series}
+	The series $\sum a_n$ \emph{converges} if the sequence $(s_n)$ converges. It converges \emph{absolutely} if $\sum |a_n|$ converges.
+\end{definition}
+
+\begin{theorem}[Comparison tests]
+	If $|a_n|\le b_n$ and $\sum b_n$ converges, then $\sum a_n$ converges absolutely. If $a_n\ge b_n\ge 0$ and $\sum b_n$ diverges, then so does $\sum a_n$.
+\end{theorem}
+
+\begin{theorem}[Alternating series test]
+	If $(a_n)$ is decreasing to $0$ and the terms alternate in sign, then $\sum (-1)^{n-1}a_n$ converges, and the truncation error is at most $a_{n+1}$ in magnitude.
+\end{theorem}
+
+\begin{definition}\label{def:series-uniform}
+	A series of functions $\sum f_n$ converges \emph{uniformly} on a set $E$ if its sequence of partial sums converges uniformly. The Weierstrass $M$-test states that if $|f_n(x)|\le M_n$ on $E$ and $\sum M_n$ converges, then $\sum f_n$ converges uniformly.
+\end{definition}
+
+Uniform convergence allows termwise integration and differentiation via Theorems~\ref{thm:uniform-integral} and \ref{thm:termwise-derivative}.
+
+\subsection{Power Series}\label{subsec:power-series}
+Power series provide a major class of function series.
+
+\begin{definition}
+	A power series centered at $a$ is $\sum_{n=0}^\infty c_n (x-a)^n$. The radius of convergence $R$ is the unique extended real number such that the series converges absolutely for $|x-a|<R$ and diverges for $|x-a|>R$.
+\end{definition}
+
+\begin{theorem}[Cauchy–Hadamard formula]
+	The radius of convergence satisfies $1/R = \limsup_{n\to\infty} |c_n|^{1/n}$, with the conventions $R=\infty$ if the limsup is $0$ and $R=0$ if the limsup is $\infty$.
+\end{theorem}
+
+\begin{theorem}[Termwise operations]
+	Inside the disk $|x-a|<R$ a power series may be differentiated and integrated term by term:
+	\[
+		\left(\sum_{n=0}^\infty c_n (x-a)^n\right)' = \sum_{n=1}^\infty n c_n (x-a)^{n-1}, \qquad \int \sum_{n=0}^\infty c_n (x-a)^n dx = C + \sum_{n=0}^\infty \frac{c_n}{n+1}(x-a)^{n+1}.
+	\]
+	Both series share the same radius of convergence.
+\end{theorem}
+
+\subsection{The Trigonometric Functions}\label{subsec:trig-functions}
+The sine and cosine functions arise naturally from power series.
+
+\begin{definition}
+	Define
+	\[
+		\sin x = \sum_{n=0}^\infty \frac{(-1)^n}{(2n+1)!}x^{2n+1}, \qquad \cos x = \sum_{n=0}^\infty \frac{(-1)^n}{(2n)!}x^{2n}.
+	\]
+	These series converge for all $x\in \mathbb{R}$.
+\end{definition}
+
+\begin{proposition}
+	The functions $\sin$ and $\cos$ are entire (analytic everywhere) and satisfy
+	\[
+		(\sin x)' = \cos x, \qquad (\cos x)' = -\sin x, \qquad \sin^2 x + \cos^2 x = 1.
+	\]
+\end{proposition}
+
+\begin{theorem}[Addition formulas]
+	For all $x,y\in \mathbb{R}$,
+	\[
+		\sin(x+y) = \sin x \cos y + \cos x \sin y, \qquad \cos(x+y) = \cos x \cos y - \sin x \sin y.
+	\]
+\end{theorem}
+\begin{proof}
+	Expand the power series for $\sin(x+y)$ and $\cos(x+y)$ and rearrange terms; absolute convergence justifies the algebra.
+\end{proof}
+
+\subsection{Differentiation under the Integral Sign}\label{subsec:differentiate-integral}
+Consider a function $F(t,x)$ defined on $[a,b]\times I$, where $I\subseteq \mathbb{R}$ is an interval, and define
+\[
+	\Phi(x) = \int_a^b F(t,x)\,dt.
+\]
+\begin{theorem}[Leibniz rule]
+	If $F(t,x)$ and $\partial F/\partial x$ are continuous on $[a,b]\times I$, then $\Phi$ is differentiable on $I$ with
+	\[
+		\Phi'(x) = \int_a^b \frac{\partial F}{\partial x}(t,x)\,dt.
+	\]
+\end{theorem}
+\begin{proof}
+	Apply the mean value theorem in the $x$-variable, uniformly in $t$, and use Theorem~\ref{thm:uniform-integral}.
+\end{proof}
+
+This formula is frequently quoted as ``differentiating under the integral sign.'' It allows parameter-dependent integrals to be handled by calculus on the parameter.
 		
-		\subsection{Taylor's Theorem}	
-	
-	\section{Riemann Integration}
-		\subsection{Definition and Examples}
 		
-		\subsection{Linearity and Order Properties of the Integral}
+\section{The Method of Successive Approximations}\label{sec:successive-approximations}
+Iterative methods can solve a variety of problems—root finding, implicit equations, and differential equations. Rosenlicht distills the essential fixed-point principle and shows how it applies widely.
+
+\subsection{The Fixed Point Theorem}\label{subsec:fixed-point}
+\begin{theorem}[Banach fixed point theorem]
+	Let $(E,d)$ be a metric space and $F\colon E\to E$ satisfy $d(F(p),F(q)) \le \lambda d(p,q)$ for some $\lambda<1$. Then $F$ has a unique fixed point $p^\ast$ (i.e., $F(p^\ast)=p^\ast$), and for any starting point $p_0$ the iterates $p_{n+1}=F(p_n)$ converge to $p^\ast$.
+\end{theorem}
+\begin{proof}
+	The contraction condition ensures $d(p_{n+1},p_n)\le \lambda^n d(p_1,p_0)$, so $(p_n)$ is Cauchy and hence convergent if $E$ is complete. Passing to the limit in $p_{n+1}=F(p_n)$ yields $F(p^\ast)=p^\ast$. Uniqueness follows by applying the contraction inequality to two fixed points.
+\end{proof}
+
+\subsection{Simplest Case of the Implicit Function Theorem}\label{subsec:implicit-simple}
+Consider an equation $F(x,y)=0$ with $F$ continuous and continuously differentiable near $(x_0,y_0)$.
+\begin{theorem}[Implicit function, one variable]
+	If $\frac{\partial F}{\partial y}(x_0,y_0)\neq 0$, then there exists a neighborhood of $x_0$ on which the equation $F(x,y)=0$ defines a unique differentiable function $y=\phi(x)$ with $\phi(x_0)=y_0$.
+\end{theorem}
+\begin{proof}
+	Rewrite the equation as $y = y_0 - \frac{F(x,y)}{\partial F/\partial y(x_0,y_0)} + \text{error}$ and show this defines a contraction in $y$ for $x$ near $x_0$. The fixed point of the resulting map is the desired $\phi(x)$. Differentiability follows by implicit differentiation.
+\end{proof}
+
+\subsection{Existence and Uniqueness for ODEs}\label{subsec:ode-existence}
+The fixed-point method also yields solutions to first-order ordinary differential equations.
+\begin{theorem}[Picard–Lindelöf]
+	Let $f(x,y)$ be continuous in a rectangle $|x-x_0|\le a$, $|y-y_0|\le b$, and suppose $f$ satisfies a Lipschitz condition in $y$: $|f(x,y_1)-f(x,y_2)|\le L|y_1-y_2|$. Then the initial value problem $y' = f(x,y)$, $y(x_0)=y_0$ has a unique solution on some interval around $x_0$.
+\end{theorem}
+\begin{proof}
+	Integrate the differential equation to obtain the integral equation $y(x)=y_0 + \int_{x_0}^x f(t,y(t))\,dt$. Define an operator $T$ on the space of continuous functions by $(Ty)(x)=y_0 + \int_{x_0}^x f(t,y(t))\,dt$. Under the Lipschitz condition and for $|x-x_0|$ small enough, $T$ is a contraction with respect to the sup metric, so it has a unique fixed point, which is the desired solution.
+\end{proof}
+
+These iterative arguments justify the standard root-finding schemes (Newton’s method), guarantee the solvability of implicit equations, and provide existence and uniqueness for differential equations under natural hypotheses.
 		
-		\subsection{Existence of the Integral}
 		
-		\subsection{The Fundamental Theorem of Calculus}
+\section{Partial Differentiation}\label{sec:partial-differentiation}
+Functions of several variables inherit many properties from one-variable calculus, but extending definitions carefully avoids pitfalls.
+
+\subsection{Definitions and Basic Properties}\label{subsec:partial-definitions}
+Let $U\subseteq \mathbb{R}^n$ be open and $f\colon U\to \mathbb{R}$.
+\begin{definition}[Partial derivatives]
+	The $i$th partial derivative of $f$ at $a\in U$ is
+	\[
+		\frac{\partial f}{\partial x_i}(a) = \lim_{h\to 0} \frac{f(a_1,\dots,a_i+h,\dots,a_n) - f(a)}{h},
+	\]
+	if the limit exists.
+\end{definition}
+
+Having all partial derivatives exist does not guarantee good behavior. The correct higher-dimensional analogue of differentiability is best phrased in terms of linear approximations.
+\begin{definition}[Differentiability]
+	$f$ is \emph{differentiable} at $a$ if there exists a linear map $L\colon \mathbb{R}^n \to \mathbb{R}$ such that
+	\[
+		\lim_{h\to 0} \frac{|f(a+h) - f(a) - L(h)|}{\|h\|} = 0.
+	\]
+	This $L$ is the differential $df_a$, and it is given by $L(h)=\sum_{i=1}^n \frac{\partial f}{\partial x_i}(a) h_i$ when $f$ is differentiable with existing partials.
+\end{definition}
+
+\begin{theorem}\label{thm:rectangles-open}
+	If $f$ is differentiable at $a$, then all partial derivatives exist at $a$ and $f$ is continuous at $a$.
+\end{theorem}
+
+\subsection{Higher Derivatives}\label{subsec:partial-higher}
+Higher-order derivatives are defined by iterating the differential, provided the lower-order derivatives are differentiable.
+\begin{definition}
+	If the first partial derivatives of $f$ exist and are continuous on $U$, then $f$ is said to be $C^1$. Inductively, $f$ is $C^k$ if its partial derivatives up to order $k$ exist and are continuous.
+\end{definition}
+
+Mixed partial derivatives often coincide.
+\begin{theorem}[Equality of mixed partials]
+	If the second-order partial derivatives $\frac{\partial^2 f}{\partial x_i \partial x_j}$ and $\frac{\partial^2 f}{\partial x_j \partial x_i}$ are continuous near $a$, then they are equal at $a$.
+\end{theorem}
+
+Higher-dimensional Taylor expansions mirror the one-variable case by replacing powers with multi-index notation.
+\begin{theorem}[Taylor’s theorem in $\mathbb{R}^n$]
+	If $f$ is $C^{k+1}$ on a convex set containing $a$ and $a+h$, then
+	\[
+		f(a+h) = f(a) + \sum_{|\alpha|=1}^k \frac{D^\alpha f(a)}{\alpha!} h^\alpha + R_{k+1}(h),
+	\]
+	where $|R_{k+1}(h)| \le C \|h\|^{k+1}$ for some constant $C$.
+	\end{theorem}
+
+\subsection{Implicit Function Theorem}\label{subsec:implicit-function}
+The implicit function theorem generalizes the one-dimensional result.
+\begin{theorem}[Implicit function theorem]
+	Let $F\colon \mathbb{R}^{m+n} \to \mathbb{R}^n$ be $C^1$ near $(x_0,y_0)$ with $F(x_0,y_0)=0$. If the Jacobian matrix $\frac{\partial F}{\partial y}(x_0,y_0)$ is invertible, then there exist neighborhoods $U$ of $x_0$ and $V$ of $y_0$ and a unique $C^1$ function $\phi\colon U\to V$ such that $F(x,\phi(x))=0$ for all $x\in U$.
+\end{theorem}
+\begin{proof}
+	Apply the contraction mapping principle to the map $y \mapsto y - \left(\frac{\partial F}{\partial y}\right)^{-1} F(x,y)$ with $x$ fixed near $x_0$. The fixed point depends smoothly on $x$ because the derivative of $F$ is continuous.
+\end{proof}
+
+This theorem yields local solvability of systems of equations and underpins change-of-variables formulas in multiple integrals, as well as implicit definitions of surfaces and manifolds.
 		
-		\subsection{The Logarithmic and Exponential Functions}
 		
-		\subsection{Definition of Continuity. Examples}
-	
-	
-	\section{Interchange of Limit Operations}
-		\subsection{Integration and Differentiation of Sequences of Functions}
-		
-		\subsection{Infinite Series}
-		
-		\subsection{Power Series}
-		
-		\subsection{The Trigonometric Functions}
-		
-		\subsection{Differentiation under the Integral Sign}
-		
-		
-	\section{The Method of Successive Approximations}
-		\subsection{The Fixed Point Theorem}
-		
-		\subsection{The Simplest Case of the Implicit Function Theorem}
-		
-		\subsection{Existence and Uniqueness Theorems for Ordinary Differential Equations}
-	
-	
-	\section{Partial Differentiation}
-		\subsection{Definitions and Basic Properties}
-		
-		\subsection{Higher Derivatives}
-		
-		\subsection{The Implicit Function Theorem}
-	
-	
-	\section{Multiple Integrals}
-		\subsection{Riemann Integration on Closed Intervals of $E^n$. Examples and Basic Properties}
-		
-		\subsection{Existence of the Integral. Integration on Arbitrary Subsets of $E^n$. Volume}
-		
-		\subsection{Iterated Integrals}
-		
-		\subsection{Change of Variable}
+\section{Multiple Integrals}
+Riemann integration extends naturally to higher dimensions and supports integration over regions with curved boundaries.
+
+\subsection{Riemann Integration on Rectangles}
+Let $I=[a_1,b_1]\times \dots \times [a_n,b_n] \subset \mathbb{R}^n$.
+\begin{definition}[Partitions and Riemann sums]
+	A partition $P$ of $I$ consists of partitions of each coordinate interval. Its mesh is $|P| = \max_i\max_j (x_{i,j}-x_{i,j-1})$. A Riemann sum for $f\colon I\to \mathbb{R}$ looks like
+	\[
+		S(P,f)=\sum f(\xi_{i_1,\dots,i_n}) \prod_{k=1}^n (x_{k,i_k} - x_{k,i_k-1}),
+	\]
+	with $\xi_{i_1,\dots,i_n}$ chosen from each sub-rectangle.
+\end{definition}
+
+Upper and lower sums are defined using suprema/infima over each sub-rectangle. Integrability means the sup of the lower sums equals the inf of the upper sums; the common value is $\int_I f$.
+
+\subsection{Existence and Volume}
+Continuous functions on $I$ are integrable. More generally, if $f$ is bounded and continuous except on a set of measure zero, then $f$ is integrable. We integrate over a region $E$ with piecewise smooth boundary by integrating over a containing rectangle and setting $f=0$ outside $E$.
+
+The volume of $E$ is $\int_E 1$. Regions with negligible boundary can be approximated by finite unions of rectangles, so their volumes exist.
+
+\subsection{Iterated Integrals}
+Fubini’s theorem allows multi-dimensional integrals to be computed as repeated one-dimensional integrals.
+\begin{theorem}[Fubini]\label{thm:fubini}
+	If $f$ is integrable on $[a,b]\times[c,d]$, then
+	\[
+		\int_a^b \left(\int_c^d f(x,y)\,dy \right) dx = \int_c^d \left(\int_a^b f(x,y)\,dx \right) dy.
+	\]
+	The same holds in higher dimensions by iterating the process.
+\end{theorem}
+
+\subsection{Change of Variables}
+Smooth coordinate changes scale integrals by the Jacobian determinant.
+\begin{theorem}[Change of variables]
+	Let $T\colon U\to V$ be a $C^1$ bijection between open subsets of $\mathbb{R}^n$ with Jacobian determinant $J_T$. For integrable $f$ on $V$,
+	\[
+		\int_V f(y)\,dy = \int_U f(T(x))\,|J_T(x)|\,dx.
+	\]
+\end{theorem}
+
+This identity justifies polar, cylindrical, and spherical coordinates, as well as more general transformations used in evaluating multi-dimensional integrals.
 
 
-	
+		
 \end{document}
