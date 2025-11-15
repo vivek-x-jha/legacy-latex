@@ -1,0 +1,112 @@
+I Z.  OPERATIONS ON SETS. 
+                                  If X and Yare aete, the inter.edion 0/ X and Y, denoted by X ("\ Y, is 
+                      defined to be the set of all objects which are both  elements of X and ele-
+                      ments of Y. In eymbole, 
+                                                                     X ("\ Y ....  (z : z E X  and  z E YI. 
+                                  The union oJ X and Y, denoted XU Y, is the Bet of all objects which 
+                      are elements of at leut one of the Bets X and  Y. That i8. XU Y is the set 
+                      of all objects which are either elemente of X or elements of Y (or of both), 
+                      ineymboll 
+                                                                       XUY- (z:zEX  or  zEYJ. 
+                       The word "or"  is ueed here in the manner that is standard  in mathematica. 
+                       In ordinary  language  the word "or"  is often exclusive, that is, if A and B 
+                       are statements,  then  II A  or B" is underetood  to mean  "A or B  but  not 
+                       both",  whereu in mathematice it altDtJlI' meane" A or B, or both A and B". 
+                                                                                   ,2.  0 ....... 0 ... 011 .....    I 
+                  If X ia a aubaet of a .. 8, then the ~ oJ X .. 8 ia the .. 01 
+           all e1ementa of 8 which ..... not elementa of X. If it ia expIieltly Itated, or 
+           clear from the context, euctly  what the set 8 is. we often omit the wordI 
+           "in 8"  and 11M the notation ex for the complement of X. TbU is 
+                                                ex - fsEB: sf! XI. 
+                  Th .. operations ..... illustrated in Fipre 1, where the leta in queetioD 
+           are seta of pointa in plane repone bounded by curves. 
+                           xny                                  XUy                                     ex 
+                                    FrOUD 1. Intenect.ion, union, and oompIemenL 
+                   For another example, let 8 be the set of real numbenl, aDd let 
+                             X  -    (s E 8: s ~ 11,  Y - (s E 8: 0 ~ s S 11. 
+            (The symbols  ~ and S will be defined later.) Then 
+                                              X/,,\Y- III 
+                                              XVY- (sE8:s~OI 
+                                                   eX-lzE8:s<-1I. 
+                   Certain relationa hold among the symbols  A, V, e. For example, if 
+            X and Yare aubeeta of & set 8, then 
+                                                 eX A eY - e(X V V). 
+            This is illustrated in Figure 2. A proof of tbia fonnula ia civen below. 
+                  FJOUIIII  2.  eX ilshaded  1111, eY ilshaded  = , e(X v  Y) illhadecl HH. 
+                                            iDuIf.ratIIIr ex f'\ eY - e(X v  y). 
+                  •       ••  NOTIONS  nIOll  SlIT TllIIOBY 
+                 ExncIsB.  Prove that if xes, Yes, then eX ("\ e Y =  e(x v  Y). 
+                  It mlllt  he ahown that  the two seta have the _me elementa, in other worda that  each 
+                  element  of the set on the left ill an element of the set on the ript and vice vera. 
+                          If z E  ex f"I eY,  then  z E  eX  and  z E  eY.  Tbia  means  that  z E 8,  z e: X, 
+                  z E Y. Since z e: X, z e: Y, we know that. z e:X V  Y. Hence z E e(X V  Y). 
+                          Conversely, if  z E e(X V  Y),  then  z E 8  and  z e: X V  Y.  Therefore  z e: X 
+                  and z e: Y. ThIl8 z E eX and z E  eY, 10 that  z E  eX f"I eY. Thill completee  the 
+                  proal. 
+                            If X  and  Y  are  seta,  the  notation  X -                                                     Y  is  BOmetimes used  for 
+                   (s EX: x f1. YI.  Thus  if  X  and  Y  are  8Ubseta of  BOme set  S,  then 
+                  X - Y - X("\eY. 
+                            Two seta are said to be diajoinl  if they  have  no element  in common. 
+                  That is, X and  Y are disjoint  if X ("\ Y = flJ. A collection of any  number 
+                  of. leta is aid to be disjoint  if every  two of the sets are disjoint. 
+                      .      The intersection  and  union  of more than  two seta may be defined in 
+                   an obvious manner.  For example, if X, Y, Z ar.e seta then 
+                                          X ("\ Y ("\ Z -                   Ix : % E X, x E Y,  x E ZI, 
+                   and 
+                                          XVYVZ- (x:sEX  or  xEY  or  xEZI. 
+                   Clearly  X ("\ Y ("\ Z ... (X ("\ Y) ("\ Z ==  X ("\ (Y ("\ Z),  and  similarly  for 
+                   the  union  of  three  seta.  More  generally  the  intersection  and  union  of 
+                   arbitrary  families of seta may be defined, and in an obvious way. The only 
+                   problem  is finding an  adequate  notation  for an arbitrary  family  of seta, 
+                   and tbia is done .. folloW1l. Let 1 be any set and  for each i E 1 let Xi be 
+                   another  set  (80 that  we may .peak of 1 as being an induing  /4miI7l, whoee 
+                   elementa are irtdit:u used to specify the seta at which we direct  our main 
+                   attention).  The set of all seta Xi" i ranges over 1 is denoted 
+                                                                         (X, : i Ell  or  (X,I., 
+                    and  the  interaedion and  union of tbia  family  of seta,  together  with  their 
+                    respective  conventional  symbols, are defined by 
+                                                    ("\ X, - (x: for each i E 1, x E X,I, 
+                                                    .• , 
+                                                    V Xi'"  (x : for at least one i E  I, z E X.I. 
+                                                    ie, 
+                    EXBRCIBB.  Prove  that  if  1  and  S  are  seta  and  if  for  each  i E 1  we 
+                    have X, C S, then e«("\ X,)  - V  (eX,). 
+                                                                    iEl                    iE' 
+                    It. __ he Ibowa t.ba\ eacb element  of the let OD the left ill an element  of the let on the 
+                    .................. 
+                                                                           • 2.  OP:lJU.TlOJlB  ON UTI     7 
+                H z E e( "X,) then  z E 8 and z E "X,. Therefore z E X"  fOl' at least one 
+                           fEI                              .EI 
+          ;  E  1. Thus z E  eX" 10 that z E  U (ex,). 
+                                                  IEr 
+                Converaely, if z E  U (eX.),  then fOl' lOme;  E 1 we have z E  ex" Thus z E 8 
+                                     'el 
+           and z E X,. Since z E X, we have z E "  X,. Therefore z E e(" X,). This comp\eta 
+                                                       lei                        lei 
+           the proof. 
+                 If G and  b are objects,  by  the  ordered ptJir (G, b)  we mean the  two 
+           objects G and b in a definite order, G first, b second. Thus  if G,  b, e, d are 
+           objects then (G, b) == (e, d) if and only if G = e and b - d. Note the distinc-
+           tion between (G, b) and (G, bl i the latter is a set with two elements (unlefl8, 
+           of COU1'8e, G happens to equal li, in which case (G, b J - (a I, a set with one 
+           element), and  la, hI can equally well be written  (b, aI, spoiling the order. 
+           We remark that  instead  of introducing  the  new concept "ordered  pair" 
+           into set theory,  we can actually  define the ordered pair (a, b) in terms of 
+           the  primitive  notions about  sets  that  we already  have:  we set  (a, b) ... 
+           I(al, (G, bll. This  definition  does precisely what  we want:  to  any  two 
+           objects a, b (distinct or not) it auigns  an object (a, b), and it does this in 
+           such a faeruon that  (a, b) - (e, d) if and only if a ... e and b =- d. 
+                 Given two sets X and  Y we define the cartuian  prod4ld (or prodtACl) 
+           oj X and Y, denoted  X X Y, to be the set of all ordered pairs the  fint 
+           member of which is in X, the second in Y, that is 
+                                     X X Y = (x, y)  : x E X, y E YI. 
+                 Ordinary rectangular coordinates in the plane give the uaual pictorial 
+            representation  of the cartesian product:  the whole plane can be identified 
+           with the product of the two coordinate axes. In Figure 3 there is a niore 
+           complicated picture in which X, Y are subsets of the two coordinate axes 
+           and the cartesian product is a ~baet of the first quadrant. 
+                                                      •     • 
+                                                      I I 
+                                             FioUBII 3.  Cartesian  product. 
+          8     I.  NOTIONS  FROM  SilT  THEORY 
+                                                                                      

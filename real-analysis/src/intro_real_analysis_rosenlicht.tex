@@ -1,0 +1,636 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{Intro Real Analysis}
+\author{Rosenlicht}
+\date{April 2022}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{bm}
+
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+
+\begin{document}
+	
+	\maketitle
+	\tableofcontents
+	
+\section{Notions from Set Theory}
+	\subsection{Sets and Elements. Subsets}
+	Set theory supplies the basic language for all that follows, so we fix the most common conventions.
+	We will not attempt to ``define'' the word set; informally a set is simply a collection of objects, called its \textit{elements}.
+	Typical sets are the students enrolled at a particular university, the straight lines in the plane, or the real numbers.
+	Elements of a set may themselves be sets: an element of the set of straight lines in the plane is the set of points on that line.
+	We use capital letters for sets, lower case letters for their elements, and the symbol $\in$ for membership.
+	Thus
+	\[
+		x \in S
+	\]
+	means that $x$ is a member of the set $S$, while $x \notin S$ abbreviates ``$x$ is not an element of $S$''.
+	A set is completely determined by its elements; explicitly $X=Y$ if and only if every $x$ satisfies $x \in X \Leftrightarrow x \in Y$.
+	The difference between a set and its elements is crucial: the set $\{x\}$ consists of a single element, and must not be confused with $x$ itself.
+
+	The notation $\{x_1,x_2,x_3\}$ lists the indicated elements, while set-builder notation
+	\[
+		\{x \in S : \text{$x$ satisfies a stated property}\}
+	\]
+	collects all elements of $S$ with the desired property.
+	For example
+	\[
+		\{x \in \mathbb{R} : 0 \leq x \leq 1\}, \qquad \{n : n \text{ is a positive integer}\}
+	\]
+	are two subsets of the real numbers $\mathbb{R}$.
+	The symbol $\varnothing$ denotes the empty set, the unique set with no elements.
+
+	\begin{definition}[Subset]
+		If $X$ and $S$ are sets we write $X \subseteq S$ when every element of $X$ is also an element of $S$; that is
+		\[
+			X \subseteq S \quad \Longleftrightarrow \quad \forall x \,(x \in X \Rightarrow x \in S).
+		\]
+		If $X \subseteq S$ and $X \neq S$ we write $X \subsetneq S$ and call $X$ a proper subset of $S$.
+	\end{definition}
+
+	The relation $X \subseteq S$ is always true when $X=S$, and is vacuously true when $X=\varnothing$ because there are no elements that violate the implication.
+	A frequent source of confusion is mixing up the symbols $\subseteq$ and $\in$; for example $\{2,3\} \subseteq \{1,2,3\}$, whereas $2 \in \{1,2,3\}$.
+
+	\subsection{Operations on Sets}
+	The standard operations on sets are intersection, union, and complement.
+
+	\begin{definition}[Intersection and Union]
+		If $X$ and $Y$ are sets their intersection and union are
+		\[
+			X \cap Y = \{x : x \in X \text{ and } x \in Y\}, \qquad X \cup Y = \{x : x \in X \text{ or } x \in Y\}.
+		\]
+		The word ``or'' is inclusive: $x$ belongs to $X \cup Y$ when it lies in $X$, or in $Y$, or in both sets.
+	\end{definition}
+
+	\begin{definition}[Complement and Difference]
+		If $X$ is a subset of a fixed ``ambient'' set $S$, the complement of $X$ in $S$ is
+		\[
+			S \setminus X = \{x \in S : x \notin X\},
+		\]
+		and we often abbreviate this to $X^c$ once $S$ is understood.
+		For any two sets we also write
+		\[
+			X - Y = X \cap Y^c = \{x \in X : x \notin Y\}
+		\]
+		and call this the set difference or relative complement of $Y$ in $X$.
+	\end{definition}
+
+	The relations among these operations mirror the familiar algebraic identities.
+	For instance, if $X,Y \subseteq S$ then
+	\[
+		X^c \cap Y^c = (X \cup Y)^c, \qquad X^c \cup Y^c = (X \cap Y)^c,
+	\]
+	which are the De Morgan laws.
+
+	Sets $X$ and $Y$ are \emph{disjoint} if $X \cap Y = \varnothing$; a family of sets is disjoint if every two distinct members are disjoint.
+	Intersections and unions extend to any finite number of sets by iterating the preceding definitions, and to arbitrary families via index sets.
+	If $I$ is an indexing set and $\{X_i\}_{i \in I}$ is a family of subsets of $S$, then
+	\[
+		\bigcap_{i \in I} X_i = \{x : x \in X_i \text{ for every } i \in I\}, \qquad \bigcup_{i \in I} X_i = \{x : \text{$x \in X_i$ for at least one } i \in I\}.
+	\]
+	In particular, if each $X_i \subseteq S$, then $(\bigcap_{i \in I} X_i)^c = \bigcup_{i \in I} X_i^c$.
+
+	\begin{definition}[Ordered Pair and Cartesian Product]
+		The ordered pair $(a,b)$ records $a$ as the first component and $b$ as the second; $(a,b)=(c,d)$ if and only if $a=c$ and $b=d$.
+		One possible set-theoretic realization is due to Kuratowski:
+		\[
+			(a,b) = \{\{a\}, \{a,b\}\}.
+		\]
+		Given sets $X$ and $Y$ the Cartesian product
+		\[
+			X \times Y = \{(x,y) : x \in X, y \in Y\}
+		\]
+		is the set of all ordered pairs whose first coordinate comes from $X$ and second from $Y$.
+	\end{definition}
+
+	\subsection{Functions}
+	\begin{definition}[Function]
+		If $X$ and $Y$ are sets, a \emph{function} $f$ from $X$ to $Y$ is a rule that assigns to each $x \in X$ a definite element $f(x) \in Y$.
+		We encode this by writing $f : X \to Y$, and call $X$ the domain and $Y$ the codomain of $f$.
+		Two functions $f,g : X \to Y$ are equal when $f(x)=g(x)$ for every $x \in X$.
+	\end{definition}
+
+	Functions may be described by listing the pairs $(x,f(x))$, by a formula (for example $f(x)=x^2+3x-2$ on $\mathbb{R}$), or geometrically via their graphs.
+	Any subset of the plane meeting each vertical line in at most one point is the graph of a real-valued function on a subset of $\mathbb{R}$.
+	The defining rule need not be easy to compute: the function that sends each real number to the digit in its billionth decimal place is a legitimate example.
+
+	The graph of $f : X \to Y$ is the subset $\{(x,f(x)) : x \in X\}$ of $X \times Y$.
+	Conversely, any subset of $X \times Y$ that contains exactly one ordered pair with first coordinate $x$ for each $x \in X$ determines a function $X \to Y$.
+	In this sense the data of the domain, codomain, and graph together determine the function.
+
+	If $f : X \to Y$ and $X' \subseteq X$, the restriction $f|_{X'} : X' \to Y$ is defined by $f|_{X'}(x)=f(x)$.
+	If $Y \subseteq Y'$ we may view $f$ as a function into $Y'$ without changing the rule.
+	Given $f : X \to Y$ and $g : Y \to Z$, the composition $g \circ f : X \to Z$ is given by $(g \circ f)(x) = g(f(x))$.
+	The identity map on $X$ is denoted $i_X : X \to X$, $i_X(x)=x$.
+
+	\begin{definition}[Injective, Surjective, Bijective]
+		A function $f : X \to Y$ is \emph{injective} (or one-to-one) if $f(x_1)=f(x_2)$ implies $x_1=x_2$.
+		It is \emph{surjective} (onto) if every $y \in Y$ equals $f(x)$ for some $x \in X$.
+		A bijection is both injective and surjective, and hence establishes a one-to-one correspondence between $X$ and $Y$.
+	\end{definition}
+
+	If $f : X \to Y$ is bijective there exists an inverse function $f^{-1} : Y \to X$ satisfying $f^{-1}(f(x))=x$ and $f(f^{-1}(y))=y$.
+	For an arbitrary function $f$ and subsets $X' \subseteq X$, $Y' \subseteq Y$,
+	\[
+		f(X') = \{f(x) : x \in X'\}, \qquad f^{-1}(Y') = \{x \in X : f(x) \in Y'\}
+	\]
+	are called the image of $X'$ and the inverse image (or preimage) of $Y'$, respectively.
+	When $f$ is bijective these two uses of $f^{-1}$ are compatible: $f^{-1}(\{y\})$ is the singleton containing $f^{-1}(y)$.
+
+	\subsection{Finite and Infinite Sets}
+	Let $\mathbb{N} = \{1,2,3,\dots\}$ denote the positive integers.
+	\begin{definition}[Finite Set]
+		A set $X$ is \emph{finite} if either $X=\varnothing$ or there exists $n \in \mathbb{N}$ together with a bijection between $X$ and $\{1,2,\dots,n\}$.
+		In that case we write $|X| = n$ and call $n$ the number of elements of $X$.
+	\end{definition}
+
+	Any subset of a finite set is finite; if the subset is proper, then it contains fewer elements than the ambient set.
+	A set is \emph{infinite} when it is not finite: intuitively we can keep choosing distinct elements without ever exhausting the set.
+	The following characterization is often useful.
+
+	\begin{theorem}
+		A set $X$ is infinite if and only if it can be put into a one-to-one correspondence with a proper subset of itself.
+	\end{theorem}
+	\begin{proof}
+		If $X$ is finite, any proper subset has fewer elements, so no bijection can exist.
+		Conversely, suppose $X$ is infinite.
+		Choose distinct elements $x_1,x_2,x_3,\dots$ in $X$, and let $Y = X \setminus \{x_1,x_2,x_3,\dots\}$.
+		Define $f : X \to \{x_2,x_3,\dots\} \cup Y$ by $f(x_k)=x_{k+1}$ for $k \geq 1$ and $f(y)=y$ for $y \in Y$.
+		This $f$ is a bijection from $X$ onto a proper subset of $X$.
+	\end{proof}
+
+	The natural numbers also provide a convenient definition of sequences.
+	An $n$-tuple of elements of a set $X$ is a function from $\{1,2,\dots,n\}$ to $X$; we usually write it as $(x_1,x_2,\dots,x_n)$.
+	An infinite sequence (or simply a sequence) of elements of $X$ is a function from $\mathbb{N}$ to $X$, often denoted $(x_1,x_2,x_3,\dots)$.
+
+ \section{The Real Number System}
+	\subsection{The Field Properties}
+	Analysis rests on the exact algebraic and order structure of the real numbers. We begin by recording the axioms they satisfy.
+
+	\begin{definition}[Group]
+		A \emph{group} is a nonempty set $G$ equipped with a binary operation $\cdot$ such that:
+		\begin{enumerate}
+			\item $x\cdot y \in G$ for all $x,y \in G$ (closure).
+			\item $(x\cdot y)\cdot z = x\cdot (y\cdot z)$ for all $x,y,z \in G$ (associativity).
+			\item There exists $e \in G$ with $e\cdot x = x\cdot e = x$ for every $x \in G$ (identity).
+			\item Each $x \in G$ has $x^{-1} \in G$ satisfying $x\cdot x^{-1} = x^{-1}\cdot x = e$ (inverse).
+		\end{enumerate}
+		The group is \emph{Abelian} if additionally $x\cdot y = y\cdot x$ for all $x,y$.
+	\end{definition}
+
+	\begin{definition}[Field]
+		A \emph{field} is a set $\mathbb{F}$ together with two binary operations, addition and multiplication, such that
+		\begin{enumerate}
+			\item $(\mathbb{F},+)$ is an Abelian group with identity $0_\mathbb{F}$.
+			\item $(\mathbb{F}\setminus\{0_\mathbb{F}\},\cdot)$ is an Abelian group with identity $1_\mathbb{F}$.
+			\item Multiplication distributes over addition:
+			\[
+				x\cdot (y+z) = x\cdot y + x\cdot z, \qquad (x+y)\cdot z = x\cdot z + y\cdot z.
+			\]
+		\end{enumerate}
+	\end{definition}
+
+	\begin{definition}[Real Numbers]
+		The \emph{real number system} $\mathbb{R}$ is the unique (up to isomorphism) complete ordered field. Practically we view $\mathbb{R}$ as a set endowed with addition, multiplication, and an order relation satisfying the axioms listed in this section.
+	\end{definition}
+
+	Besides $\mathbb{R}$, the rationals $\mathbb{Q}$ and complexes $\mathbb{C}$ are important fields. Finite examples also exist (for instance $\mathbb{Z}/p\mathbb{Z}$ when $p$ is prime), but they lack the order and completeness required for analysis.
+
+	\paragraph{Field axioms.}
+	Rosenlicht enumerates seven explicit properties; we collect them in two groups.
+	\begin{enumerate}
+		\item[(F1)] \textbf{Commutativity.} $a+b=b+a$ and $ab=ba$.
+		\item[(F2)] \textbf{Associativity.} $(a+b)+c=a+(b+c)$ and $(ab)c=a(bc)$.
+		\item[(F3)] \textbf{Identities.} There exist $0$ and $1$ with $a+0=a$ and $a\cdot 1=a$.
+		\item[(F4)] \textbf{Inverses.} Every $a$ has $-a$ with $a+(-a)=0$; each $a\neq 0$ has $a^{-1}$ with $aa^{-1}=1$.
+		\item[(F5)] \textbf{Distributivity.} $a(b+c)=ab+ac$ and $(a+b)c=ac+bc$.
+	\end{enumerate}
+	These axioms imply all of the familiar algebraic rules. We spell out the basic consequences because they are used constantly.
+
+	\begin{lemma}[Cancellation]\label{lem:cancellation}
+		If $(G,\cdot)$ is a group and $xy=xz$, then $y=z$; likewise $yx=zx$ implies $y=z$.
+	\end{lemma}
+	\begin{proof}
+		Multiply $xy=xz$ on the left by $x^{-1}$ to obtain $y=z$.
+	\end{proof}
+
+	\begin{corollary}
+		The identity element of a group is unique, inverses are unique, and $(x^{-1})^{-1}=x$.
+	\end{corollary}
+
+	\begin{proposition}[Algebraic identities]\label{prop:field-identities}
+		Let $(\mathbb{F},+,\cdot)$ be a field. For any $x,y \in \mathbb{F}$ the following hold.
+		\begin{enumerate}
+			\item $0\cdot x = x\cdot 0 = 0$ and $(-1)x = x(-1) = -x$.
+			\item $xy=0$ implies $x=0$ or $y=0$.
+			\item $(-x)(-y)=xy$ and $-(x+y)=(-x)+(-y)$.
+			\item If $x,y\neq 0$ then $(xy)^{-1} = y^{-1}x^{-1}$.
+		\end{enumerate}
+	\end{proposition}
+	\begin{proof}
+		Each statement is a short application of the axioms and Lemma~\ref{lem:cancellation}. For instance,
+		\[
+			x\cdot 0 = x\cdot (0+0) = x\cdot 0 + x\cdot 0,
+		\]
+		so subtracting $x\cdot 0$ from both sides shows $x\cdot 0=0$. The other items are similar.
+	\end{proof}
+
+	\subsection{Order}
+	To do analysis, the field must also be ordered.
+
+	\begin{definition}[Ordered field]
+		An \emph{ordered field} is a field endowed with a relation $<$ such that for all $x,y,z$:
+		\begin{enumerate}
+			\item Exactly one of $x<y$, $x=y$, or $x>y$ holds (\emph{trichotomy}).
+			\item If $x<y$, then $x+z<y+z$.
+			\item If $0<z$ and $x<y$, then $xz<yz$.
+		\end{enumerate}
+	\end{definition}
+
+	We write $x\le y$ when $x<y$ or $x=y$ and denote the set of positive elements by $\mathbb{F}_{>0} = \{x : x>0\}$. The order interacts with addition and multiplication exactly as intuition dictates.
+
+	\begin{lemma}[Order manipulations]
+		If $x>0$ and $y>0$, then $x+y>0$ and $xy>0$. If $x<y$ and $z<w$, then $x+z<y+w$. Multiplying by a negative element reverses inequalities.
+	\end{lemma}
+
+	In an ordered field we define intervals, rays, and the absolute value $|x| = \max\{x,-x\}$. These capture the geometric idea of distance on the number line.
+
+	\subsection{Completeness and Bounds}
+	The property that distinguishes $\mathbb{R}$ from $\mathbb{Q}$ is completeness.
+
+	\begin{definition}[Bounds]
+		Let $S\subseteq \mathbb{R}$. A number $u$ is an \emph{upper bound} if $x\le u$ for all $x\in S$. If $u$ is an upper bound and $u\le v$ for every upper bound $v$, then $u$ is the \emph{supremum} $\sup S$. Lower bounds and the infimum $\inf S$ are defined similarly.
+	\end{definition}
+
+	\begin{theorem}[Least Upper Bound Axiom]
+		Every nonempty subset of $\mathbb{R}$ that is bounded above has a supremum in $\mathbb{R}$; every nonempty subset bounded below has an infimum.
+	\end{theorem}
+
+	\begin{theorem}[Monotone convergence]
+		If $\{a_n\}$ is increasing and bounded above, then $a_n\to \sup\{a_n\}$.
+	\end{theorem}
+	\begin{proof}
+		Let $s=\sup\{a_n\}$. Given $\varepsilon>0$, $s-\varepsilon$ is not an upper bound, so some $N$ satisfies $a_N>s-\varepsilon$. For $n\ge N$ we have $s-\varepsilon<a_n\le s$, proving $a_n\to s$.
+	\end{proof}
+
+	\begin{theorem}[Archimedean property]
+		For every $x>0$ there exists $n\in\mathbb{N}$ with $n>x$.
+	\end{theorem}
+	\begin{proof}
+		Suppose no such $n$ exists. Then the set $\mathcal{A}=\{n : n\in\mathbb{N}\}$ is bounded above by $x$, so $s=\sup\mathcal{A}$ exists. But $s-1$ is not an upper bound, so some $m\in\mathbb{N}$ satisfies $m>s-1$, i.e., $m+1>s$. Since $m+1\in \mathbb{N}$, we contradict the definition of $s$.
+	\end{proof}
+
+	\begin{theorem}[Density of $\mathbb{Q}$]
+		If $a<b$ in $\mathbb{R}$, then there exists $q\in\mathbb{Q}$ with $a<q<b$.
+	\end{theorem}
+	\begin{proof}
+		Consider $(b-a)>0$. By the Archimedean property choose $n$ with $n(b-a)>1$. There exists an integer $m$ such that $na<m<nb$, and then $m/n\in\mathbb{Q}$ satisfies $a<m/n<b$.
+	\end{proof}
+
+	\subsection{The Existence of Square Roots}
+	Completeness quickly yields the fundamental fact that positive numbers possess square roots.
+
+	\begin{theorem}
+	\label{thm:sqrt}
+		For every $a>0$ there exists a unique $b>0$ such that $b^2=a$.
+	\end{theorem}
+	\begin{proof}
+		Consider the set $S = \{x \in \mathbb{R} : x \geq 0 \text{ and } x^2 \leq a\}$. It is nonempty (since $0 \in S$) and bounded above (for example by $a+1$). Let $b = \sup S$. We first show $b^2 \leq a$. Otherwise $b^2 > a$ and putting $\varepsilon = b^2-a > 0$ we may take $\eta = \varepsilon/(2b)$; note that $b>0$ because $a>0$. Then $(b-\eta)^2 = b^2 - 2b\eta + \eta^2 = b^2 - \varepsilon + \eta^2 > a$, so every $x \in S$ satisfies $x < b-\eta$. That means $b-\eta$ is an upper bound smaller than $b$, contradicting the definition of $b$. Hence $b^2 \leq a$.
+
+		If $b^2 < a$, set $\varepsilon = a - b^2 > 0$ and choose $\eta = \min\{1, \varepsilon/(2b+1)\}$. Then
+		\[
+			(b+\eta)^2 = b^2 + 2b\eta + \eta^2 \leq b^2 + \eta(2b+1) \leq b^2 + \varepsilon = a,
+		\]
+		so $b+\eta \in S$. This contradicts $b$ being an upper bound. Therefore $b^2 = a$.
+
+		Uniqueness follows from the order axioms: if $c>0$ also satisfies $c^2=a$, then $(b-c)(b+c)=0$. Proposition~\ref{prop:field-identities} implies either $b=c$ or $b=-c$. The latter is impossible because $b,c>0$, so $b=c$.
+	\end{proof}
+
+	The existence of square roots supplies the positive branch of the absolute value and, together with the field axioms, completes the algebraic description of $\mathbb{R}$.
+
+
+\section{Metric Spaces}
+\subsection{Definition and Examples}
+Metric spaces generalize familiar geometric notions of distance.
+\begin{definition}[Metric Space]\label{def:metric-space}
+A \emph{metric space} is a pair $(M,d)$ consisting of a set $M$ and a function $d\colon M\times M\to \mathbb{R}$ satisfying for all $x,y,z\in M$:
+\begin{enumerate}
+	\item $d(x,y)\ge 0$ and $d(x,y)=0$ if and only if $x=y$.
+	\item $d(x,y)=d(y,x)$.
+	\item $d(x,z)\le d(x,y)+d(y,z)$ (triangle inequality).
+\end{enumerate}
+\end{definition}
+
+\begin{lemma}\label{lem:metric-nonneg}
+Nonnegativity is automatic: $d(x,y) = \tfrac12(d(x,y)+d(y,x)) \ge \tfrac12 d(x,x)=0$.
+\end{lemma}
+
+\begin{theorem}[General Triangle Inequality]\label{thm:general-triangle}
+Given points $x_1,\dots,x_n$ in $(M,d)$,
+\[
+	d(x_1,x_n) \le \sum_{k=1}^{n-1} d(x_k,x_{k+1}).
+\]
+\end{theorem}
+
+\begin{corollary}[Reverse Triangle Inequality]\label{cor:reverse-triangle}
+For all $x,y,z\in M$, $|d(x,z)-d(z,y)|\le d(x,y)$.
+\end{corollary}
+
+These inequalities turn the metric into a powerful bookkeeping device for estimates.
+
+\paragraph{Examples.}
+\begin{enumerate}
+	\item On $\mathbb{R}^n$ the Euclidean metric $d(\mathbf{x},\mathbf{y})=\|\mathbf{x}-\mathbf{y}\|$ arises from the dot product. The Cauchy--Schwarz inequality
+	\[
+		|\mathbf{x}\cdot\mathbf{y}| \le \|\mathbf{x}\|\,\|\mathbf{y}\|
+	\]
+	implies $\|\mathbf{x}+\mathbf{y}\| \le \|\mathbf{x}\|+\|\mathbf{y}\|$, which provides the triangle inequality for $d$.
+	\item The \emph{taxicab} (or $\ell^1$) metric on $\mathbb{R}^n$ is $d_1(\mathbf{x},\mathbf{y})=\sum |x_i-y_i|$; each coordinate satisfies the one-dimensional triangle inequality, so the sum does as well.
+	\item The \emph{discrete} metric on an arbitrary set $M$ is $d(x,y)=0$ when $x=y$ and $d(x,y)=1$ otherwise.
+\end{enumerate}
+
+\paragraph{Subspaces.} If $E\subseteq M$, the restriction of $d$ to $E\times E$ makes $E$ into a metric space; this is the \emph{subspace metric}.
+
+\subsection{Open Sets, Closed Sets, and Neighborhoods}
+For $p\in M$ and $r>0$ define the open ball $B_r(p)=\{x : d(x,p)<r\}$ and the closed ball $\overline{B}_r(p)=\{x : d(x,p)\le r\}$.
+
+\begin{definition}
+	A subset $U\subseteq M$ is \emph{open} if for every $x\in U$ there exists $r>0$ with $B_r(x)\subseteq U$. A subset $F\subseteq M$ is \emph{closed} if its complement is open. The empty set and $M$ are both open and closed.
+\end{definition}
+
+Open sets collect points together with a ``cushion'' around them. Closed sets are precisely those that contain all limit points of sequences within them (see Proposition~\ref{prop:limits-closed}).
+
+\begin{proposition}\label{prop:balls-open-closed}
+Open balls are open, closed balls are closed, and finite intersections of open (resp. closed) balls are open (resp. closed).
+\end{proposition}
+\begin{proof}
+If $x\in B_r(p)$ set $\rho=r-d(x,p)>0$. Whenever $y\in B_\rho(x)$, the triangle inequality gives $d(y,p)\le d(y,x)+d(x,p)<\rho+d(x,p)=r$, so $y\in B_r(p)$. The closed case follows by considering complements.
+\end{proof}
+
+\begin{theorem}\label{thm:open-set-properties}
+Let $\{U_\alpha\}_{\alpha\in A}$ be open subsets of $M$ and $F_1,\dots,F_n$ closed subsets.
+\begin{enumerate}
+	\item $\bigcup_{\alpha\in A} U_\alpha$ is open.
+	\item $\bigcap_{k=1}^n U_k$ is open for any finite subcollection.
+	\item $\bigcap_{\alpha\in A} F_\alpha$ is closed and $\bigcup_{k=1}^n F_k$ is closed.
+\end{enumerate}
+\end{theorem}
+
+\paragraph{Limit points, interior, and closure.}
+\begin{definition}
+	A point $x$ is a \emph{limit point} of $E\subseteq M$ if every ball about $x$ intersects $E\setminus\{x\}$. The set of all limit points is denoted $E'$. The \emph{closure} $\overline{E}=E\cup E'$ is the smallest closed set containing $E$, and the \emph{interior} $\mathrm{int}(E)$ is the largest open set contained in $E$.
+\end{definition}
+
+\begin{proposition}\label{prop:limits-closed}
+$E$ is closed if and only if it contains its limit points; equivalently $E=\overline{E}$.
+\end{proposition}
+\begin{proof}
+If $E$ is closed and $x\in E'$ then every ball around $x$ meets $E$, hence $x$ cannot lie in the open complement. Conversely, if $E$ contains its limit points, $E^c$ is open: given $x\in E^c$, there exists $r>0$ with $B_r(x)\cap E=\varnothing$, so $B_r(x)\subseteq E^c$.
+\end{proof}
+
+\begin{proposition}
+In $\mathbb{R}$ the open balls are intervals $(a,b)$, while closed balls are $[a,b]$. In $\mathbb{R}^n$ rectangular boxes $\prod_{i=1}^n (a_i,b_i)$ are open, their closures $\prod [a_i,b_i]$ are closed, and both are bounded.
+\end{proposition}
+
+\subsection{Boundedness and Extremal Points}
+\begin{definition}[Bounded Set]\label{def:bounded}
+A subset $S$ is \emph{bounded} if $S\subseteq \overline{B}_r(p)$ for some $p$ and $r$.
+\end{definition}
+Balls witness boundedness, so finite unions of bounded sets are bounded. In $\mathbb{R}^n$ closed rectangles are bounded because each coordinate difference is bounded.
+
+\begin{theorem}\label{thm:closedbounded-max}
+A nonempty closed subset of $\mathbb{R}$ that is bounded above has a maximum; one bounded below has a minimum.
+\end{theorem}
+
+\subsection{Convergent Sequences}
+\begin{definition}[Convergence]\label{def:sequence-limit}
+A sequence $\{p_n\}$ converges to $p$ if for every $\varepsilon>0$ there exists $N$ with $d(p_n,p)<\varepsilon$ for $n\ge N$.
+\end{definition}
+Limits are unique. A sequence converges to $p$ if and only if every subsequence has a further subsequence converging to $p$. Open and closed sets can be characterized via sequences:
+
+\begin{proposition}
+	\begin{enumerate}
+		\item $U$ is open if and only if no sequence entirely outside $U$ converges to a point of $U$.
+		\item $F$ is closed if and only if whenever $p_n\in F$ and $p_n\to p$, then $p\in F$.
+	\end{enumerate}
+\end{proposition}
+
+\subsection{Completeness}
+\begin{definition}[Cauchy Sequence]
+A sequence $\{p_n\}$ is \emph{Cauchy} if for every $\varepsilon>0$ there exists $N$ with $d(p_n,p_m)<\varepsilon$ for all $m,n\ge N$. A metric space is \emph{complete} if every Cauchy sequence converges.
+\end{definition}
+
+\begin{proposition}
+$\mathbb{R}^n$ with the Euclidean metric is complete.
+\end{proposition}
+\begin{proof}
+Each coordinate of a Cauchy sequence is Cauchy in $\mathbb{R}$, hence convergent. The coordinatewise limit lies in $\mathbb{R}^n$ and is the limit of the vector sequence.
+\end{proof}
+
+\begin{theorem}[Completion criterion]
+A subspace $E\subseteq M$ is complete if and only if it is closed in $M$ (when $M$ itself is complete).
+\end{theorem}
+
+\subsection{Compactness}
+\begin{definition}[Compactness]
+A subset $K\subseteq M$ is \emph{compact} if every open cover $\{U_\alpha\}$ of $K$ admits a finite subcover. Equivalently, $K$ is compact if every sequence in $K$ has a convergent subsequence with limit in $K$ (sequential compactness).
+\end{definition}
+
+\begin{theorem}[Heine--Borel]
+A subset of $\mathbb{R}^n$ is compact if and only if it is closed and bounded.
+\end{theorem}
+
+\begin{proposition}
+Closed subsets of compact sets are compact, and continuous images of compact sets are compact.
+\end{proposition}
+
+\subsection{Connectedness}
+\begin{definition}[Connected Set]
+A metric space $M$ is \emph{connected} if it cannot be written as the union of two disjoint nonempty open sets. A subset $E\subseteq M$ is connected if it is connected with the subspace metric.
+\end{definition}
+
+\begin{proposition}
+Intervals in $\mathbb{R}$ are connected, and any connected subset of $\mathbb{R}$ is an interval. Products of connected sets are connected. Continuous images of connected sets are connected.
+\end{proposition}
+
+Connectedness ensures that intermediate values cannot be skipped; this feeds directly into the Intermediate Value Theorem in the next chapter.
+\section{Continuous Functions}
+Continuous functions will carry the weight of the topological results developed in Chapter~3. Rosenlicht treats functions between arbitrary metric spaces; the real- and vector-valued cases fall out as specializations.
+
+\subsection{Definition of Continuity. Examples}
+Let $(E,d)$ and $(E',d')$ be metric spaces.
+\begin{definition}[Continuity at a point]
+	A function $f\colon E \to E'$ is \emph{continuous at $p_0\in E$} if for every $\varepsilon>0$ there exists $\delta>0$ such that $d(p,p_0)<\delta$ implies $d'(f(p),f(p_0))<\varepsilon$. It is \emph{continuous} if it is continuous at every point.
+\end{definition}
+
+The definition admits two equivalent reformulations.
+\begin{proposition}[Neighborhood formulation]\label{prop:cont-neighborhood}
+	The following are equivalent for $f\colon E\to E'$ and $p_0\in E$.
+	\begin{enumerate}
+		\item $f$ is continuous at $p_0$.
+		\item For every open set $U\subseteq E'$ with $f(p_0)\in U$, there exists an open set $V\subseteq E$ containing $p_0$ such that $f(V)\subseteq U$.
+		\item For every sequence $p_n\to p_0$ in $E$, we have $f(p_n)\to f(p_0)$ in $E'$.
+	\end{enumerate}
+\end{proposition}
+
+\begin{corollary}\label{cor:preimage-open-closed}
+	$f$ is continuous if and only if the preimage of every open set is open (equivalently, the preimage of every closed set is closed).
+\end{corollary}
+
+These criteria prove continuity for the functions encountered in calculus: polynomials are continuous everywhere, rational functions are continuous on their domain, absolute value and maximum/minimum are continuous combinations of basic operations, and so on.
+
+\subsection{Continuity and Limits}
+Continuity aligns perfectly with function limits.
+\begin{theorem}[Sequential characterization]\label{thm:cont-limit}
+	If $f\colon E\to E'$ and $p\in E$, then $f$ is continuous at $p$ if and only if for every sequence $p_n\to p$ we have $f(p_n)\to f(p)$.
+\end{theorem}
+
+\begin{theorem}[Composition and restriction]
+	If $f\colon E\to E'$ is continuous at $p\in E$ and $g\colon E'\to E''$ is continuous at $f(p)$, then $g\circ f$ is continuous at $p$. If $A\subseteq E$ carries the subspace metric and $f$ is continuous on $E$, then the restriction $f|_A$ is continuous on $A$.
+\end{theorem}
+
+\begin{proposition}[Gluing lemma]\label{prop:gluing}
+	If $E=F\cup G$ with $F,G$ closed subsets and $f\colon E\to E'$ agrees with continuous maps on $F$ and on $G$, then $f$ is continuous.
+\end{proposition}
+
+Continuity also respects monotone bijections between intervals: if $U,V\subseteq \mathbb{R}$ are intervals and $f\colon U\to V$ is strictly increasing and onto, then both $f$ and $f^{-1}$ are continuous.
+
+\subsection{Rational Operations and Vector-Valued Functions}
+The algebra of continuous real-valued functions mimics the algebra of real numbers.
+\begin{theorem}[Algebra of continuous functions]\label{thm:rational-ops}
+	Let $f,g\colon E\to \mathbb{R}$ be continuous and let $\varphi\colon \mathbb{R}\to \mathbb{R}$ be continuous. Then the functions $f+g$, $f-g$, $fg$, and $\varphi\circ f$ are continuous. If $g(p)\neq 0$ for all $p$, then $f/g$ is continuous.
+\end{theorem}
+
+\begin{corollary}
+	Polynomials and rational functions (on the domain where the denominator is nonzero) are continuous. If $\mathbf{f}\colon E\to \mathbb{R}^n$ is given by $\mathbf{f}(p)=(f_1(p),\dots,f_n(p))$, then $\mathbf{f}$ is continuous if and only if each coordinate function $f_k$ is continuous.
+\end{corollary}
+
+\subsection{Continuous Functions on Compact Metric Spaces}
+Compactness translates topological information into quantitative statements.
+\begin{theorem}[Continuous images of compact sets]\label{thm:cont-image-compact}
+	If $K\subseteq E$ is compact and $f\colon E\to E'$ is continuous, then $f(K)\subseteq E'$ is compact.
+\end{theorem}
+
+Specializing to real-valued functions produces the classical extreme value and boundedness results.
+\begin{corollary}\label{cor:bounded-max-min}
+	If $K$ is compact and $f\colon K\to \mathbb{R}$ is continuous, then $f$ is bounded and attains both its maximum and minimum on $K$.
+\end{corollary}
+
+\begin{theorem}[Heine--Cantor]\label{thm:uniform-continuity}
+	Continuous functions on compact metric spaces are uniformly continuous.
+\end{theorem}
+\begin{proof}
+	Suppose $f$ is not uniformly continuous. Then there exists $\varepsilon_0>0$ and points $p_n,q_n\in K$ with $d(p_n,q_n)\to 0$ but $|f(p_n)-f(q_n)|\ge \varepsilon_0$. Compactness provides a convergent subsequence $p_{n_k}\to p$; the paired points $q_{n_k}$ also converge to $p$. Continuity contradicts the fixed gap $\varepsilon_0$.
+\end{proof}
+
+Uniform continuity guarantees that Cauchy sequences of function values behave well. In particular, the sup metric
+\[
+	d_\infty(f,g) = \sup_{p\in K} d'(f(p),g(p))
+\]
+turns $C(K,E')$ (continuous maps $K\to E'$) into a metric space. When $K$ is compact and $E'$ is complete, $C(K,E')$ is complete under $d_\infty$: a uniformly Cauchy sequence of continuous functions converges uniformly to a continuous function.
+
+\subsection{Continuous Functions on Connected Metric Spaces}
+Connectedness rules out ``jumps''.
+\begin{theorem}[Image of a connected set]\label{thm:connected-image}
+	If $E$ is connected and $f\colon E\to E'$ is continuous, then $f(E)$ is connected.
+\end{theorem}
+
+In $\mathbb{R}$ the connected subsets are intervals; applying Theorem~\ref{thm:connected-image} yields the Intermediate Value Theorem.
+\begin{corollary}[Intermediate Value Theorem]\label{cor:ivt}
+	If $f\colon [a,b]\to \mathbb{R}$ is continuous and $y$ lies between $f(a)$ and $f(b)$, then there exists $c\in [a,b]$ with $f(c)=y$.
+\end{corollary}
+
+Further consequences include: a continuous function on an interval that never changes sign is either strictly positive, strictly negative, or identically zero; a continuous bijection from a compact interval to an interval is monotone with a continuous inverse.
+
+\subsection{Sequences of Functions}
+Finally we examine sequences of continuous functions. Let $(f_n)$ be functions $E\to E'$.
+\begin{definition}[Uniform convergence]
+	$f_n$ converges \emph{uniformly} to $f$ if for every $\varepsilon>0$ there exists $N$ with $d'(f_n(p),f(p))<\varepsilon$ for all $p\in E$ whenever $n\ge N$.
+\end{definition}
+
+\begin{theorem}[Uniform limits preserve continuity]\label{thm:uniform-limit}
+	If each $f_n$ is continuous and $f_n\to f$ uniformly on $E$, then $f$ is continuous.
+\end{theorem}
+\begin{proof}
+	Given $\varepsilon>0$, choose $N$ such that $d'(f_n(p),f(p))<\varepsilon/3$ for all $p$ and $n\ge N$. Continuity of $f_N$ provides $\delta>0$ so that $d(p,q)<\delta$ implies $d'(f_N(p),f_N(q))<\varepsilon/3$. For $d(p,q)<\delta$,
+	\[
+		d'(f(p),f(q)) \le d'(f(p),f_N(p)) + d'(f_N(p),f_N(q)) + d'(f_N(q),f(q)) < \varepsilon,
+	\]
+	so $f$ is continuous.
+\end{proof}
+
+Uniform convergence is naturally encoded by the sup metric on $C(K,E')$ discussed earlier: $f_n\to f$ uniformly if and only if $d_\infty(f_n,f)\to 0$. When $K$ is compact and $E'$ complete, $C(K,E')$ is itself complete under $d_\infty$.
+
+Examples include Fourier-type partial sums converging uniformly on compact subsets, or piecewise linear approximations to continuous paths. This perspective will be revisited in the later chapters on series and approximations.
+	
+	\section{Differentiation}
+		\subsection{Definition of the Derivative}
+		
+		\subsection{Rules of Differentiation}		
+		
+		\subsection{The Mean Value Theorem}
+		
+		\subsection{Taylor's Theorem}	
+	
+	\section{Riemann Integration}
+		\subsection{Definition and Examples}
+		
+		\subsection{Linearity and Order Properties of the Integral}
+		
+		\subsection{Existence of the Integral}
+		
+		\subsection{The Fundamental Theorem of Calculus}
+		
+		\subsection{The Logarithmic and Exponential Functions}
+		
+		\subsection{Definition of Continuity. Examples}
+	
+	
+	\section{Interchange of Limit Operations}
+		\subsection{Integration and Differentiation of Sequences of Functions}
+		
+		\subsection{Infinite Series}
+		
+		\subsection{Power Series}
+		
+		\subsection{The Trigonometric Functions}
+		
+		\subsection{Differentiation under the Integral Sign}
+		
+		
+	\section{The Method of Successive Approximations}
+		\subsection{The Fixed Point Theorem}
+		
+		\subsection{The Simplest Case of the Implicit Function Theorem}
+		
+		\subsection{Existence and Uniqueness Theorems for Ordinary Differential Equations}
+	
+	
+	\section{Partial Differentiation}
+		\subsection{Definitions and Basic Properties}
+		
+		\subsection{Higher Derivatives}
+		
+		\subsection{The Implicit Function Theorem}
+	
+	
+	\section{Multiple Integrals}
+		\subsection{Riemann Integration on Closed Intervals of $E^n$. Examples and Basic Properties}
+		
+		\subsection{Existence of the Integral. Integration on Arbitrary Subsets of $E^n$. Volume}
+		
+		\subsection{Iterated Integrals}
+		
+		\subsection{Change of Variable}
+
+
+	
+\end{document}

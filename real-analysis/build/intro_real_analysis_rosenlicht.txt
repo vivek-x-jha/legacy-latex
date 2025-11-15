@@ -1,0 +1,551 @@
+                                                             Intro Real Analysis
+                                                                       Rosenlicht
+                                                                       April 2022
+                                  Contents
+                                  1 Notions from Set Theory                                                             2
+                                      1.1   Sets and Elements. Subsets . . . . . . . . . . . . . . . . . . . . .        2
+                                      1.2   Operations on Sets . . . . . . . . . . . . . . . . . . . . . . . . . .      3
+                                      1.3   Functions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     4
+                                      1.4   Finite and Infinite Sets . . . . . . . . . . . . . . . . . . . . . . . .    5
+                                  2 The Real Number System                                                              6
+                                      2.1   The Field Properties . . . . . . . . . . . . . . . . . . . . . . . . .      6
+                                      2.2   Order . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     8
+                                      2.3   The Least Upper Bound Property          . . . . . . . . . . . . . . . . .   8
+                                      2.4   The Existence of Square Roots . . . . . . . . . . . . . . . . . . .         9
+                                  3 Metric Spaces                                                                       9
+                                      3.1   Definition and Examples . . . . . . . . . . . . . . . . . . . . . . .       9
+                                      3.2   Open and Closed Sets . . . . . . . . . . . . . . . . . . . . . . . .       11
+                                      3.3   Convergent Sequences . . . . . . . . . . . . . . . . . . . . . . . .       12
+                                      3.4   Completeness . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     12
+                                      3.5   Compactness . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      12
+                                      3.6   Connectedness . . . . . . . . . . . . . . . . . . . . . . . . . . . .      13
+                                  4 Continuous Functions                                                               14
+                                      4.1   Definition of Continuity. Examples . . . . . . . . . . . . . . . . .       14
+                                      4.2   Continuity and Limits . . . . . . . . . . . . . . . . . . . . . . . .      14
+                                      4.3   The Continuity of Rational Operations. Functions with values in
+                                            En . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .   14
+                                      4.4   Continuous Functions on a Compact Metric Space . . . . . . . .             14
+                                      4.5   Continuous Functions on a Connected Metric Space            . . . . . . .  14
+                                      4.6   Sequences of Functions . . . . . . . . . . . . . . . . . . . . . . . .     14
+                                                                             1
+                                   5 Differentiation                                                                      14
+                                       5.1   Definition of the Derivative . . . . . . . . . . . . . . . . . . . . .       14
+                                       5.2   Rules of Differentiation     . . . . . . . . . . . . . . . . . . . . . . .   14
+                                       5.3   The Mean Value Theorem . . . . . . . . . . . . . . . . . . . . . .           14
+                                       5.4   Taylor’s Theorem . . . . . . . . . . . . . . . . . . . . . . . . . . .       14
+                                   6 Riemann Integration                                                                  14
+                                       6.1   Definition and Examples . . . . . . . . . . . . . . . . . . . . . . .        14
+                                       6.2   Linearity and Order Properties of the Integral . . . . . . . . . . .         14
+                                       6.3   Existence of the Integral . . . . . . . . . . . . . . . . . . . . . . .      14
+                                       6.4   The Fundamental Theorem of Calculus . . . . . . . . . . . . . . .            14
+                                       6.5   The Logarithmic and Exponential Functions . . . . . . . . . . . .            14
+                                       6.6   Definition of Continuity. Examples . . . . . . . . . . . . . . . . .         14
+                                   7 Interchange of Limit Operations                                                      14
+                                       7.1   Integration and Differentiation of Sequences of Functions          . . . .   14
+                                       7.2   Infinite Series . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    14
+                                       7.3   Power Series . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .     14
+                                       7.4   The Trigonometric Functions . . . . . . . . . . . . . . . . . . . .          14
+                                       7.5   Differentiation under the Integral Sign . . . . . . . . . . . . . . .        14
+                                   8 The Method of Successive Approximations                                              14
+                                       8.1   The Fixed Point Theorem . . . . . . . . . . . . . . . . . . . . . .          14
+                                       8.2   The Simplest Case of the Implicit Function Theorem . . . . . . .             14
+                                       8.3   Existence and Uniqueness Theorems for Ordinary Differential
+                                             Equations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .      14
+                                   9 Partial Differentiation                                                              14
+                                       9.1   Definitions and Basic Properties       . . . . . . . . . . . . . . . . . .   14
+                                       9.2   Higher Derivatives . . . . . . . . . . . . . . . . . . . . . . . . . .       14
+                                       9.3   The Implicit Function Theorem . . . . . . . . . . . . . . . . . . .          14
+                                   10 Multiple Integrals                                                                  14
+                                       10.1 Riemann Integration on Closed Intervals of En. Examples and
+                                             Basic Properties     . . . . . . . . . . . . . . . . . . . . . . . . . . .   14
+                                       10.2 Existence of the Integral. Integration on Arbitrary Subsets of
+                                             En. Volume . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       14
+                                       10.3 Iterated Integrals . . . . . . . . . . . . . . . . . . . . . . . . . . .      14
+                                       10.4 Change of Variable . . . . . . . . . . . . . . . . . . . . . . . . . .        14
+                                   1      Notions from Set Theory
+                                   1.1     Sets and Elements. Subsets
+                                   Set theory supplies the basic language for all that follows, so we fix the most
+                                   common conventions. We will not attempt to “define” the word set; informally
+                                                                               2
+                               a set is simply a collection of objects, called its elements. Typical sets are the
+                               students enrolled at a particular university, the straight lines in the plane, or
+                               the real numbers. Elements of a set may themselves be sets: an element of
+                               the set of straight lines in the plane is the set of points on that line. We use
+                               capital letters for sets, lower case letters for their elements, and the symbol ∈
+                               for membership. Thus
+                                                                   x∈S
+                               means that x is a member of the set S, while x ∈/ S abbreviates “x is not an
+                               element of S”. A set is completely determined by its elements; explicitly X = Y
+                               if and only if every x satisfies x ∈ X ⇔ x ∈ Y. The difference between a set
+                               and its elements is crucial: the set {x} consists of a single element, and must
+                               not be confused with x itself.
+                                  The notation {x ,x ,x } lists the indicated elements, while set-builder no-
+                                                   1  2  3
+                               tation
+                                                   {x ∈ S : x satisfies a stated property}
+                               collects all elements of S with the desired property. For example
+                                            {x ∈ R : 0 ≤ x ≤ 1},     {n : n is a positive integer}
+                               are two subsets of the real numbers R. The symbol ∅ denotes the empty set,
+                               the unique set with no elements.
+                               Definition 1.1 (Subset). If X and S are sets we write X ⊆ S when every
+                               element of X is also an element of S; that is
+                                                   X⊆S ⇐⇒ ∀x(x∈X⇒x∈S).
+                               If X ⊆ S and X ̸= S we write X ⊊ S and call X a proper subset of S.
+                                  The relation X ⊆ S is always true when X = S, and is vacuously true
+                               when X = ∅ because there are no elements that violate the implication. A
+                               frequent source of confusion is mixing up the symbols ⊆ and ∈; for example
+                               {2,3} ⊆ {1,2,3}, whereas 2 ∈ {1,2,3}.
+                               1.2    Operations on Sets
+                               The standard operations on sets are intersection, union, and complement.
+                               Definition 1.2 (Intersection and Union). If X and Y are sets their intersection
+                               and union are
+                                   X∩Y ={x:x∈X and x∈Y},                 X∪Y ={x:x∈X orx∈Y}.
+                               The word “or” is inclusive: x belongs to X ∪ Y when it lies in X, or in Y, or
+                               in both sets.
+                                                                     3
+                               Definition 1.3 (Complement and Difference). If X is a subset of a fixed “am-
+                               bient” set S, the complement of X in S is
+                                                          S\X={x∈S:x∈/X},
+                               and we often abbreviate this to Xc once S is understood. For any two sets we
+                               also write
+                                                     X−Y =X∩Yc={x∈X:x∈/Y}
+                               and call this the set difference or relative complement of Y in X.
+                                   Therelations amongthese operations mirror the familiar algebraic identities.
+                               For instance, if X,Y ⊆ S then
+                                                 c     c           c       c     c           c
+                                               X ∩Y =(X∪Y) ,             X ∪Y =(X∩Y) ,
+                               which are the De Morgan laws.
+                                   Sets X and Y are disjoint if X ∩Y = ∅; a family of sets is disjoint if every
+                               two distinct members are disjoint. Intersections and unions extend to any finite
+                               number of sets by iterating the preceding definitions, and to arbitrary families
+                               via index sets. If I is an indexing set and {X }    is a family of subsets of S,
+                               then                                           i i∈I
+                               \X ={x:x∈X foreveryi∈I},                  [X ={x:x∈X foratleast one i∈I}.
+                                    i              i                          i              i
+                               i∈I                                       i∈I
+                                                                   T        c   S       c
+                               In particular, if each X ⊆ S, then (      X) =         X .
+                                                       i             i∈I   i      i∈I  i
+                               Definition 1.4 (Ordered Pair and Cartesian Product). The ordered pair (a,b)
+                               records a as the first component and b as the second; (a,b) = (c,d) if and only
+                               if a = c and b = d. One possible set-theoretic realization is due to Kuratowski:
+                                                            (a,b) = {{a},{a,b}}.
+                               Given sets X and Y the Cartesian product
+                                                       X×Y ={(x,y):x∈X,y∈Y}
+                               is the set of all ordered pairs whose first coordinate comes from X and second
+                               from Y.
+                               1.3    Functions
+                               Definition 1.5 (Function). If X and Y are sets, a function f from X to Y is
+                               a rule that assigns to each x ∈ X a definite element f(x) ∈ Y . We encode this
+                               by writing f : X → Y, and call X the domain and Y the codomain of f. Two
+                               functions f,g : X → Y are equal when f(x) = g(x) for every x ∈ X.
+                                                                      4
+                                            Functions may be described by listing the pairs (x,f(x)), by a formula (for
+                                        example f(x) = x2+3x−2 on R), or geometrically via their graphs. Any subset
+                                        of the plane meeting each vertical line in at most one point is the graph of a
+                                        real-valued function on a subset of R. The defining rule need not be easy to
+                                        compute: the function that sends each real number to the digit in its billionth
+                                        decimal place is a legitimate example.
+                                            The graph of f : X → Y is the subset {(x,f(x)) : x ∈ X} of X × Y.
+                                        Conversely, any subset of X × Y that contains exactly one ordered pair with
+                                        first coordinate x for each x ∈ X determines a function X → Y. In this sense
+                                        the data of the domain, codomain, and graph together determine the function.
+                                            If f : X → Y and X′ ⊆ X, the restriction f|X′ : X′ → Y is defined by
+                                        f| ′(x) = f(x). If Y ⊆ Y′ we may view f as a function into Y ′ without changing
+                                          X
+                                        the rule. Given f : X → Y and g : Y → Z, the composition g ◦ f : X → Z is
+                                        given by (g ◦ f)(x) = g(f(x)). The identity map on X is denoted iX : X → X,
+                                        i  (x) = x.
+                                         X
+                                        Definition 1.6 (Injective, Surjective, Bijective). A function f : X → Y is
+                                        injective (or one-to-one) if f(x ) = f(x ) implies x                   = x . It is surjective
+                                                                                 1           2              1       2
+                                        (onto) if every y ∈ Y equals f(x) for some x ∈ X. A bijection is both injective
+                                        and surjective, and hence establishes a one-to-one correspondence between X
+                                        and Y.
+                                            If f : X → Y is bijective there exists an inverse function f−1 : Y → X
+                                        satisfying f−1(f(x)) = x and f(f−1(y)) = y. For an arbitrary function f and
+                                        subsets X′ ⊆ X, Y′ ⊆ Y,
+                                                   f(X′) = {f(x) : x ∈ X′},              f−1(Y′) = {x ∈ X : f(x) ∈ Y′}
+                                        are called the image of X′ and the inverse image (or preimage) of Y′, respec-
+                                        tively. When f is bijective these two uses of f−1 are compatible: f−1({y}) is
+                                        the singleton containing f−1(y).
+                                        1.4      Finite and Infinite Sets
+                                        Let N = {1,2,3,...} denote the positive integers.
+                                        Definition 1.7 (Finite Set). A set X is finite if either X = ∅ or there exists
+                                        n ∈ N together with a bijection between X and {1,2,...,n}. In that case we
+                                        write |X| = n and call n the number of elements of X.
+                                            Any subset of a finite set is finite; if the subset is proper, then it contains
+                                        fewer elements than the ambient set. A set is infinite when it is not finite:
+                                        intuitively we can keep choosing distinct elements without ever exhausting the
+                                        set. The following characterization is often useful.
+                                        Theorem 1.1. A set X is infinite if and only if it can be put into a one-to-one
+                                        correspondence with a proper subset of itself.
+                                                                                         5
+                                   Proof. If X is finite, any proper subset has fewer elements, so no bijection can
+                                   exist. Conversely, suppose X is infinite. Choose distinct elements x ,x ,x ,...
+                                                                                                             1   2   3
+                                   in X, and let Y = X \ {x ,x ,x ,...}. Define f : X → {x ,x ,...} ∪ Y by
+                                                                1   2   3                              2   3
+                                   f(x ) = x       for k ≥ 1 and f(y) = y for y ∈ Y. This f is a bijection from X
+                                       k      k+1
+                                   onto a proper subset of X.
+                                      Thenaturalnumbersalsoprovideaconvenientdefinitionofsequences. Ann-
+                                   tuple of elements of a set X is a function from {1,2,...,n} to X; we usually write
+                                   it as (x ,x ,...,x ). An infinite sequence (or simply a sequence) of elements
+                                           1   2       n
+                                   of X is a function from N to X, often denoted (x ,x ,x ,...).
+                                                                                         1   2   3
+                                   2     The Real Number System
+                                   2.1    The Field Properties
+                                   The arithmetic of the real numbers is encoded in a small list of axioms. Ev-
+                                   erything else—limits, derivatives, and integrals—rests on these rules, so it is
+                                   convenient to isolate them once and for all.
+                                   Definition 2.1 (Group). A group is an ordered pair (G,·) consisting of a
+                                   nonempty set G together with a binary operation ·: G × G → G that is asso-
+                                   ciative, admits an identity element e, and gives each x ∈ G a two-sided inverse
+                                    −1                  −1     −1
+                                   x    satisfying x · x   =x ·x=e.
+                                   Definition 2.2 (Abelian Group). A group (G,·) is Abelian if x·y = y ·x for
+                                   every x,y ∈ G.
+                                   Definition 2.3 (Field). A field is a set F equipped with two operations + and ·
+                                   such that (F,+) is an Abelian group with identity 0 , the nonzero elements form
+                                                                                          F
+                                   an Abelian group under · with identity 1 , and the operations are tied together
+                                                                                F
+                                   by the distributive laws
+                                                x·(y+z)=x·y+x·z,                 (x+y)·z =x·z+y·z.
+                                   Definition 2.4 (Real Numbers). The set of real numbers R is the unique (up to
+                                   isomorphism) complete ordered field. For our purposes it sufÏces to remember
+                                   that (R,+,·) is a field whose multiplicative identity is denoted 1 and additive
+                                   identity is denoted 0.
+                                      Besides R, the rational numbers Q and the complex numbers C provide
+                                   common examples of fields. Finite fields also exist—the smallest is {0,1} with
+                                   addition and multiplication taken modulo 2.
+                                      Associativity allows parentheses to be suppressed and the commutativity
+                                   of Abelian groups lets us permute terms freely. The next statements collect
+                                   the algebraic manipulations that we will use repeatedly. They reorganize the
+                                   informalscratch-workfromthehandwrittenmanuscriptintoafewshortlemmas.
+                                                                              6
+                                 Lemma 2.1 (Cancellation). If (G,·) is a group and x,y,z ∈ G, then the equa-
+                                 tion w · y = z has the unique solution w = z · y−1. In particular, x · y = x · z
+                                 forces y = z and y · x = z · x forces y = z.
+                                 Proof. Multiplying w·y = z on the right by y−1 yields w = z·y−1. Conversely,
+                                 plugging w = z ·y−1 back into the equation shows it is indeed a solution. If w′
+                                 is another solution, then w′ · y = z = w · y. Right-multiplying by y−1 produces
+                                 w′ = w, proving uniqueness.
+                                 Corollary 2.0.1. Every group has a unique identity element and each element
+                                                                      −1 −1
+                                 has a unique inverse. Moreover (x       )   =xfor all x.
+                                                    ′                                       ′     ′
+                                 Proof. If e and e are identity elements, then e = e · e = e . The uniqueness
+                                 of inverses follows from Lemma 2.1 applied to x · y = e. The final statement is
+                                 immediate once uniqueness is known.
+                                 Proposition 2.1 (Basic algebra in a field). Let (F,+,·) be a field and let x,y ∈
+                                 F. The following identities hold.
+                                    1. 0 ·x = x·0 = 0 .
+                                         F           F    F
+                                    2. If xy = 0 then x = 0 or y = 0 .
+                                                 F            F          F
+                                    3. The additive inverse is unique and satisfies −x = (−1 )x = x(−1 ).
+                                                                                                 F           F
+                                    4. −(x+y)=(−x)+(−y) for all x,y.
+                                    5. (−x)(−y) = xy for all x,y.
+                                                              −1     −1 −1
+                                    6. If x,y ̸= 0  then (xy)     =y x .
+                                                  F
+                                 Proof. For (1), note that x·0 = x·(0 +0 ) = x·0 +x·0 . Subtracting x·0
+                                                                F         F    F        F       F                   F
+                                 from both sides shows x · 0 = 0 ; the analogous argument gives 0 · x = 0 .
+                                                               F     F                                    F         F
+                                                                                     −1
+                                 For (2), if x ̸= 0 then multiplying xy = 0 by x        yields y = 0 .
+                                                  F                           F                      F
+                                     Theadditive inverse is characterized by x+(−x) = 0 , so uniqueness follows
+                                                                                             F
+                                 from Lemma 2.1 applied to (F,+). Because 1 + (−1 ) = 0 , we may write
+                                                                                    F       F       F
+                                 −x=(−1 )x=x(−1 ), proving (3). Then
+                                            F           F
+                                           −(x+y)=(−1 )(x+y)=(−1 )x+(−1 )y=(−x)+(−y),
+                                                            F                F         F
+                                 which establishes (4).
+                                     To prove (5), observe that (−1 )(−1 ) + (−1 )(1 ) = (−1 )(−1 + 1 ) =
+                                                                       F     F        F    F         F     F     F
+                                 (−1 )0 =0 ,hence(−1 )(−1 ) = 1 . Consequently(−x)(−y) = ((−1 )x)((−1 )y) =
+                                     F   F    F            F      F     F                                   F         F
+                                 ((−1 )(−1 ))xy = xy. Finally, if x,y ̸= 0 , then
+                                      F     F                                F
+                                                            −1 −1          −1 −1         −1
+                                                     (xy)(y   x )=x(yy )x           =xx =1 ,
+                                                                                                F
+                                 so y−1x−1 is the inverse of xy, giving (6).
+                                     The propositions above are the algebraic workhorses for manipulating ex-
+                                 pressions. In later chapters we will freely use them to simplify equations before
+                                 extracting analytic information.
+                                                                           7
+                             2.2    Order
+                             Afield becomes truly useful for analysis only after it is endowed with an order
+                             relation that allows us to compare magnitudes.
+                             Definition 2.5 (Ordered field). An ordered field is a field (F,+,·) equipped
+                             with a relation < satisfying the following axioms for all x,y,z:
+                                1. Exactly one of the relations x < y, x = y, or x > y holds (trichotomy).
+                                2. If x < y, then x + z < y + z (compatibility with addition).
+                                3. If x < y and 0 < z, then xz < yz (compatibility with multiplication).
+                                 Write x ≤ y when x < y or x = y. The set of positive elements is F   =
+                                                                                                   >0
+                             {x ∈ F : x > 0}, and x > 0 if and only if −x < 0.
+                             Lemma 2.2. In an ordered field the following are immediate consequences of
+                             the axioms:
+                                1. If x > 0 and y > 0, then x+y > 0 and xy > 0.
+                                2. If x < y and z < w, then x+z < y +w.
+                                3. If 0 < z and x < y, then xz < yz, while multiplying by a negative number
+                                   reverses the inequality.
+                             Proof. Each item is an application of the compatibility axioms together with
+                             Proposition 2.1. For instance, if x,y > 0 then x + y > x + 0 = x and also
+                             x+y>y,showingx+y>0. Likewise, if x < y and 0 < z, subtracting xz from
+                             both sides of xz + xz < yz +xz proves xz < yz.
+                                 Intervals, rays, and absolute values are defined in the usual way. For exam-
+                             ple, (a,b) = {x ∈ R : a < x < b} is an open interval, while |x| = max{x,−x}
+                             is the nonnegative distance from 0. These notions allow us to talk about neigh-
+                             borhoods and ultimately limits.
+                             2.3    The Least Upper Bound Property
+                             Theorderrelation lets us compare numbers, but a deeper property distinguishes
+                             the real numbers from the rationals.
+                             Definition 2.6 (Bounds). Let S ⊆ R. An upper bound of S is a number u
+                             with x ≤ u for all x ∈ S. A least upper bound (or supremum) is an upper
+                             bound s such that every other upper bound satisfies s ≤ u. Lower bounds and
+                             the greatest lower bound (infimum) are defined analogously.
+                             Theorem 2.1 (Least Upper Bound Axiom). Every nonempty subset of R that
+                             is bounded above has a supremum in R. Likewise every nonempty set that is
+                             bounded below has an infimum.
+                                                                  8
+                                                                                         2
+                                   This completeness axiom fails for Q (the set {x ∈ Q : x < 2} has no rational
+                               supremum) and is the key tool for constructing limits without appealing to
+                               decimals. A commonly used consequence is the following elementary squeeze
+                               principle for monotone sequences.
+                               Proposition 2.2. If {a } is an increasing sequence of real numbers that is
+                                                        n
+                               bounded above, then a converges to sup{a : n ∈ N}.
+                                                     n                    n
+                               Proof. Let s denote the supremum. Given ε > 0, s−ε is not an upper bound,
+                               so there exists N with a   >s−ε. For n≥N the sequence is increasing, hence
+                                                       N
+                               s−ε<a ≤s. This proves lim            a =s.
+                                         n                     n→∞ n
+                               2.4    The Existence of Square Roots
+                               One immediate application of completeness is the construction of square roots.
+                                                                                                       2
+                               Theorem 2.2. For every a > 0 there exists a unique b > 0 such that b = a.
+                                                                                 2
+                               Proof. Consider the set S = {x ∈ R : x ≥ 0 and x ≤ a}. It is nonempty (since
+                               0 ∈ S) and bounded above (for example by a+1). Let b = supS. We first show
+                                2                  2                        2
+                               b ≤a. Otherwise b > a and putting ε = b −a > 0 we may take η = ε/(2b);
+                                                                           2    2          2    2        2
+                               note that b > 0 because a > 0. Then (b−η) = b −2bη+η = b −ε+η > a,
+                               so every x ∈ S satisfies x < b−η. That means b−η is an upper bound smaller
+                                                                                2
+                               than b, contradicting the definition of b. Hence b ≤ a.
+                                   If b2 < a, set ε = a − b2 > 0 and choose η = min{1,ε/(2b+1)}. Then
+                                                  2    2           2    2                2
+                                           (b +η) =b +2bη+η ≤b +η(2b+1)≤b +ε=a,
+                               so b + η ∈ S. This contradicts b being an upper bound. Therefore b2 = a.
+                                                                                                   2
+                                   Uniqueness follows from the order axioms: if c > 0 also satisfies c = a, then
+                               (b −c)(b+c) = 0. Proposition 2.1 implies either b = c or b = −c. The latter is
+                               impossible because b,c > 0, so b = c.
+                                   The existence of square roots supplies the positive branch of the absolute
+                               value and, together with the field axioms, completes the algebraic description
+                               of R.
+                               3     Metric Spaces
+                               3.1    Definition and Examples
+                               Ametric space abstracts the idea of distance.
+                               Definition 3.1 (Metric Space). A metric space is a pair (M,d) where M is a
+                               set and d: M ×M → R satisfies for all x,y,z ∈ M:
+                                  1. Nonnegativity and identity: d(x,y) ≥ 0 with d(x,y) = 0 if and only if
+                                     x=y.
+                                                                      9
+                                   2. Symmetry: d(x,y) = d(y,x).
+                                   3. Triangle inequality: d(x,z) ≤ d(x,y)+d(y,z).
+                                The map d is called a metric or distance function.
+                                    The nonnegativity condition is redundant but useful to record explicitly.
+                                Lemma 3.1. For any metric d we always have d(x,y) ≥ 0.
+                                Proof. Symmetry gives d(x,y) = d(y,x), so d(x,y) = (d(x,y) + d(y,x))/2 ≥
+                                (d(x,x))/2 = 0.
+                                    The triangle inequality can be iterated, a fact used repeatedly when esti-
+                                mating path lengths.
+                                Theorem 3.1 (General Triangle Inequality). For points x1,...,xn in a metric
+                                space,
+                                                                       n−1
+                                                           d(x ,x ) ≤ Xd(x ,x         ).
+                                                               1  n            k   k+1
+                                                                        k=1
+                                Proof. The case n = 3 is the usual triangle inequality. If the statement holds
+                                for n, apply the triangle inequality to d(x ,x    ) ≤ d(x ,x )+d(x ,x        ) and
+                                                                           1   n+1        1  n        n  n+1
+                                substitute the inductive hypothesis for d(x ,x ).
+                                                                             1  n
+                                Corollary 3.1.1 (Reverse Triangle Inequality). For all x,y,z ∈ M,
+                                                           |d(x,z) −d(z,y)| ≤ d(x,y).
+                                Proof. Applyingthetriangleinequalitytod(z,x) ≤ d(z,y)+d(y,x)andd(z,y) ≤
+                                d(z,x)+d(x,y) yields −d(x,y) ≤ d(x,z)−d(z,y) ≤ d(x,y).
+                                    The textbook emphasizes a few guiding examples.
+                                                                                                      n
+                                Definition 3.2 (Dot Product and Euclidean Norm). For x,y ∈ R , define the
+                                dot product and Euclidean norm by
+                                                                n
+                                                       x·y=Xxiyi,            ∥x∥ = √x·x.
+                                                               i=1
+                                                                                      n
+                                Theorem 3.2 (Cauchy–Schwarz). For all x,y ∈ R , |x·y| ≤ ∥x∥∥y∥.
+                                Proof. Consider p(t) = ∥ty+x∥2. This is a quadratic polynomial with nonneg-
+                                ative values, so its discriminant is nonpositive. Expanding p(t) gives the desired
+                                inequality.
+                                Corollary 3.2.1. The Euclidean norm is subadditive: ∥x+y∥ ≤ ∥x∥+∥y∥.
+                                Proof. Squarebothsides, expandusingthedotproduct, andapplyTheorem3.2.
+                                                                        10
+                                                                                              n
+                             Proposition 3.1 (Euclidean Metric). If d(x,y) = ∥x − y∥, then (R ,d) is a
+                             metric space.
+                             Proof. Symmetry and the identity of indiscernibles follow from the norm. Sub-
+                             additivity of the norm (Corollary 3.2.1) gives the triangle inequality.
+                             Corollary 3.2.2. On R the metric d(x,y) = |x − y| coincides with Proposi-
+                             tion 3.1 for n = 1.
+                                Two additional models appear frequently.
+                             Definition 3.3 (Discrete Metric). For any nonempty set M, the function
+                             d(x,y) = 0 if x = y and 1 otherwise defines a metric. Every subset is both
+                             open and closed in this topology.
+                                                                                         P
+                                                       1               n                   n
+                             Definition 3.4 (Taxicab (ℓ ) Metric). On R define d (x,y) =      |x −y |.
+                                                                                1          i=1  i   i
+                             The triangle inequality comes from the subadditivity of absolute value in each
+                             coordinate. This metric induces the same topology as the Euclidean metric, but
+                             distances measure “city blocks” instead of straight lines.
+                             3.2   Open and Closed Sets
+                             Let Br(p) = {x ∈ M : d(x,p) < r} and Br(p) = {x ∈ M : d(x,p) ≤ r} denote
+                             open and closed balls.
+                             Definition 3.5 (Open and Closed Set). A subset U ⊆ M is open if every x ∈ U
+                             has a ball B (x) ⊆ U. A subset is closed if its complement is open. The empty
+                                        r
+                             set and M itself are both open and closed.
+                             Proposition 3.2. Open balls are open sets and closed balls are closed sets.
+                             Proof. Fix x ∈ B (p) and set ρ = r − d(x,p) > 0. If y ∈ B (x), then d(y,p) ≤
+                                             r                                      ρ
+                             d(y,x) + d(x,p) < ρ + d(x,p) = r, so y ∈ Br(p). The closed case follows by
+                             applying the argument to complements.
+                             Theorem 3.3. For any metric space M:
+                               1. The union of any family of open sets is open.
+                               2. The intersection of finitely many open sets is open.
+                               3. Arbitrary intersections of closed sets are closed, and finite unions of closed
+                                  sets are closed.
+                             Proof. The first two statements follow by chasing points through the definitions
+                             of open sets. Taking complements converts them into the assertions about closed
+                             sets.
+                                In R open balls are precisely open intervals (a,b) and closed balls are closed
+                             intervals [a,b]. More generally, rectangular boxes {x : a < x < b } are open in
+                                                                                i    i   i
+                             Rn, while their closures are closed.
+                                                                11
+                               Definition 3.6 (Bounded Set). A subset S ⊆ M is bounded if there exist
+                               p ∈ M and r > 0 with S ⊆ Br(p).
+                               Proposition 3.3. Finite unions of bounded sets are bounded. In Rn, every
+                               closed rectangle Qn [a ,b ] is bounded.
+                                                 i=1 i i
+                               Proof. If U  ⊆ B (p ) for k = 1,...,n, then S U ⊆ S B (p ), which
+                                          k      rk  k                            k  k      k  rk  k
+                               is contained in a slightly larger closed ball centered at one of the pk.  The
+                               rectangular case follows from the Euclidean metric: each coordinate difference
+                               is bounded by |b −a |, so ∥x−a∥ ≤ ∥b−a∥ for any x in the rectangle.
+                                               i    i
+                                  Closed and bounded subsets of R contain their extremal points.
+                               Theorem 3.4. If S ⊂ R is nonempty, closed, and bounded above, then S has
+                               a greatest element. A dual statement holds for bounded-below sets.
+                               Proof. Let c = supS. Since S is closed, Sc is open, so if c ∈/ S there exists
+                               r > 0 with (c − r,c + r) ⊆ Sc. But then c − r is an upper bound smaller than
+                               c, contradicting the definition of supremum. Hence c ∈ S.
+                               3.3    Convergent Sequences
+                               Definition 3.7 (Sequence and Limit). A sequence in M is a function p: N →
+                               M, usually written {pn}. It converges to p ∈ M, written pn → p, if for every
+                               ε > 0 there exists N with d(pn,p) < ε whenever n ≥ N.
+                                  If a sequence converges, its limit is unique. Every convergent sequence is
+                               bounded. Conversely, in Rn a bounded monotone sequence converges by the
+                               least upper bound property established in Chapter 2.
+                               3.4    Completeness
+                               Definition 3.8 (Cauchy Sequence and Completeness). A sequence {p } is
+                                                                                                        n
+                               Cauchy if for every ε > 0 there exists N such that d(p ,p ) < ε for all
+                                                                                          n  m
+                               m,n≥N. A metric space is complete if every Cauchy sequence converges.
+                                                    n
+                               Proposition 3.4. R with the Euclidean metric is complete.
+                               Proof. A Cauchy sequence in Rn is Cauchy in each coordinate, so every coordi-
+                               nate converges by completeness of R. The vector of coordinate limits provides
+                                            n
+                               the limit in R .
+                               3.5    Compactness
+                               Definition 3.9 (Compact Set). A subset K ⊆ M is compact if every open
+                               cover of K admits a finite subcover. Equivalently, every sequence in K has a
+                               convergent subsequence with limit in K (sequential compactness).
+                                                                            n
+                               Theorem 3.5 (Heine–Borel). A subset of R is compact if and only if it is
+                               closed and bounded.
+                                                                     12
+                           Compact sets enjoy familiar finiteness properties: they are bounded, closed,
+                        and continuous images of compact sets are compact. These facts play a central
+                        role when we pass to continuous functions in the next chapter.
+                        3.6  Connectedness
+                        Definition 3.10 (Connected Set). A metric space M is connected if it cannot
+                        be written as the union of two disjoint nonempty open sets. A subset E ⊆ M is
+                        connected if it is connected with the subspace metric.
+                           Intervals in R are precisely the connected subsets. More generally, products
+                        of connected sets remain connected, and continuous images of connected sets
+                        are connected. These structural facts allow us to promote local information
+                        from Chapter 4 to global statements such as the Intermediate Value Theorem.
+                                                     13
+                        4   Continuous Functions
+                        4.1  Definition of Continuity. Examples
+                        4.2  Continuity and Limits
+                        4.3  The Continuity of Rational Operations.       Functions
+                             with values in En
+                        4.4  Continuous Functions on a Compact Metric Space
+                        4.5  Continuous Functions on a Connected Metric Space
+                        4.6  Sequences of Functions
+                        5   Differentiation
+                        5.1  Definition of the Derivative
+                        5.2  Rules of Differentiation
+                        5.3  The Mean Value Theorem
+                        5.4  Taylor’s Theorem
+                        6   Riemann Integration
+                        6.1  Definition and Examples
+                        6.2  Linearity and Order Properties of the Integral
+                        6.3  Existence of the Integral
+                        6.4  The Fundamental Theorem of Calculus
+                        6.5  The Logarithmic and Exponential Functions
+                        6.6  Definition of Continuity. Examples
+                        7   Interchange of Limit Operations
+                        7.1  Integration and Differentiation of Sequences of Func-
+                             tions
+                        7.2  Infinite Series
+                        7.3  Power Series
+                        7.4  The Trigonometric Functions
+                        7.5  Differentiation under the Integral Sign
+                        8   The Method of Successive Approximations
+                                                     14
+                        8.1  The Fixed Point Theorem
+                        8.2  The Simplest Case of the Implicit Function Theorem
+                        8.3  Existence and Uniqueness TheoremsforOrdinaryDif-
+                             ferential Equations
+                        9   Partial Differentiation
+                        9.1  Definitions and Basic Properties
+                        9.2  Higher Derivatives
+                        9.3  The Implicit Function Theorem
+                        10 Multiple Integrals
+                        10.1  Riemann Integration on Closed Intervals of En. Ex-
+                              amples and Basic Properties
+                        10.2  Existence of the Integral. Integration on Arbitrary
+                              Subsets of En. Volume
+                        10.3  Iterated Integrals
+                        10.4  Change of Variable

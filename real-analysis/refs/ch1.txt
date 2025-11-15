@@ -1,0 +1,600 @@
+    INTRODUCTION 
+    TO ANALYSIS 
+    Maxwell RosenJicht 
+   Introduction to Analysis 
+                 by 
+        MAXWELL ROSEN,LICHcr 
+          Vnivmity  of California at Bnl{eley 
+          DOVER PUBLlCA'TIONS,  !N.C. 
+                NewTorl{ 
+            CopyrIpt  C> 1968 by Maxwen RoeenJiebt 
+            AD riahta reaened  under Pan American and International Copy-
+         rtpt OHlYentiona. 
+            PubIiahed in Canada by General PublilhinK Company, Ltd.,  30 
+          LeImiIl Road, Don Milia, 1bronto, Ontario. 
+            Publlahed in the  United Kingdom by CoDItabJe and  Company. 
+          Ltd. 
+            This Dowr edition.  first published in 1986. ill an unabridpd  and 
+          unaltered republication of the work first publiahed by Scott. Forei-
+          man and CompanY. Glenview. Illinoil. in 1968. 
+            Manufactured in the United States of Arneriea 
+            Dowr Publieationa. Im: •• 31 East 2nd Street.  Mineola, N. Y. 11601 
+          U.......,  ~ Conlftll  Catalo~ng-ln-Publlcatlon Data 
+          Rc.ealieht. Maxwen. 
+            Introckaetion to analysis. 
+            ReprInt. Originally  published:  Glenview. In.  : Scott. Foresman. 
+          and Co., l888. 
+            BIbJioIraphy: p. 
+            lneladea index. 
+            I.  Mathematical analysis.    I.  Title. 
+          QAaOO.R63  1986        516                      86-25300 
+          ISBN 0-488-6&038-3 (pbk.) 
+    Preface 
+       This  text  is the  outgrowth  of a course given at Berkeley since 1960. 
+    The object is to redo calculus correctly in a setting of sufficient generality 
+    to provide a reasonable foundation for advanced work in various branches 
+    of analysis. The emphasis is on abstraction,  concreteness, and simplicity. 
+    A few abstract  ideas  u.re  introduced,  almost  minimal  in  number.  Such 
+    important  concepts as metric space, compactness, and uniform convergence 
+    are discussed in such a manner that they  will not need to be redone later. 
+    They  are given concrete  illustration  and  their  worth  is demoIlstrated  by 
+    using them  to prove the  results of calculus, generalized in ways that  are 
+    obviously meaningful and practical. 
+       The background recommended is any first course in calculus, through 
+     partial differentiation and multiple integrals (although, as a matter  of fact, 
+    nothing  is a88umed except for the  axioms of the  real number  system).  A 
+     person completing most of the material in this book should not only have 
+     a respectable compreheD8ion of basic real analysis but should also be ready 
+     to  take  serious COUl'8ell  in  such  subjects  as  integration  theory,  complex 
+     variable,  differential  equatioD8, other  topics  in  analysis,  and  general 
+     topology. Experience indicates that  this  material  is acC688ible to  a wide 
+     range of students,  including many with primary  interests  outside mathe-
+     matics,  provided there  is a stre88 on the easier problems. 
+       The quest for simplicity has resulted  in the elimination  of a host of 
+     mathematical  synonyms  and  the  omi88ion or relegation  to  the  problem 
+     sets of a number of important  ideas. Some problems, easily recognizable, 
+     &88ume a familiarity  with  linear  algebra  that  was considered unwise to 
+     presume of all students.  Indeed only a few simple facts on determinant. 
+     are needed for the  chapters  on multivariable  calculus, but  things  are Il1O 
+     arranged that the instructor who wishes to avail himself of the conveniencee 
+     of linear algebra may easily do 80 with no break in continuity.  Differential 
+     forms were excluded, regrettably,  to avoid exorbitant  algebraic detours. 
+       This  text  can be used for courses ranging in length  from one to t.wo 
+     quarters.  The original semester course at Berkeley coveled the first eight 
+     chapters, with the omission of most of the third section of the eiPth chapter. 
+     At  present  Berkeley  has  a  two-quarter  sequence with  the  first  quarter, 
+     IIIOmewhat sped up, covering the first six chapters and parts of the seventh. 
+       Here are 80me comments on the individual chapters. Chapter I, which 
+     discusses material on basic set theory thu.t is familiar to many students, can 
+     be covered very rapidly.  Chapter  II gives a brief account of how all the 
+     properties  of the  real  numbers  can  be deduced from a few axioms. This 
+         material  can all10 be covered  rapidly.  It should not be bypassed,  however, 
+         for contrary  to a widespread faith  in modern pedagogy, my experience has 
+         been that  time  spent  here  is not  wasted.  Chapters  III  and  IV, on metric 
+         spaces and continuous  functions,  are the meat  of the book. They  must be 
+         done  with  great  care.  After  this,  Chapters  V,  VI,  and  VII  flow along 
+         smoothly,  for  their  substance  (elementary  calculus)  is familiar  and  the 
+         proofs now make sense. Chapter  VIII,  which is about  existence theorems, 
+         is of a slightly  greater  order of difficulty. One may save some time by going 
+         very  lightly  over  the  implicit  function  theorem  if it is intended  to do the 
+         general case later,  in the following chapter.  The last section of  the chapter 
+         treats  ordinary  differential  equations,  and  the  classroom  discussion  of 
+         these  may with  relative  impunity  be restricted  to the very  first theorem. 
+         Chapters  IX and X, on multivariable  calculus,  conclude the  book. They 
+         should  cause  no  difficulty  for  anyone  who  has  come  this  far.  However, 
+         omitting  them entirely  would be preferable to an attempt  to rush through. 
+              It is impossible to write a text such as this without  an obvious indebted-
+         ness to J. Dieudonn6's classic Poundationa oj M adem Anal".,.  My gratitude 
+         is also due  my colleagues of the  curricular  reform  committee  at Berkeley 
+         which instituted  the new Mathematics  104 course, to Mrs. Sandra Cleveland 
+         for writing  up my original lectures,  to Adam Koranyi,  whose revised notes 
+          have  long  been  in use,  for  many  conversations,  to  numerous  other  col-
+          leagues  and  students  for their  comments,  to my  family  for  its  patience, 
+          and to Scott,  Foresman and Company  for its affable efficiency. 
+          Berkeley,  California                                     Maxwell Rosenlicht 
+          Contents 
+             CHAPTER I. NOTIONS FROM SET THEORY                                                       I 
+                               II.   Sets and elements. Subsets                                       J 
+                               12.   Operations on Beta                                               40 
+                               13.  Functions                                                         • 
+                               14.  Finite and infinite sets                                         10 
+                                     Problema                                                        11 
+            CHAPTER II.  TIlE  REAL NUMBER SYSTDI                                                    II 
+                               11.  The fteJd propertiea                                             16 
+                               12.   Order                                                           19 
+                               13.  The Ieut upper bound property                                    • 
+                               • 4.  The exilltence of square roots                                  18 
+                                     Pro~~                                                           • 
+           CHAPTER III.  METRIC  SPACES                                                              as 
+                               11.  Definition of metric apace. Examples                             It 
+                               12.  Open and closed seta                                             11 
+                               13.  Converpnt  aequencea                                             " 
+                           ..  14.  CompJetenelll                                                    11 
+                               • 5.  Compactnell                                                     " 
+                               16.  Connectednell                                                    It 
+                                     Problema                                                        6J. 
+            CIIAPTER  IV. CONTINUOUS Ft1NCTIONS                                                      " 
+                               11.  Definition of continuity. Examp1et                               .. 
+                               12.  Continuity  and limits                                           71 
+                               13.  The continuity of rational  operationl.  PuacIioDI 
+                                      with valuea in •                                               'II 
+                               14.  CoDtinUOUI functions on a compact met.ric ....                   .,. 
+                               15.  CoDtinuoua functions on a 00DIleCted ..........                  • 
+                               16.  8equeneea of functions                                           • 
+                                      Problems                                                       .. 
+             CHAPTER V. DIFFEIIENTJATION                                                           '  " 
+                                11.  The defiDitiOD of derivative                                    • 
+                                12.  Ru1et of dilerentiation                                        _ 
+                                ta.  The,IIlMIl value &Iaeore                                       _ 
+                                14.  TayIor'.  ~                                                    .. 
+                                      Problema                                                      1. 
+           CIUPTER  VI. RIEMANN INTEGRATION                                                     111 
+                              II.   Definitiou  and examples                                    111 
+                              12.  Linearity and order properties of the integral               116 
+                              13.  Existence of the integral                                    118 
+                              14.  The fundamental theorem of ealcuIua                          lIS 
+                              15.  The logarithmic and exponential functions                     III 
+                                    Problems                                                     131 
+          aIAPI'EIl  VII.  INTERCHANGE OF UMIT  OPERATIONS                                       117 
+                              II.   Integration  and ditterentiation  of aequences 
+                                    of functions                                                 lSI 
+                              12.  Infinite aeries                                               1'1 
+                              13.  Power I8ries                                                  ISO 
+                              14.  The tripnometric  functioaa                                   156 
+                              16.  OOfereatiation under the intecral lip                         119 
+                                    ~                                                            1~ 
+         CILU'TBR  VID. TIlE MBTIIOD OF StJa:ESS1VE  APPROXIMATIONS  169 
+                              11.  The fixed point theorem                                       170 
+                              U.  TIle aim.pleat cue of the implicit function  theorem           I71 
+                              I a.  Exiet.ence and UIliquena  tbeoremI for ordinary 
+                                    dilerential  equatioIIB                                      177 
+                                    Problema                                                     190 
+           CIIAPI'BR IX. PARTIAL  DIFFERENTIATION                                                19S 
+                              11.  DefiDitiona and bailie propertiee                             1M 
+                              12.  JDcher derivatives                                            .1 
+                              13.  The implieit function theonm                                  _ 
+                                    Problema                                                     IU 
+            CILU'TBR  X. MULTIPLE INTEGRALS                                                      III 
+                              11.  BiImun intep.tion  OD ..... interval in ... 
+                                     _plea and bailie propertiea                                 116 
+                               ,2.  ErIeteece of the in"",.  lD .... tion  OD 
+                                     arbitrary  .. baeta of ... Volume                           III 
+                               13.  Iterated intepaJa                                            .1 
+                               ,f.  0IIup of variable                                            ISS 
+                                     Problema                                                    Mt 
+          8VCGBITION8  lOR FURTHER  RUDING                                                       U9 
+          INDEX                                                                                  lSI 
+  Introduction to Analysis 
+     CHAPTER  1 
+     Notions from' Set Theory 
+                  Bet theory  is the languap  of mMhematicl. Tbe 
+                mOlt  complicated  ideas  in  modern mathematies are 
+                developed in terma of the basic nodo.  of let theory • 
+               . Fortunately  the grammar.and vocabuluy  of ... theory 
+                are extremely simple, at least in the .... that it. poe-
+                aible to 10 very  far in mathematiClil with 001,. a ema11 
+                amount of set theory.  It so happens that the subject 01 
+                let  theory  not  only  underlies mathernatiee  but  baa 
+                become itlelf an extensive braneh of atudy;  however we 
+                do not enter deeply into  this Itudy  beeauae there it DO 
+                need  to. All we mUlt do here it familiarise ouneIv. 
+                with some of the baaie ideas 10 that the lan&uace ...., be 
+                11Ied with precision. A fint  readilll  of tbiI chapter can 
+                be very rapid ainee it i. mainly a matter of pttinc WIld 
+                to a few worda. There i. oocuional verboeity t directed 
+                toward  the  clarification  of certain  simple ideas  which 
+                are really somewhat  more subtle  than they &ppeU'. 
+              I      I.  NOTIONS  no .. IIIIT THlIOaT 
+                                                                            fl.  SETS AND ELEMENTS. SUBSETS. 
+                      We do not attempt  to define the word.,.  Intuitively  a set is a collec-
+              tion, or ",gregale,  or famil'll, or en.semble (all of which words are used synony-
+              mously with set) of objects which are called the elementa, or member. of the 
+              set, and the set is completely determined  by the knowledge of which objects 
+              are elements of it. We may speak, for  example, of the set of students  at a 
+               certain. univenity;  the elements of thie set are the individual students  there. 
+              Similarly we may lpeak  of the set of all real numbel'l  (to be diacuased in 
+              eome detail  in the  next chapter),  or the set of aliitraight  lines in a given 
+               plane, etc. It Ihould be noted that the elements of a set may themselves be 
+               sets; for example each element of the set of allitraight  lines in a given plane 
+               ia a set of points, and we may alao consider such 1881 mathematical  examples 
+               .. the set of married couples in a given town, or the set of regiments in an 
+               army. 
+                       We ehalI generally  use capital  lettel'l  to denote  sets  and  lower-cue 
+               letters to denote their  elementa. The Iymbol  E  is used to denote  member-
+               ehip in a set, 10 that 
+                                                                            zES 
+               means that z is an element of the set S. The ltatement  "z ia not an element 
+               of S" is abbreviated 
+                                                                            zf!S. 
+               Inatead  of  writing  a E  S,  b E S,  c E  S  (the  commu  having  the  arne 
+                meaning .. "and")  we often write a, b, c E s. 
+                        The atatement  that a set is completely determined  by ita elements may 
+                be written  .. followa: If X and  Yare sets then  X  .. Y if and only if, for 
+                all z, z E  X if and only if z E Y. Equality  here and elsewhere in thia book 
+                (denoted by -) means identity;  X and  Y happen to be different Iymbola, 
+                but they may very well be different names for the same set, in which case 
+                the equation  X - Y means that the sets indicated  by the symbols X aad 
+                Y are  the same.  X" Y of COUJ'le means that  the  sets  indicated  by  the 
+                aymbola X and  Y are not the same. 
+                        ThUi we imagine oUJ'lelves in a world peopled by certain  "objects" 
+                (certain  of which are  called "sets"),  and  for some pail'l  of objects  z,  X, 
+                wh .. X is a set, we write:e E  X, the symbol  E  having the property  that 
+                lwo ... X and Y are equal if and only if for each object z we have z E  X 
+                if and only if :Ie E  Y. The symbol E  mUit alao bave other properties  (which 
+                we dan't specify here) that enable UB, given certain sets, to construct  otheJ'l. 
+                The important tbina is tbat everything which followa is expreBlible in terms 
+                01 the fundamental  relation  z E  X. 
+                                                               tl._AllD  .........       II 
+              Seta are IOmetinuw iDdieated by Iiaciq  III their members between 
+         br&cell. For example, the _ 
+                                           IJaoe, Jim} 
+         baa Jane and .nm .. ita memben, 
+                                           (1, 2,3,  ••. ) 
+         (with the three dote I'e8d Uaod 10 on")  ie the _  of poeitive inteprB. and 
+                                                f-t  . 
+         ia the _   having one element. the object  named _. (Note that  f G J ie not 
+         the aame .... In the aame way theN ia a ditferenee between a university 
+         cluB coDIIiatiDg of one atudent aod the atudent hilDll8lf, or between a com-
+         mittee 00DIIiat.i1ll of one peraon and that peraon.) The above notation how-
+         ever is not always feuible.  A more frequendy  used notation is 
+                                  Iz : (statement involving s)J, 
+         which meaoa the aet of all z for which the statement  involving z ia true. 
+         Thus 
+                                   (s : z ie a poeitive integerJ 
+         ia the aet of positive intepra,  and for any aet 8 we have 
+                                         8 - fz: zE8). 
+         For any aet 8, the aymboI 
+                                fs E 8 : (atatement  involviDg z») 
+         deDotea the -.me set .. 
+                            (z : :i E 8 and (statement involving z) J , 
+          which ia the let of all elements of 8 for which the atatement ia true. Thus 
+          if R is the .. of real numbers, 
+                                   Iz E R : :r:I- l' - (1,  -I). 
+               If X and  Y are aeta and every element of X is al80 an element of Y. 
+          we a.y that X is a ...., of Y; this is written 
+                                       XC Y,  or  Y:JX. 
+          Thus  XC Y ie ahorthand  for  the  atatement  "if  z E  X  then  s E  Y". 
+          X - Y is equivalent to the two atatements X C  Y and Y C X. If X C  Y 
+          aod Y C Z then clearly  X C z; the two &nst atatements are IOmetimea 
+          written more aucoinotly                                            . 
+                                            XcYCZ. 
+                   ,         I.  NO'l'IONa  noll 811T TRIIORT 
+                   For auy object  z  and  set  X  the  relation  z E  X  can  now be  written  in 
+                    another  (1_ convenient I) way, namely  (zl  eX. The negation of X C Y 
+                   •  written                                                          Xtl, Y  or  Y~X. 
+                    X. called a JWOPII' eubuI 0/ Y if XC Y but X,. Y. 
+                               The em", .., •  the set with no elements. It is denoted by the symbol 
+                    91. A IOUI'Ce of confusion to beKinnel'l •  that although  t.he empty let oon-
+                    taint  noCIam"  it i .... f is lOfMIAing (namely lOme particular  let,  the  one 
+                    characterised by the fact. that. nothing is in it.). The set. (911 •  a let. con-
+                    tainilll exactly one element, namely the empty set. (In a similar way, when 
+                    dea1in1 
+                                         with numbers, lay wit.h ordinary  intepl'l,  we mUit. be careful not 
+                     to reprd  the number aero 81 nothing: 181'0 is something, a part.icular num-
+                     ber, which repreeents the number of thinp in "nothing".  Thus 181'0 and 91 
+                     are quite different, but there is a connection between them in that  the set 
+                     91 hu IeIO elements.) Note that  for any set X we have 
+                                                                                     III C X  and  XC X. 
+                     A epecial cue of both of these statements  is the statement 
+                                                                                                        III C Ill, 
+                     which occuiont  diJlloulty iI, u  is often  improperly  done,  one ......  'Ije 
+                     oontailled in" for both of the symbole C  and  E. The statement  III C III 
+                     ia tNe becalMe the statement  "for each z E III we have z E Ill" is obviouely 
+                     true,  and  allO  because it is "vacuously  true",  that  is there  is DO z E III 
+                     for which the statement  must be verified, just. u  the statement  "all  pip 
+                     with winp apeak Chineee" is vacuously true. 
+                                                                                                                                      I Z.  OPERATIONS ON SETS. 
+                                  If X and Yare aete, the inter.edion 0/ X and Y, denoted by X ("\ Y, is 
+                      defined to be the set of all objects which are both  elements of X and ele-
+                      ments of Y. In eymbole, 
+                                                                     X ("\ Y ....  (z : z E X  and  z E YI. 
+                                  The union oJ X and Y, denoted XU Y, is the Bet of all objects which 
+                      are elements of at leut one of the Bets X and  Y. That i8. XU Y is the set 
+                      of all objects which are either elemente of X or elements of Y (or of both), 
+                      ineymboll 
+                                                                       XUY- (z:zEX  or  zEYJ. 
+                       The word "or"  is ueed here in the manner that is standard  in mathematica. 
+                       In ordinary  language  the word "or"  is often exclusive, that is, if A and B 
+                       are statements,  then  II A  or B" is underetood  to mean  "A or B  but  not 
+                       both",  whereu in mathematice it altDtJlI' meane" A or B, or both A and B". 
+                                                                                   ,2.  0 ....... 0 ... 011 .....    I 
+                  If X ia a aubaet of a .. 8, then the ~ oJ X .. 8 ia the .. 01 
+           all e1ementa of 8 which ..... not elementa of X. If it ia expIieltly Itated, or 
+           clear from the context, euctly  what the set 8 is. we often omit the wordI 
+           "in 8"  and 11M the notation ex for the complement of X. TbU is 
+                                                ex - fsEB: sf! XI. 
+                  Th .. operations ..... illustrated in Fipre 1, where the leta in queetioD 
+           are seta of pointa in plane repone bounded by curves. 
+                           xny                                  XUy                                     ex 
+                                    FrOUD 1. Intenect.ion, union, and oompIemenL 
+                   For another example, let 8 be the set of real numbenl, aDd let 
+                             X  -    (s E 8: s ~ 11,  Y - (s E 8: 0 ~ s S 11. 
+            (The symbols  ~ and S will be defined later.) Then 
+                                              X/,,\Y- III 
+                                              XVY- (sE8:s~OI 
+                                                   eX-lzE8:s<-1I. 
+                   Certain relationa hold among the symbols  A, V, e. For example, if 
+            X and Yare aubeeta of & set 8, then 
+                                                 eX A eY - e(X V V). 
+            This is illustrated in Figure 2. A proof of tbia fonnula ia civen below. 
+                  FJOUIIII  2.  eX ilshaded  1111, eY ilshaded  = , e(X v  Y) illhadecl HH. 
+                                            iDuIf.ratIIIr ex f'\ eY - e(X v  y). 
+                  •       ••  NOTIONS  nIOll  SlIT TllIIOBY 
+                 ExncIsB.  Prove that if xes, Yes, then eX ("\ e Y =  e(x v  Y). 
+                  It mlllt  he ahown that  the two seta have the _me elementa, in other worda that  each 
+                  element  of the set on the left ill an element of the set on the ript and vice vera. 
+                          If z E  ex f"I eY,  then  z E  eX  and  z E  eY.  Tbia  means  that  z E 8,  z e: X, 
+                  z E Y. Since z e: X, z e: Y, we know that. z e:X V  Y. Hence z E e(X V  Y). 
+                          Conversely, if  z E e(X V  Y),  then  z E 8  and  z e: X V  Y.  Therefore  z e: X 
+                  and z e: Y. ThIl8 z E eX and z E  eY, 10 that  z E  eX f"I eY. Thill completee  the 
+                  proal. 
+                            If X  and  Y  are  seta,  the  notation  X -                                                     Y  is  BOmetimes used  for 
+                   (s EX: x f1. YI.  Thus  if  X  and  Y  are  8Ubseta of  BOme set  S,  then 
+                  X - Y - X("\eY. 
+                            Two seta are said to be diajoinl  if they  have  no element  in common. 
+                  That is, X and  Y are disjoint  if X ("\ Y = flJ. A collection of any  number 
+                  of. leta is aid to be disjoint  if every  two of the sets are disjoint. 
+                      .      The intersection  and  union  of more than  two seta may be defined in 
+                   an obvious manner.  For example, if X, Y, Z ar.e seta then 
+                                          X ("\ Y ("\ Z -                   Ix : % E X, x E Y,  x E ZI, 
+                   and 
+                                          XVYVZ- (x:sEX  or  xEY  or  xEZI. 
+                   Clearly  X ("\ Y ("\ Z ... (X ("\ Y) ("\ Z ==  X ("\ (Y ("\ Z),  and  similarly  for 
+                   the  union  of  three  seta.  More  generally  the  intersection  and  union  of 
+                   arbitrary  families of seta may be defined, and in an obvious way. The only 
+                   problem  is finding an  adequate  notation  for an arbitrary  family  of seta, 
+                   and tbia is done .. folloW1l. Let 1 be any set and  for each i E 1 let Xi be 
+                   another  set  (80 that  we may .peak of 1 as being an induing  /4miI7l, whoee 
+                   elementa are irtdit:u used to specify the seta at which we direct  our main 
+                   attention).  The set of all seta Xi" i ranges over 1 is denoted 
+                                                                         (X, : i Ell  or  (X,I., 
+                    and  the  interaedion and  union of tbia  family  of seta,  together  with  their 
+                    respective  conventional  symbols, are defined by 
+                                                    ("\ X, - (x: for each i E 1, x E X,I, 
+                                                    .• , 
+                                                    V Xi'"  (x : for at least one i E  I, z E X.I. 
+                                                    ie, 
+                    EXBRCIBB.  Prove  that  if  1  and  S  are  seta  and  if  for  each  i E 1  we 
+                    have X, C S, then e«("\ X,)  - V  (eX,). 
+                                                                    iEl                    iE' 
+                    It. __ he Ibowa t.ba\ eacb element  of the let OD the left ill an element  of the let on the 
+                    .................. 
+                                                                           • 2.  OP:lJU.TlOJlB  ON UTI     7 
+                H z E e( "X,) then  z E 8 and z E "X,. Therefore z E X"  fOl' at least one 
+                           fEI                              .EI 
+          ;  E  1. Thus z E  eX" 10 that z E  U (ex,). 
+                                                  IEr 
+                Converaely, if z E  U (eX.),  then fOl' lOme;  E 1 we have z E  ex" Thus z E 8 
+                                     'el 
+           and z E X,. Since z E X, we have z E "  X,. Therefore z E e(" X,). This comp\eta 
+                                                       lei                        lei 
+           the proof. 
+                 If G and  b are objects,  by  the  ordered ptJir (G, b)  we mean the  two 
+           objects G and b in a definite order, G first, b second. Thus  if G,  b, e, d are 
+           objects then (G, b) == (e, d) if and only if G = e and b - d. Note the distinc-
+           tion between (G, b) and (G, bl i the latter is a set with two elements (unlefl8, 
+           of COU1'8e, G happens to equal li, in which case (G, b J - (a I, a set with one 
+           element), and  la, hI can equally well be written  (b, aI, spoiling the order. 
+           We remark that  instead  of introducing  the  new concept "ordered  pair" 
+           into set theory,  we can actually  define the ordered pair (a, b) in terms of 
+           the  primitive  notions about  sets  that  we already  have:  we set  (a, b) ... 
+           I(al, (G, bll. This  definition  does precisely what  we want:  to  any  two 
+           objects a, b (distinct or not) it auigns  an object (a, b), and it does this in 
+           such a faeruon that  (a, b) - (e, d) if and only if a ... e and b =- d. 
+                 Given two sets X and  Y we define the cartuian  prod4ld (or prodtACl) 
+           oj X and Y, denoted  X X Y, to be the set of all ordered pairs the  fint 
+           member of which is in X, the second in Y, that is 
+                                     X X Y = (x, y)  : x E X, y E YI. 
+                 Ordinary rectangular coordinates in the plane give the uaual pictorial 
+            representation  of the cartesian product:  the whole plane can be identified 
+           with the product of the two coordinate axes. In Figure 3 there is a niore 
+           complicated picture in which X, Y are subsets of the two coordinate axes 
+           and the cartesian product is a ~baet of the first quadrant. 
+                                                      •     • 
+                                                      I I 
+                                             FioUBII 3.  Cartesian  product. 
+          8     I.  NOTIONS  FROM  SilT  THEORY 
+                                                                                      13.  FUNCI'IONS. 
+                If X and  Yare sets, by a function from X to Y  (or a Junction Jrom X 
+          into Y, or a function on X with value8 in Y) is meant a rule which associates 
+          with each element of X a definite element of Y.  (The word mapping, or 
+           map, is often used instead of function.) The "rule"  can he given in many 
+           ways, some of which are discussed below, but  the essential thing is that 
+           given any element of X there is associated, somehow, some definite element 
+           of Y. Two functions from X to Y are considered equal if and only if both 
+           functions associate with each specific element of X the same element of Y. 
+                 Functions are usually denoted by small letters,  such as J. The state-
+           ment "J is a function from X to  Y" is often written 
+                                                     J:X-Y. 
+           For any a: E  X, the element of Y that the function J associates with z (the 
+           value 01 J at :r)  is  denoted I(a:). Thus  if J:  X -              Y  and  g: X -       Y  then 
+           1-g if and only if I(z)  - g(a:) for all a: E  X. W~ say that J smds a: into 
+           I(z),  or that I map8 a: into I (a:) , or that :r and I(z)  correspond under J. 
+                 The rule defining a given function I: X -                Y may be given in various 
+           ways. One way, which is usually not very practir.al, is to list all the elements 
+           of X, listing with each one the corresponding one of Y. Or the rule may be 
+           given by a mathematical formula. For example, if X and Y are both taken 
+           to be the set H of real numbers, an equation like 
+                                                fez) = Zl + 3z - 2 
+           defines a  real-valued function J on H i in such a  case one often  speaks 
+            (imprecisely I) of the  function :r' + ax - 2. Again, if X is a subset of H, 
+           a real-valued function on X may be given geometrically by its graph, that 
+            is the set of points I (a:, I(z»  : z E  XI in the plane; note that this method 
+            mayor may not be practical, depending on what f is like, for it may not be 
+            possible to "draw"  the Rl'aph. In  fact  any subset  of the  plane defines a 
+            real-valued function on a subset of the real numbers, provided that  any 
+            vertical  line (z - constant)  intersects the  lubset  of the  plane in at most 
+            one point. Finally we remark that  the "rule"  defining a function need not 
+            be practically  computable. For example, for z any  real number, let I(a:) 
+            denote that integer 0, 1, ... , 9 which is in the billionth decimal place of :r 
+            (to  be precile, since a  real number a:  may have  more than  one decimal 
+            representation,  88 in 1.0000 ...  = .9999 ... , we might better  take J(a:) to 
+            he the smallest possible integer in the  billionth decimal place of :r);  this 
+            rule gives an honest-to-goodness function I: H -                 H, but who would hazard 
+            a guess 88 to the value of 1(11'), or even 1(...;7J.)1 
+                  Though this is in no way essential for what follows, we remark that 
+            it is easy to define the notion of function in terms of more primitive concepts 
+            of set theory, 88 follows: If X and Yare sets, a function from X into Y is a 
+            subset of X X Y with the property  that  for any x E  X there is one and 
+                                                                               13.  ruNCftONI    9 
+         only one 1/ E  Y such that  (z, 1/) is in the subset.  If the function  is denoted 
+         J: X -    Y then the unique 1/ referred to above is, of COUl'lle, J(:e). In analOl)' 
+         with  the  case of  real-valued  functiona' on  the  real  numbers,  this  lubeet 
+          I (z, J(z»  : z E  X I of X X Y is called the graph of the function,  10 that 
+          we are again saying that the graph detennines  the function. 
+                                                             1 
+               FrOUD 4. Graph of the function I: R -+ R liven  by I(~) - Zl far aU s E •. 
+                It is useful to note  that  the word  "function"  alone can be defined in 
+          primitive  terms,  not  only  the  more  complete  concept  "function  flOm X 
+          into  Y": a function  is an ordered  pair  whose first  member  ill an ordered 
+          pair  of sets, say  (X, V),  and  whose second  member  is a  function  flOm 
+          X into  Y. That is, a function  is IOmething of the type  «X, y),  (a certain 
+          kind of subset  of X  X y». This  emphasizes that  the I8tI X and  Y are to 
+          be conaidered &8 easential parts of the function J:X -              Y. For many  pur-
+          poI8I  it is important  to bear  this  fact  in mind,  but molt  often  we do not 
+          make any explicit mental note of it. For example, if I: X -             Y is a fUllCUon 
+          and  Y is a subset  of another  set  Y',  then  we set a function I': X -          Y' by 
+          setting  J'(z)  - J(z)  for all :e E  X,  that  is, living  I' the same  II'&Ph "I, 
+          which  il  pouible  since  X  X Y C  X  X V'.  Although  I  and I' &1'8  really 
+           different  functions,  we  uaually  denote  them  by  the  same  Iymbol,  even 
+           writing  down the technically  incorrect  expl'ellion J: X -          V'.  In the same 
+           way, liven  any function I: X -        Yand any subset  X" of X, we can de&ne 
+           a  function  1": X" -      Y by I"(z)  -/(z)  for all z E  X"; I" is called the 
+           rearictioR  011 to X". Of course, I" is not  the same &8 I, though we olten 
+           denote  them  by the same .ymhol,  for example by writing  the technically 
+           incorrect  expl'ellion J: X" -      Y when there is no danger of confUlion, The 
+           graph of the latter  function is of COUl'lle a subeet of the graph of the oriPnai 
+           function!:  X -     Y, since X" X Y C X X Y. 
+                If !: X -    Y and,:  Y - Z are functiona,  one can define the ctnrapoft-
+           lion 01 J and"  or compoaedJunctioR, a function flOm X into Z, by &8IOCiating 
+           to each element of X an element of Z in the obvious way: given an element 
+           of 
+              X, one fint uses J to get an element of Y, then one U8eI ,  to get flOm this 
+         10    I.  NOTlON8  FROM  8ET THEORY 
+         last  element an element of Z. The composed function is usually denoted 
+         go 1,80 that  we have 
+                                            go/:  X-Z, 
+         with (g 0  I) (x)  =  g(J(x»  for each x E  X. 
+              A function I: X -      Y  is called one-to-one, or one-one, if different ele-
+         mente of X correspond under I to different elements of Y, that is if l(xl)  -
+         I(~oi) only if ~l - 2: ••  A function I: X -  Y is called onto if each element of 
+         Y corresponds under 1 to .orne element of X, that is if each y E  Y is of the 
+         form 11 -/(x),  for lOme x E X.  If /: X -         Y is both  one-one and  onto 
+         it is called one-one onto, or a one-one correapoodence between X and Y. An 
+         example of a function that  is one-one onto is, for any set  X, the identity 
+         lunction ix:  X -X, given by ix(x)  =  2:  for all x E  X.  (Note  that  what 
+         goes under  the  name "the function x"  in elementary  calculus is actually 
+         the identity  function on the set of real numbers.) If I: X -         Y  is one-one 
+         onto then each element of Y corresponds under I to one and only one ele-
+         ment of 
+                   X, 80 we can define a function I-I:  Y -    X by!-I(y)  =  2: if y =  I (x). 
+         !-I  it called  the  ,,,,,erae Junction oj J,  and  is 0.180 one-one onto.  Clearly 
+         (Jl)-I  .. J, and!-I  0 I =  ix, lol""l = iy. 
+               If J: X -  Y is a function and X' C X, then the subset of Y given by 
+                                     J(X/ =  1/(2:) : 2: E X'} 
+                                           ) 
+          (where the last symbol is shorthand  for Iy : there exists x E  X' such that 
+          y - I(x)!)  is called the 'mtJ{/e 01 X' under I,  or simply the imtJ{/e 01 X', if 
+          there is no danger of confusion. The two UBeI we have made for the symbol 
+         1 ( ) are  related  by  the  equation 
+                                I«~J) - II(~)J for each 2: E  X. 
+               If I: X -   Y is a function and  Y' C Y, then the subset of X given by 
+                                  I-I(Y,)  -  Ix EX: I(x) E yl} 
+          is called the ,,,,,erae imOfe 01 Y' under I. It consists of those elemente of X 
+          which correspond under I to elements of Y'.  If I: X -          Y  happens to  be 
+          one-one onto we have another use for the symbol I-I,  namely the inverse 
+          function!-I:  Y -   X. These two uses of I-I must be carefully distinguished, 
+          though confusion rarely arises. If I: X -      Y  is Olle-Olle onto  then  the two 
+          uses of !-I are related by  fJ-l(y)!  -= I-I({y\)  for e&<~h y E  Y. 
+                                                     ,4.  FINITE  AND INFINITE  SETS. 
+               We are familiar with the  set of positive integers, or natural numbJa 
+          11, 2, 3, •.. }. This set, together with the various ideas associated with it, 
+          INCh as ite ordering (the fact that  its elements can be written  down in a 
+          de8Dlte order), or wch as the fact that  two of ita elements may be added 
+                                                                             14.  I'lNITII  AND INI'lNITII  IIIITII    11 
+            to obtain  a third  with certain  general rules holding for this  addition,  can 
+            be obtained  from the primitive  principles of set theory. In this text we shall 
+            instead  &8Bume the  buic  properties  of the  real number  system  and  from 
+            those  derive all the  properties  of the set  11,2,3,  ... 1. In this section  we 
+            Bhall for convenience 8BBume a few simple facts about  the natural  numbe ... 
+            in order  to get u  quickly  u  possible to certain  other  eBBy matte...  of set 
+            theory.  However  all the  facts  about  the  set of natural  numbe ... that  are 
+            uaed here will be proved explicitly in the next chapter.  The notions devel-
+            oped in this section will not be applied until later, so no circular reuoning 
+            OCCUl'l. 
+               Let us therefore  &8Bume knowledge of the set  11,2,3,  ... 1. A set  X is 
+            called finite  if it is empty  or there  is a positive integer  n such that  X can 
+            be  put  into  one-one  correspondence  with  the  set  11,2 •... , nl,  that  is 
+            there  is a one-one function  from  /1,2 •...• nlonto  X. Thus a set is finite 
+            if we can count its elements and run out of elements after we count a certain 
+            number, say n, of them. The number n depends only on the set X, not on 
+            the  order  in  which its elements  are counted  off j n is called the number 0/ 
+            elementB in X. For oompleteness we say that the number of elements in the 
+            empty set is zero. Any subset of a finite set is itBelf finite, and if it is a proper 
+            subset  it hu a smaller number of elements. 
+                   A set  is infinite  if it  is  not  finite.  This  means  that  we can  pick  an 
+             element ZI EX. then an element ZI from the complement of I ZI),  then an 
+             element z. from the complement  of IZI. ZI).  etc .• and  we never run out of 
+             elements  of X. Thus there  exist distinct  elements SI, Sa. S •••••  in X. 
+                    It is eBBy to show that a set X is infinite if and only if it may be put 
+             into one-one correspondence with a proper subset of itself. To do this, note 
+             first that if X  is finite then  any proper subset hu a smaller number of ele-
+             ments.  whereas two finite sets in one-one correspondence  must  have  the 
+             same  number  of elements.  This proves  the  "if"  part.  On the other  hand, 
+             if  X  is infinite  then  there  exist  distinct  elements  ZI, ZI. Sa ••••  in  X.  The 
+             complement of IZI. ZI, ZI,  ••• 1 in X is a subset  Y. so that 
+                          X = IZI. ZI. ZI,  ••• 1 U  Y  and  IZI. Sa. Z"  ••• 1 r'\ Y =  flJ. 
+             A one-one correspondence between X and its proper subset  I ZI. ZI,  ••• 1 U  Y 
+             is given by the function  which sends each z. into Z.+l and each element of 
+              Y into itself. This proves the "only  if" part.  completing the proof. 
+                    The set of natural  numben  can be used to give an eBBy definition of 
+             the notion of sequence. A 8equence 0/ n element8 in a 8et X, or an n-'up16 0/ 
+             elementB 0/ X. may be defined to be a function  from  11, 2. : ..• n 1 into  Xi 
+              ifthefunctionisdenoted/andwewrite/(l)                             = zl,/(2)  - Sa, •• •• /(n)  - z., 
+              then  the  n-tuple  is often  written  (ZI, ZI •••• , z.).  An  infinite  8equmc:e 0/ 
+              elements 0/ X  (or a 86qumc:6  0/ elements  0/ X, if  there  isn't  any  danger  of 
+              confusion with  finite sequences)  is a  function  from the set of all natural 
+              numben  into  Xi  u  above  this  can  be  written  (ZI. Sa. ZI •••• ).  or.  more 
+              conventionally.  ZI. Sa, ZI •••• ,  or  sometimes  Iz"I_.I •••.•.• 
+            11  I.  JIIOI'rONlI  I'BOII  IIIIT TRIIORT 
+           PROBLEMS 
+             1.  Let R be the eat or real numbera and let the symbols <, :S have their CODV8Il-
+                  tlonal JllMlMp 
+                  (a)  Show that 
+                    .   Iz e R : 0 :S z :S 31 "  I z e R : -1 < z < 11 - Iz e R : 0 :S z < 11.' 
+                  (b)  Lilt the elementll or 
+                        (11,3, 'I V (~E R : zI- 4z + 3 - OJ) ,,(z E R : -1 :S. < 31. 
+                  (0)  Show that 
+                         <t. E R : -I:S z:S 01 V (z e R : I <. < '\)" I~ e R: O:S.:S  3) 
+                                               -   (s E R : I < z:S 81 VIOl. 
+              2.  U A is a aubeet or the eat 8, ehow that 
+                  (a)  e(eA)  - A 
+                  (b)  A V A - A "A - A V flJ - A 
+                  (0)  A "flJ - flJ 
+                  (d)  A X flJ - flJ. 
+              a.  Let A, B, 0 be IIlbeetll or a eat 8. Prove the foUowinl etatementll and illustrate 
+                  them with diatrama. 
+                  <a)  eA V  eB - e(A "B) 
+                  (b)  A n(BVO)  - (A "B) V(A "0) 
+                  (c)  A V (B "0) - (A VB)" (.4. V 0). 
+              '- U A, B, 0 are I8te, show that 
+                  (a)  (A - B) ,,0 - (A "0) - B 
+                  (b)  (A VB) - (A "B) - (A - B) V (B - A) 
+                  (c)  A - (B - 0) - (A :.. B) V (A "B "0) 
+                  (d)  (A - B) X 0 - (A X 0) - (B X 0). 
+              5.  Let 1 be a nonempty eat and for each i  e 1 let Xc be a set. Prove that 
+                   (a)  for any eat B we have                                                               . 
+                                                  B" V XI - V (B "X.) 
+                                                         'er         'er 
+                   (b)  if each X. is a aubeet or a given eat 8, then 
+                                                      e( V  XI) - " eX,. 
+                                                          feller 
+              6 ..  Prove that if f: X .... Y, ,: Y .... Z, and 1a: z .... W are functions, then 
+                                                 "  •  CtJ  • n - (Ia • ,> ·f· 
+              7.  Letf:X .... Y be a function, let A and B be IIlbeetll or X, and let 0 and D be 
+                   .. baete or Y. Prove that 
+                   (a>  I(A VB) -/(A)  V/(B) 
+                   (b)  I(A "B) C/(A) "/(B) 
+                   (0)  t-I(O V D) - 1-'(0)  V t-I(D) 
+                   (d)  1-'(0" D> - r(O) "t-I(D) 
+                   (e)  ,-a(f(A»:> A 
