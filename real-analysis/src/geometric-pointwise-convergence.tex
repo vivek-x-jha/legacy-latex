@@ -1,0 +1,16 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb}
+\begin{document}
+\begin{align*}
+&\textbf{Goal:} && \sum_{n=0}^{\infty} x^n = \frac{1}{1-x} \text{ pointwise on } (-1,1).\\[6pt]
+&\textbf{Setup:} && \text{Let } \varepsilon>0,\ \text{and let } x\in(-1,1).\\[10pt]
+&\textbf{Claim:} && |x|^n \to 0 \text{ for every } x\in(-1,1).\\[4pt]
+&\textbf{Case 1:} && x=0 \Longrightarrow ||x|^n-0|=0<\varepsilon.\\[6pt]
+&\textbf{Case 2:} && x\in(-1,0)\cup(0,1),\ 0<|x|<1.\\[4pt]
+& && N_0=\left\lceil\,\left|\log_{|x|}(\varepsilon)\right|\,\right\rceil\Longrightarrow n>N_0\Longrightarrow |x|^n<\varepsilon.\\[6pt]
+& && \text{Hence } ||x|^n-0|<\varepsilon.\\[12pt]
+&\textbf{Choose index:} && \exists N\in\mathbb{N}: \forall n>N:\; |x|^n < \varepsilon(1-x).\\[12pt]
+&\textbf{Tail bound:} && \left|\sum_{k=0}^n x^k - \frac{1}{1-x}\right| = \left|\frac{1-x^{n+1}}{1-x} - \frac{1}{1-x}\right|\\[4pt]
+& && = \left|\frac{-x^{n+1}}{1-x}\right| = \frac{|x|^{n+1}}{1-x} < \frac{|x|^n}{1-x} < \frac{\varepsilon(1-x)}{1-x} = \varepsilon.\quad \square\\
+\end{align*}
+\end{document}
