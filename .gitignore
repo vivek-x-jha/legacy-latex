@@ -1,15 +1,20 @@
 # =========================
-# Project Environment Files
+# Project-Specific
 # =========================
 .env*
 
-*.fls
+# LaTeX build artifacts
 *.aux
+*.bbl
+*.blg
 *.fdb_latexmk
+*.fls
+*.lof
 *.log
-*.gz
+*.lot
+*.out
+*.synctex.gz
 *.toc
-*.code-workspace
 
 # =========================
 # System Files
