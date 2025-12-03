@@ -1,0 +1,58 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{enumitem}
+
+\setlist{leftmargin=*,nosep}
+\setlength{\parskip}{2pt}
+
+\begin{document}
+\begin{center}
+MAT067 \quad University of California, Davis \quad Winter 2010
+
+\Large\textbf{Midterm Exam}\\[4pt]
+\normalsize (Wednesday, February 10)
+\end{center}
+
+\small
+\section*{Problem 1 (15 points)}
+\begin{enumerate}[label=\alph*)]
+  \item Suppose we are given a complex number $z = x + iy$ where $x, y \in \mathbb{R}$. Write the definitions of the complex conjugate $\overline{z}$ and the modulus $|z|$.
+  \item Using only part~(a), prove that for nonzero $z$ the number $w = \dfrac{\overline{z}}{|z|^{2}}$ is an inverse of $z$.
+  \item Prove that $e^{i\theta_{1}} e^{i\theta_{2}} = e^{i(\theta_{1} + \theta_{2})}$ using only the polar form definition of $e^{i\theta}$.
+  \item Find all solutions over $\mathbf{C}$ to $z^{3} = -1$.
+\end{enumerate}
+
+\section*{Problem 2 (15 points)}
+Let $V$ be a vector space over $\mathbf{F}$. (Parts d--e continue on page 3.)
+\begin{enumerate}[label=\alph*)]
+  \item State the three conditions for a subset $U \subseteq V$ to be a subspace of $V$.
+  \item Let $U_{1}$ and $U_{2}$ be subspaces of $V$. Which of the above conditions prevents $U_{1} \cup U_{2} = \{v \in V \mid v \in U_{1} \text{ or } v \in U_{2}\}$ from being a subspace of $V$?
+  \item Let $U_{1}$ and $U_{2}$ be subspaces of $V$. Show that if $V = U_{1} \oplus U_{2}$ (direct sum) then $U_{1} \cap U_{2} = \{0\}$.
+  \item Let $V = \mathbf{C}^{4}$ and $U_{1} = \{(a,b,c,d) \in V : d = 0\}$. Show that $U_{1}$ is a subspace of $V$.
+  \item Show that $V$ is not the direct sum of $U_{1}$ and $U_{2}$ where $U_{2} = \{(a,b,c,d) \in V : a + 2b + 3c + 4d = 0\}$.
+\end{enumerate}
+
+\section*{Problem 3 (15 points)}
+Suppose $V$ and $W$ are vector spaces over $\mathbf{F}$ and $T: V \to W$ is linear.
+\begin{enumerate}[label=\alph*)]
+  \item Write the definitions of $\operatorname{null}(T)$ and $\operatorname{range}(T)$.
+  \item Suppose we have found a subspace $U$ such that $V = \operatorname{null}(T) \oplus U$. Show that $\operatorname{range}(T) = \{T(u) : u \in U\}$.
+  \item In the setting of part~(b), show that $\dim(\operatorname{range}(T)) = \dim U$.
+  \item Using the formula from part~(b) and/or (c), or other methods, find $\dim(\operatorname{null}(T))$ for the map $T : \mathbf{R}^{4} \to \mathbf{R}^{3}$ given by
+  \[
+    T:\;
+    \begin{pmatrix} a \\ b \\ c \\ d \end{pmatrix}
+    \longmapsto
+    \begin{pmatrix}
+      1 & 1 & 4 & 3 \\
+      2 & 1 & 3 & 2 \\
+      3 & 1 & 2 & 1
+    \end{pmatrix}
+    \begin{pmatrix} a \\ b \\ c \\ d \end{pmatrix}.
+  \]
+\end{enumerate}
+\medskip
+For part~(d) you may use any linear relations among the listed $v_{i}$ vectors that you can justify.
+
+\end{document}
