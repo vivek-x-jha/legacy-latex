@@ -1,0 +1,75 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{theorem}{Theorem}
+
+\begin{document}
+
+\begin{theorem}
+Let $U$ and $V$ be finite-dimensional vector subspaces over $\mathbf{F}$. Then
+\[
+  \dim(U+V) = \dim U + \dim V - \dim(U \cap V).
+\]
+\end{theorem}
+
+\paragraph{Proof.}
+Let $W = U \cap V$ and set $\dim W = p$, $\dim U = m + p$, and $\dim V = n + p$.
+Pick a basis $B_{W} = \{w_{1},\dots,w_{p}\}$ for $W$ and extend it to bases
+\[
+  B_{U} = \{w_{1},\dots,w_{p},u_{1},\dots,u_{m}\} \quad\text{for $U$,}\qquad
+  B_{V} = \{w_{1},\dots,w_{p},v_{1},\dots,v_{n}\} \quad\text{for $V$}.
+\]
+We claim that
+\[
+  B_{U+V} := \{w_{1},\dots,w_{p},u_{1},\dots,u_{m},v_{1},\dots,v_{n}\}
+\]
+is a basis for $U+V$.
+
+\medskip
+\noindent\textit{Spanning.}
+Let $x \in U+V$. Then $x = u + v$ for some $u \in U$ and $v \in V$, so
+\[
+  x = \sum_{i=1}^{p} b_{i} w_{i} + \sum_{i=1}^{m} b_{p+i} u_{i}
+    + \sum_{i=1}^{p} c_{i} w_{i} + \sum_{i=1}^{n} c_{p+i} v_{i}.
+\]
+Collecting the $w_{i}$ terms (set $a_{i} = b_{i} + c_{i}$ for $i = 1,\dots,p$),
+\[
+  x = \sum_{i=1}^{p} a_{i} w_{i} + \sum_{i=1}^{m} b_{p+i} u_{i}
+      + \sum_{i=1}^{n} c_{p+i} v_{i} \in \operatorname{span}(B_{U+V}),
+\]
+so $\operatorname{span}(B_{U+V}) = U+V$.
+
+\medskip
+\noindent\textit{Linear independence.}
+Suppose
+\[
+  \sum_{i=1}^{p} a_{i} w_{i} + \sum_{i=1}^{m} b_{i} u_{i} + \sum_{i=1}^{n} c_{i} v_{i} = 0.
+\]
+Define
+\[
+  w := \sum_{i=1}^{p} a_{i} w_{i} + \sum_{i=1}^{m} b_{i} u_{i} = -\sum_{i=1}^{n} c_{i} v_{i}.
+\]
+The left sum lies in $U$, the right in $V$, so $w \in W$.
+Write $w = \sum_{i=1}^{p} d_{i} w_{i}$ using the basis $B_{W} \subseteq B_{V}$.
+Then
+\[
+  0 = w + \sum_{i=1}^{n} c_{i} v_{i}
+    = \sum_{i=1}^{p} d_{i} w_{i} + \sum_{i=1}^{n} c_{i} v_{i},
+\]
+which is a linear combination of the independent set $B_{V}$. Hence
+\[
+  d_{1} = \dots = d_{p} = 0
+  \qquad\text{and}\qquad
+  c_{1} = \dots = c_{n} = 0.
+\]
+Therefore $w = 0$, and the earlier expression becomes
+\[
+  0 = \sum_{i=1}^{p} a_{i} w_{i} + \sum_{i=1}^{m} b_{i} u_{i},
+\]
+so independence of $B_{U}$ forces $a_{1} = \dots = a_{p} = b_{1} = \dots = b_{m} = 0$.
+Hence $B_{U+V}$ is linearly independent.
+
+Therefore $B_{U+V}$ is a basis, so $\dim(U+V) = p + m + n = (m+p) + (n+p) - p = \dim U + \dim V - \dim W$. \hfill $\square$
+
+\end{document}
