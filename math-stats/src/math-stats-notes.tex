@@ -1,0 +1,470 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+
+\setlist{leftmargin=*,nosep}
+\setlength{\parskip}{2pt}
+
+\begin{document}
+
+\section*{Ch.\ 7 Estimation}
+\subsection*{7.1 Statistical Inference}
+\begin{enumerate}[label=\Roman*.]
+  \item Probability \& Statistical Models
+  \begin{enumerate}[label=\Alph*.]
+    \item Statistical Model
+    \begin{enumerate}[label=\arabic*.]
+      \item Identification of r.v.'s (both observable \& hypothetical)
+      \item Specification of a joint dist'n (or family of joint dist'ns) for observable r.v.'s
+      \item Identification of unknown parameter(s)
+      \item Specification of joint dist'n for unknown parameter(s)
+    \end{enumerate}
+    \[
+      \theta\ \text{r.v.} \Rightarrow \text{joint dist'n of observable r.v.'s indexed by }\theta\text{ is } f(x_{1},\dots,x_{n}\mid\theta).
+    \]
+    \item Statistical Inference
+    \begin{enumerate}[label=\arabic*.]
+      \item Procedure that produces a probabilistic statement about some or all parts of a statistical model.
+    \end{enumerate}
+    \textit{Ex.} Produce r.v. $Y=g(X_{1},\dots,X_{n})$ s.t. $P(Y\ge \theta\mid\theta)=0.9$.
+    \item Parameter / Parameter Space
+    \begin{enumerate}[label=\arabic*.]
+      \item Parameter of dist'n: characteristic(s) that determine the joint dist'n for the r.v.'s of interest
+      \item Parameter space: set $\Omega$ of all possible values of $(\theta_{1},\dots,\theta_{k})$
+    \end{enumerate}
+  \end{enumerate}
+
+  \item General Classes of Inference Problems
+  \begin{enumerate}[label=\Alph*.]
+    \item Prediction
+    \begin{enumerate}[label=\arabic*.]
+      \item Predicting r.v.'s that have not yet been observed
+      \item When unobserved quantity to be predicted is a parameter, prediction is called estimation
+    \end{enumerate}
+    \item Statistical Decision Problems
+    \begin{enumerate}[label=\arabic*.]
+      \item After experimental data has been analyzed, choose a decision from available class of decisions, with property that consequences of each available decision depend on the unknown value of some parameter
+    \end{enumerate}
+    \textit{Ex.} Hypothesis testing.
+    \item Experimental Design
+    \begin{enumerate}[label=\arabic*.]
+      \item Close relationship between design of an experiment; statistical analysis of experimental data
+    \end{enumerate}
+  \end{enumerate}
+
+  \item Definition of a Statistic
+  \begin{enumerate}[label=\Alph*.]
+    \item Suppose $X_{1},\dots,X_{n}$ are observable r.v.'s. Let $T:\mathbb{R}^{n}\to\mathbb{R}$. Then $T=r(X_{1},\dots,X_{n})$ is a statistic.
+  \end{enumerate}
+\end{enumerate}
+
+\subsection*{7.2 Prior \& Posterior Dist'ns}
+\begin{enumerate}[label=\Roman*.]
+  \item Prior Dist'n
+  \begin{enumerate}[label=\Alph*.]
+    \item Suppose we have statistical model w/ parameter $\theta$. $\theta$ is r.v. $\Rightarrow$ distribution before observing other r.v. is called prior dist'n, $\xi(\theta)$.
+  \end{enumerate}
+  \item Posterior Dist'n
+  \begin{enumerate}[label=\Alph*.]
+    \item $\xi(\theta\mid x)=\dfrac{\xi(\theta)\,f(x\mid\theta)}{g(x)}$, \quad $x\in\mathbb{R}^{n}$,\ $\theta\in\Omega$.
+    \item $g(x)=
+    \begin{cases}
+      \sum_{\theta\in\Omega}\xi(\theta)\,f(x\mid\theta), & \Omega\ \text{countable},\\
+      \int_{\Omega}\xi(\theta)\,f(x\mid\theta)\,d\theta, & \text{else}.
+    \end{cases}$
+  \end{enumerate}
+  \item Likelihood Function
+  \begin{enumerate}[label=\Alph*.]
+    \item Since $g(x)$ is not function of $\theta$, $\xi(\theta\mid x)\propto \xi(\theta)\,f(x\mid\theta)$.
+    \item When joint density $f(x\mid\theta)$ of observations in a random sample is a function of $\theta$, define $f(x\mid\theta):=L(\theta\mid x)$.
+    \item ``Posterior dist'n of $\theta$ is proportional to the product of the likelihood function \& prior dist'n of $\theta$.''
+  \end{enumerate}
+  \item Sequential Observations \& Prediction
+  \begin{enumerate}[label=\Alph*.]
+    \item A random sample $X_{1},\dots,X_{n}$ can only be observed sequentially:
+    \[
+      \xi(\theta\mid x)\propto f(x_{n}\mid\theta)\,\xi(\theta\mid x_{1},\dots,x_{n-1}).
+    \]
+  \end{enumerate}
+\end{enumerate}
+
+\subsection*{7.3 Conjugate Prior Dist'n}
+\begin{enumerate}[label=\Roman*.]
+  \item Sampling from Bernoulli Dist'n
+  \begin{enumerate}[label=\Alph*.]
+    \item $\theta\sim\text{BETA}(\alpha,\beta)$, $X_{1},\dots,X_{n}\ \text{iid}\ \text{BER}(\theta)$
+    \[
+      \Rightarrow\ \theta\mid x \sim \text{BETA}\!\left(\alpha+\sum_{i=1}^{n}x_{i},\ \beta+n-\sum_{i=1}^{n}x_{i}\right).
+    \]
+    \item $(\alpha,\beta)$ are prior hyperparameters; $\left(\alpha+\sum x_{i},\ \beta+n-\sum x_{i}\right)$ are posterior hyperparameters.
+  \end{enumerate}
+  \item Sampling from Poisson Dist'n
+  \begin{enumerate}[label=\Alph*.]
+    \item $\theta\sim\text{GAM}(\alpha,\beta)$, $X_{1},\dots,X_{n}\ \text{iid}\ \text{POI}(\theta)$
+    \[
+      \Rightarrow\ \theta\mid x \sim \text{GAM}\!\left(\alpha+\sum_{i=1}^{n}x_{i},\ \beta+n\right).
+    \]
+  \end{enumerate}
+  \item Sampling from Normal Dist'n
+  \begin{enumerate}[label=\Alph*.]
+    \item $\theta\sim N(\mu_{0},v_{0}^{2})$, \ $\bar X\mid\theta \sim N\!\left(\theta,\frac{\sigma^{2}}{n}\right),\ \sigma^{2}\ \text{known}$
+    \[
+      \Rightarrow\ \theta\mid x \sim N\!\left(\frac{\sigma^{2}\mu_{0}+n v_{0}^{2}\bar x}{\sigma^{2}+n v_{0}^{2}},\ \frac{\sigma^{2}v_{0}^{2}}{\sigma^{2}+n v_{0}^{2}}\right).
+    \]
+  \end{enumerate}
+  \item Sampling from Exponential Dist'n
+  \begin{enumerate}[label=\Alph*.]
+    \item $\theta\sim\text{GAM}(\alpha,\beta)$, $X_{1},\dots,X_{n}\ \text{iid}\ \text{EXP}(\theta)$
+    \[
+      \Rightarrow\ \theta\mid x \sim \text{GAM}\!\left(\alpha+n,\ \beta+\sum_{i=1}^{n}x_{i}\right).
+    \]
+  \end{enumerate}
+  \item Improper Prior Dist'n
+  \begin{enumerate}[label=\Alph*.]
+    \item Let $\xi:\Omega\to\mathbb{R}^{+}$ s.t. $\int_{\Omega}\xi(\theta)\,d\theta=\infty$.
+    If $\xi(\theta)$ comes from prior dist'n of $\theta$, then $\xi$ is called an improper prior for $\theta$.
+  \end{enumerate}
+\end{enumerate}
+
+\subsection*{7.4 Bayes Estimators}
+\begin{enumerate}[label=\Roman*.]
+  \item Nature of Estimation Problem
+  \begin{enumerate}[label=\Alph*.]
+    \item Estimation: let $X_{1},\dots,X_{n}$ be observable data whose joint density is indexed by parameter $\theta\in\Omega\subset\mathbb{R}^{d}$.
+    \item Estimator: $\hat\theta=\delta(X)$ is an r.v.
+    \item Loss function: $L:\Omega\times\mathbb{R}\to\mathbb{R}^{+}$.
+  \end{enumerate}
+  \textit{Goal:} $\hat\theta:=\arg\min_{\delta}\left\{E_{\theta}\!\left[L(\theta,\delta)\right]\right\}$,\quad
+  $E_{\theta}[L(\theta,\delta)]=\int_{\Omega} L(\theta,\delta(x))\,\xi(\theta)\,d\theta$.
+  \item Definition of Bayes Estimator
+  \begin{enumerate}[label=\Alph*.]
+    \item If $x$ observed,
+    \[
+      \hat\theta_{\text{Bayes}}=\arg\min_{\delta}\left\{E_{\theta}\!\left[L(\theta,\delta)\mid x\right]\right\},
+      \quad
+      E_{\theta}[L(\theta,\delta)\mid x]=\int_{\Omega}L(\theta,\delta(x))\,\xi(\theta\mid x)\,d\theta.
+    \]
+  \end{enumerate}
+  \item Different Loss Functions
+  \begin{enumerate}[label=\Alph*.]
+    \item Squared loss
+    \begin{enumerate}[label=\arabic*.]
+      \item $L(\theta,\delta)=(\theta-\delta)^{2}$
+      \item $E(\theta\mid x)<\infty \Rightarrow \hat\theta_{\text{Bayes}}=E(\theta\mid x)$ \ \textit{``posterior mean''}
+    \end{enumerate}
+    \item Absolute loss
+    \begin{enumerate}[label=\arabic*.]
+      \item $L(\theta,\delta)=|\theta-\delta|$
+      \item $\hat\theta_{\text{Bayes}}=\eta(\theta\mid x)$ \ \textit{``posterior median''}
+    \end{enumerate}
+  \end{enumerate}
+  \item Bayes Estimate for Large Samples
+  \begin{enumerate}[label=\Alph*.]
+    \item Effect of different prior dist'ns
+    \begin{enumerate}[label=\arabic*.]
+      \item When $n$ large, Bayes estimators not too different; priors are not same
+    \end{enumerate}
+    \item Consistency
+    \begin{enumerate}[label=\arabic*.]
+      \item $\hat\theta$ is consistent $\Rightarrow \hat\theta\to\theta$
+      \item If (i) $X_{1},\dots,X_{n}$ form random sample from $f(x\mid\theta)$, (ii) conjugate prior assigned to $\theta$, (iii) $L(\theta,\hat\theta)=(\theta-\hat\theta)^{2}$,
+      then $\hat\theta_{\text{Bayes}}$ is consistent.
+    \end{enumerate}
+  \end{enumerate}
+  \item More General Parameters
+  \begin{enumerate}[label=\Alph*.]
+    \item $h:\Omega\to\mathbb{R}^{d}\Rightarrow \hat h(\theta)=\arg\min_{\hat h}\left\{E_{\theta}\!\left[L(h(\theta),\hat h(\theta))\mid x\right]\right\}$
+    \item $L(h(\theta),\hat h(\theta))=(h(\theta)-\hat h(\theta))^{2}\Rightarrow \hat h_{\text{Bayes}}(\theta)=E_{\theta}[h(\theta)\mid x]$
+  \end{enumerate}
+  \item Limitations of Bayes Estimator
+  \begin{enumerate}[label=\Alph*.]
+    \item Specification of prior \& loss function may be incorrect
+    \item $\dim(\Omega)>1 \Rightarrow$ difficult to assign multivariate prior dist'n
+  \end{enumerate}
+\end{enumerate}
+
+\subsection*{7.5 Maximum Likelihood Estimators}
+\begin{enumerate}[label=\Roman*.]
+  \item Definition
+  \begin{enumerate}[label=\Alph*.]
+    \item $\hat\theta_{\text{MLE}}=\arg\max\{f(x\mid\theta)\}$
+    \item $\hat\theta_{\text{MLE}}(x)\in\Omega$
+    \item $\max f(x\mid\theta)$ DNE $\Rightarrow \hat\theta_{\text{MLE}}$ DNE;\quad $\max f(x\mid\theta)$ not unique $\Rightarrow \hat\theta_{\text{MLE}}$ not unique
+  \end{enumerate}
+  \item Examples
+  \begin{enumerate}[label=\Alph*.]
+    \item $X$ iid $\text{BER}(\theta)\Rightarrow \hat\theta_{\text{MLE}}=\bar X_{n}$
+    \item $X$ iid $\text{GEO}(\theta)\Rightarrow \hat\theta_{\text{MLE}}=(\bar X_{n}+1)^{-1}$ \ $(x_{i}=0,1,2,\dots)$
+    \item $X$ iid $\text{POI}(\theta)\Rightarrow \hat\theta_{\text{MLE}}=\bar X_{n}$
+    \item $X$ iid $\text{UNI}(0,\theta)\Rightarrow \hat\theta_{\text{MLE}}=\max\{X_{1},\dots,X_{n}\}$
+    \item $X$ iid $\text{EXP}(\theta)\Rightarrow \hat\theta_{\text{MLE}}=(\bar X_{n})^{-1}$
+    \item $X$ iid $N(\mu,\sigma^{2})\Rightarrow (\hat\mu_{\text{MLE}},\hat\sigma^{2}_{\text{MLE}})=\left(\bar X_{n},\ \frac{1}{n}\sum_{i=1}^{n}(X_{i}-\bar X_{n})^{2}\right)$
+  \end{enumerate}
+  \item Limitations of MLE's
+  \begin{enumerate}[label=\Alph*.]
+    \item MLE might not exist
+    \item MLE might not be unique
+    \item $\hat\theta_{\text{MLE}}$ doesn't represent ``most likely'' value of $\theta$ given the data
+  \end{enumerate}
+\end{enumerate}
+
+\subsection*{7.6 Properties of MLE's}
+\begin{enumerate}[label=\Roman*.]
+  \item Invariance
+  \begin{enumerate}[label=\Alph*.]
+    \item $g:\Omega\to\Omega'$ and $\hat\theta_{\text{MLE}}$ exists
+    \item $g(\hat\theta_{\text{MLE}})$ exists if $g(\hat\theta_{\text{MLE}})\in\Omega'$
+  \end{enumerate}
+  \item Consistency
+  \begin{enumerate}[label=\Alph*.]
+    \item Under general assumptions (smooth likelihood func. \& unique $\hat\theta_{\text{MLE}}$), $\hat\theta_{\text{MLE}}\to\theta$
+  \end{enumerate}
+  \item Numerical Computation
+  \begin{enumerate}[label=\Alph*.]
+    \item Newton's Method
+    \item Gradient Descent
+  \end{enumerate}
+  \item Method of Moments
+  \begin{enumerate}[label=\Alph*.]
+    \item Can be used as initial guess for Newton's method
+    \item Definition
+    \begin{enumerate}[label=\arabic*.]
+      \item $X_{1},\dots,X_{n}$ iid $f(x\mid\theta)$,\quad $\theta\in\Omega\subset\mathbb{R}^{k}$
+      \item Let $\mu_{j}=E(X^{j})$, $j=1,\dots,k$
+      \item $\mu:\Omega\to\mathbb{R}^{k}$,\quad $\mu=(\mu_{1},\dots,\mu_{k})$
+      \item $M:\mathbb{R}^{k}\to\Omega$,\quad $M(\mu(\theta))=\theta$
+      \item $\hat\mu_{j}=\dfrac{1}{n}\sum_{i=1}^{n}X_{i}^{j}$,\quad $j=1,\dots,k$
+    \end{enumerate}
+    $\Rightarrow\ \hat\theta_{\text{MM}}=M(\hat\mu)=M(\hat\mu_{1},\dots,\hat\mu_{k})$.
+    \item $\hat\theta_{\text{MM}}$ is consistent, but sometimes biased
+  \end{enumerate}
+\end{enumerate}
+
+\subsection*{7.? MLE--Bayes Estimator Relationship}
+\begin{enumerate}[label=\Alph*.]
+  \item Let $\gamma_{n}$ be a function of the prior hyperparameters s.t. $\gamma_{n}\to 1$ as $n\to\infty$.
+  \item $E(\theta\mid x)=\gamma_{n}\hat\theta_{\text{MLE}}+(1-\gamma_{n})E(\theta)$.
+  \item If $L(\theta,\hat\theta)=(\theta-\hat\theta)^{2}$, then
+  \[
+    \hat\theta_{\text{Bayes}}=\gamma_{n}\hat\theta_{\text{MLE}}+(1-\gamma_{n})\mu_{\theta}.
+  \]
+\end{enumerate}
+
+\subsection*{7.7 Sufficient Statistics}
+\begin{enumerate}[label=\Roman*.]
+  \item Definition
+  \begin{enumerate}[label=\Alph*.]
+    \item Suppose $X=(X_{1},\dots,X_{n})$ is a random sample from dist'n $f$ indexed by $\theta\in\Omega\subset\mathbb{R}^{k}$. Let $T=r(X)$ be a statistic.
+    \item $T$ is sufficient statistic for $\theta$ iff for all values of the statistic, the conditional dist'n of the data given the statistic and $\theta$ is the same for all $\theta$.
+    \item $T$ s.s. for $\theta \iff f_{X\mid T}(x\mid t,\theta)=h(x,t)$,\ \ $\forall t,\theta$.
+  \end{enumerate}
+  \item Factorization Criterion
+  \begin{enumerate}[label=\Alph*.]
+    \item N--F Factorization Thm: $T$ s.s. for $\theta \iff f_{X}(x\mid\theta)=u(x)\,v(r(x),\theta)$,\quad $u,v\ge 0$.
+    \item Bayesian Definition: $T$ s.s. for $\theta \iff \xi(\theta\mid x)\propto v(r(x),\theta)\,\xi(\theta)$.
+  \end{enumerate}
+\end{enumerate}
+
+\subsection*{7.8 Jointly Sufficient Statistics}
+\begin{enumerate}[label=\Roman*.]
+  \item Definition
+  \begin{enumerate}[label=\Alph*.]
+    \item Suppose $\theta\in\Omega\subset\mathbb{R}^{k}$, $T\in\mathbb{A}\subset\mathbb{R}^{k}$. $(T_{1},\dots,T_{k})$ jointly sufficient statistics for $\theta$ iff $f_{X\mid T}(x\mid t,\theta)=h(x,t)$, $\forall t,\theta$.
+    \item N--F Thm (Extended): let $r:S^{n}\to\mathbb{R}^{k}$ be vector-valued statistic. $T=r(X)$ is j.s.s. for $\theta \iff f_{X}(x\mid\theta)=u(x)\,v(r(x),\theta)$ for all $\theta$.
+  \end{enumerate}
+  \item Minimal s.s.
+  \begin{enumerate}[label=\Alph*.]
+    \item Order statistics $(X_{(1)},\dots,X_{(n)})$, $Y_{1}=\min\{X_{1},\dots,X_{n}\}$, $Y_{n}=\max\{X_{1},\dots,X_{n}\}$
+    \item $Y_{1},\dots,Y_{n}$ s.s. for $\theta$
+    \item Minimal (jointly) s.s. for $\theta$: if $T_{j}^{*}=g_{j}(T)$, $\forall j=1,\dots,k$, $T'$ is some arbitrary s.s.
+    \item $S$ is m.s.s. for $\theta$ iff $\dfrac{f(x\mid\theta)}{f(y\mid\theta)}=h(x\mid y)\iff S(x)=S(y)$
+    \item $\hat\theta_{\text{MLE}}$ s.s. for $\theta \Rightarrow \hat\theta_{\text{MLE}}$ m.s.s. for $\theta$
+    \item $\hat\theta_{\text{Bayes}}$ s.s. for $\theta \Rightarrow \hat\theta_{\text{Bayes}}$ m.s.s. for $\theta$
+  \end{enumerate}
+\end{enumerate}
+
+\subsection*{7.9 Improving an Estimator}
+\begin{enumerate}[label=\Roman*.]
+  \item Mean squared error of Estimator
+  \begin{enumerate}[label=\Alph*.]
+    \item $R(\theta,\hat\theta)=E_{\theta}\!\left[(\hat\theta-h(\theta))^{2}\right]$, \ $\hat\theta=\hat\theta(X)$.
+  \end{enumerate}
+  \item Conditional Expectation when a Sufficient Statistic is Known
+  \begin{enumerate}[label=\Alph*.]
+    \item $\hat\theta^{*}=E(\hat\theta\mid T)$,\quad $T$ is s.s. for $\theta\in\Omega$.
+    \[
+      \Rightarrow\ R(\theta,\hat\theta^{*})\le R(\theta,\hat\theta),\quad \forall\theta\in\Omega.
+    \]
+    \item If $R(\theta,\hat\theta)<\infty$ and $\hat\theta\ne g(T)$, then $R(\theta,\hat\theta^{*})<R(\theta,\hat\theta)$.
+    \item Inadmissible: $\hat\theta$ is inadmissible if $\exists\hat\theta_{0}$ s.t. $R(\theta,\hat\theta_{0})\le R(\theta,\hat\theta)$, $\forall\theta\in\Omega$, and $\exists\theta_{0}$ s.t. $R(\theta_{0},\hat\theta_{0})<R(\theta_{0},\hat\theta)$.
+    \item $\hat\theta_{0}$ dominates $\hat\theta$.
+    \item Admissible: $\hat\theta$ is admissible if no $\hat\theta_{0}$ dominates $\hat\theta$.
+    \item Restatement: ``$\hat\theta\ne g(T)\Rightarrow \hat\theta$ is inadmissible'' $\Leftrightarrow$ ``$\hat\theta$ admissible $\Rightarrow \hat\theta$ is s.s. for $\theta\in\Omega$.''
+  \end{enumerate}
+  \item Limitation of Use of S.S.
+  \begin{enumerate}[label=\Alph*.]
+    \item S.S.\ highly dependent on choice of density function modeled
+  \end{enumerate}
+\end{enumerate}
+
+\section*{Ch.\ 8 Sampling Dist'n of Estimators}
+\subsection*{8.1 Sampling Dist'n of a Statistic}
+\begin{enumerate}[label=\Roman*.]
+  \item Statistics \& Estimators
+  \begin{enumerate}[label=\Alph*.]
+    \item Sampling dist'n: $X=(X_{1},\dots,X_{n})$ iid $f(x\mid\theta)$, $\theta\in\Omega$, $T=r(X)$
+    \[
+      \Rightarrow\ f_{T}(t\mid\theta)\ \text{is sampling dist'n}.
+    \]
+  \end{enumerate}
+\end{enumerate}
+
+\subsection*{8.2 Chi-Square Dist'n}
+\begin{enumerate}[label=\Roman*.]
+  \item Def'n
+  \begin{enumerate}[label=\Alph*.]
+    \item Let $X_{1},\dots,X_{n}\ \text{iid}\ N(\mu,\sigma^{2})$, $\sigma^{2}\in\mathbb{R}^{+}$.
+    Let $\hat\sigma_{0}^{2}=\hat\sigma_{\text{MLE}}^{2}=\dfrac{1}{n}\sum_{i=1}^{n}(X_{i}-\mu)^{2}$, $\mu$ known.
+    \item $X\sim\chi^{2}_{m}\iff X\sim\text{GAM}(m/2,1/2)$
+    \[
+      f(x)=\frac{x^{m/2-1}e^{-x/2}}{2^{m/2}\Gamma(m/2)},\quad x>0,\ m\in\mathbb{N}.
+    \]
+  \end{enumerate}
+  \item Properties
+  \begin{enumerate}[label=\Alph*.]
+    \item $M_{X}(t)=(1-2t)^{-m/2}$,\quad $t<1/2$
+    \begin{enumerate}[label=\arabic*.]
+      \item $E(X)=m$
+      \item $V(X)=2m$
+    \end{enumerate}
+    \item $X_{1},\dots,X_{n}$ indep., $X_{i}\sim\chi^{2}_{m}\Rightarrow \sum_{i=1}^{n}X_{i}\sim\chi^{2}_{nm}$
+    \item $X_{1},\dots,X_{n}$ iid $N(0,1)\Rightarrow \sum_{i=1}^{n}X_{i}^{2}\sim\chi^{2}_{n}$
+    \item $n\hat\sigma_{0}^{2}/\sigma^{2}\sim\chi^{2}_{n}\Rightarrow n\hat\sigma_{0}^{2}/\sigma^{2}\sim\text{GAM}(n/2,1/2)$
+    \item $\hat\sigma_{0}^{2}\sim\text{GAM}\!\left(n/2,\ n/(2\sigma^{2})\right)$
+  \end{enumerate}
+\end{enumerate}
+
+\subsection*{8.3 Joint Dist'n of Sample Mean and Sample Variance}
+\begin{enumerate}[label=\Roman*.]
+  \item Suppose $X_{1},\dots,X_{n}$ iid $N(\mu,\sigma^{2})$, $(\mu,\sigma^{2})\in\mathbb{R}\times\mathbb{R}^{+}$.
+  Let $S_{n}^{2}=\dfrac{1}{n-1}\sum_{i=1}^{n}(X_{i}-\bar X_{n})^{2}$.
+  Then
+  \[
+    \bar X_{n}\sim N\!\left(\mu,\frac{\sigma^{2}}{n}\right),\qquad
+    \frac{(n-1)S_{n}^{2}}{\sigma^{2}}\sim\chi^{2}_{n-1}.
+  \]
+  $\hat\mu=\bar X_{n}$,\quad $\hat\sigma^{2}=S_{n}^{2}/n$,\quad
+  $\hat\sigma^{2}\sim\text{GAM}\!\left(\frac{n-1}{2},\ \frac{n}{2\sigma^{2}}\right)$.
+  \item Orthogonal Matrices Supplement (used to prove statement I)
+  \begin{enumerate}[label=\Alph*.]
+    \item \textbf{Def1:} $A$ is orthogonal $\iff A\in O_{n}=\{A\in\mathbb{R}^{n\times n}\mid A^{T}A=I_{n}\}$
+    \item \textbf{Def2:} $A$ is orthogonal $\iff A\in\{A\in\mathbb{R}^{n\times n}\mid A=(u_{1},\dots,u_{n}),\ u_{i}\cdot u_{j}=0,\ i\ne j,\ u_{k}\in\mathbb{R}^{n}\}$
+    \item Properties:
+    \begin{enumerate}[label=\arabic*.]
+      \item $|\det(A)|=1$, $\forall A\in O_{n}$
+      \item Preserves distances: $\|AX\|=\|X\|$, $\forall A\in O_{n}$
+      \item $X_{1},\dots,X_{n}$ iid $N(0,1)$, $Y=AX$, $\forall A\in O_{n}\Rightarrow Y_{1},\dots,Y_{n}$ iid $N(0,1)$
+    \end{enumerate}
+  \end{enumerate}
+\end{enumerate}
+
+\subsection*{8.4 The $t$-Dist'n}
+\begin{enumerate}[label=\Roman*.]
+  \item Definition
+  \begin{enumerate}[label=\Alph*.]
+    \item $X\sim t_{m}\iff X=\dfrac{Z}{\sqrt{Y/m}}$, \ $Y\sim\chi^{2}_{m}$,\ $Z\sim N(0,1)$
+    \item pdf:
+    \[
+      f_{X}(x)=\frac{\Gamma\left(\frac{m+1}{2}\right)}{\sqrt{m\pi}\,\Gamma\left(\frac{m}{2}\right)}
+      \left(1+\frac{x^{2}}{m}\right)^{-(m+1)/2},\quad x\in\mathbb{R}.
+    \]
+    \item moments: $E(|X|^{k})$ DNE for $m\le 1$ or $m\le k$
+    \item $m\in\mathbb{N}\Rightarrow$ first $m-1$ moments exist; $E(|X|^{m})$ DNE
+  \end{enumerate}
+  \item Relation to Cauchy Dist'n
+  \begin{enumerate}[label=\Alph*.]
+    \item $X\sim t_{1}\iff X\sim\text{Cauchy}$,\quad $f_{X}(x)=\dfrac{1}{\pi(1+x^{2})}$, $x\in\mathbb{R}$
+    \item $E(X^{k})$ DNE, $\forall k\in\mathbb{N}$
+  \end{enumerate}
+  \item Relation to Normal Dist'n
+  \begin{enumerate}[label=\Alph*.]
+    \item $X_{1},\dots,X_{n}$ iid $N(\mu,\sigma^{2})$, $r=\sqrt{S^{2}/(n-1)}$
+    \[
+      \Rightarrow\ \sqrt{n}\,\frac{\bar X_{n}-\mu}{r}\sim t_{n-1}.
+    \]
+  \end{enumerate}
+  \item Relation to Standard Normal Dist'n
+  \begin{enumerate}[label=\Alph*.]
+    \item $X_{n}\sim t_{n}\Rightarrow X_{n}\xrightarrow{d}N(0,1)$
+    \item Uses fact $\displaystyle \lim_{n\to\infty}\frac{\Gamma\left(\frac{n+1}{2}\right)}{\Gamma\left(\frac{n}{2}\right)\sqrt{n/2}}=1$
+  \end{enumerate}
+\end{enumerate}
+
+\subsection*{8.5 Confidence Intervals}
+\begin{enumerate}[label=\Roman*.]
+  \item C.I.\ provide method of adding more information to an estimate $\hat\theta$ by creating random interval $(A,B)$ that has high probability containing unknown $\theta$.
+  \item C.I.\ for Mean of Normal Dist'n
+  \begin{enumerate}[label=\Alph*.]
+    \item Def:
+    \begin{enumerate}[label=\arabic*.]
+      \item $X_{1},\dots,X_{n}$ iid $f(x\mid\theta)$, $\theta\in\Omega$
+      \item $g:\Omega\to\mathbb{R}$
+      \item $A,B$ statistics s.t. $P(A<g(\theta)<B)=\gamma$
+    \end{enumerate}
+    $\Rightarrow (A,B)$ is $100\gamma\%$ C.I.\ for $g(\theta)$.
+    \begin{enumerate}[label=\arabic*.,start=4]
+      \item $P(A<g(\theta)<B)=\gamma$ called exact C.I.
+      \item $(a,b)$ is observed value of C.I.\ after $X_{1},\dots,X_{n}$ has been observed
+    \end{enumerate}
+    \item Normal dist'n w/ unknown $\sigma^{2}$
+    \[
+      X_{1},\dots,X_{n}\ \text{iid}\ N(\mu,\sigma^{2})\Rightarrow \forall\gamma\in(0,1):
+    \]
+    \[
+      A=\bar X_{n}-t^{-1}_{n-1}\!\left(\frac{1+\gamma}{2}\right)\frac{s}{\sqrt{n}},\quad
+      B=\bar X_{n}+t^{-1}_{n-1}\!\left(\frac{1+\gamma}{2}\right)\frac{s}{\sqrt{n}}.
+    \]
+    \item Interpretation of C.I.
+    \begin{enumerate}[label=\arabic*.]
+      \item $(A,B)$: before observing data, we can be $100\gamma\%$ confident that $(A,B)$ contains $g(\theta)$
+      \item After repeated sampling from same population we expect $100\gamma\%$ of these C.I.'s to contain the true parameter $g(\theta)$
+    \end{enumerate}
+  \end{enumerate}
+  \item One-Sided C.I.
+  \begin{enumerate}[label=\Alph*.]
+    \item Def:
+    \begin{enumerate}[label=\arabic*.]
+      \item Lower $100\gamma\%$ C.I.\ for $g(\theta)$: $(A,\infty)$ s.t. $P(A<g(\theta))\ge \gamma$
+      \item Upper $100\gamma\%$ C.I.\ for $g(\theta)$: $(-\infty,B)$ s.t. $P(g(\theta)<B)\ge \gamma$
+    \end{enumerate}
+    \item $P(A<g(\theta))=\gamma$ or $P(g(\theta)<B)=\gamma$ called exact lower/upper C.I.
+    \item Normal dist'n w/ unknown $\sigma^{2}$
+    \[
+      X_{1},\dots,X_{n}\ \text{iid}\ N(\mu,\sigma^{2})\Rightarrow \forall\gamma\in(0,1):
+    \]
+    \[
+      A=\bar X_{n}-t^{-1}_{n-1}(\gamma)\frac{s}{\sqrt{n}},\quad
+      B=\bar X_{n}+t^{-1}_{n-1}(\gamma)\frac{s}{\sqrt{n}}.
+    \]
+  \end{enumerate}
+  \item C.I.\ for Other Parameters
+  \begin{enumerate}[label=\Alph*.]
+    \item Pivotal
+    \begin{enumerate}[label=\arabic*.]
+      \item $X=(X_{1},\dots,X_{n})$ iid $f(x\mid\theta)$, $\theta\in\Omega$
+      \item $V=V(X,\theta)$ is pivotal if:
+      \begin{enumerate}[label=\alph*)]
+        \item $f_{V}$ same $\forall\theta$
+        \item $\exists g$ s.t. $V(V(X,\theta),X)=g(\theta)$
+      \end{enumerate}
+    \end{enumerate}
+    \item If $V$ is a pivotal w/ cont.\ cdf $F_{V}$ and $r(v,x)$ strictly increasing in $v$ for all $x$,
+    then the following are $100\gamma\%$ C.I.\ endpoints:
+    \[
+      A=r^{-1}(\gamma_{1},x),\quad B=r^{-1}(\gamma_{2},x),\quad \gamma_{2}-\gamma_{1}=\gamma.
+    \]
+  \end{enumerate}
+\end{enumerate}
+
+\end{document}
