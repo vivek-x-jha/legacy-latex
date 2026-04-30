@@ -1,0 +1,1275 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{definition}{Definition}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\conj}[1]{\overline{#1}}
+\newcommand{\Real}{\operatorname{Re}}
+\newcommand{\Imag}{\operatorname{Im}}
+
+\title{Complex Analysis Notes: Toward Euler's Formula}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{Complex Numbers}
+
+\begin{definition}[The imaginary unit]
+Define
+\[
+  i := (0,1).
+\]
+After defining multiplication on ordered pairs, we will verify that
+\[
+  i^{2} = -1.
+\]
+Thus the notation $i=\sqrt{-1}$ is a useful shorthand, but the rigorous construction starts from the ordered pair $(0,1)$.
+\end{definition}
+
+\begin{definition}[The complex numbers]
+Define the set of complex numbers by
+\[
+  \C := \{(a,b): a,b\in\R\}.
+\]
+We write $(a,b)$ in the form
+\[
+  a+bi.
+\]
+Under this notation, a real number $a\in\R$ is identified with the complex number $a+0i$.
+\end{definition}
+
+\begin{definition}[Real and imaginary parts]
+If $z=a+bi\in\C$, define
+\[
+  \Real(z):=a,
+  \qquad
+  \Imag(z):=b.
+\]
+Two complex numbers are equal precisely when their real and imaginary parts are equal:
+\[
+  a+bi=c+di
+  \quad\Longleftrightarrow\quad
+  a=c\ \text{and}\ b=d.
+\]
+\end{definition}
+
+\section{Algebraic Operations}
+
+\begin{definition}[Complex addition]
+For $z=a+bi$ and $w=c+di$, define
+\[
+  z+w := (a+c)+(b+d)i.
+\]
+\end{definition}
+
+\begin{definition}[Complex multiplication]
+For $z=a+bi$ and $w=c+di$, define
+\[
+  zw := (ac-bd)+(ad+bc)i.
+\]
+In particular,
+\[
+  i^{2}=(0+1i)(0+1i)=-1+0i=-1.
+\]
+\end{definition}
+
+\begin{proposition}[Distributive law]
+For all $z,w,u\in\C$,
+\[
+  z(w+u)=zw+zu.
+\]
+\end{proposition}
+
+\begin{proof}
+Let $z=a+bi$, $w=c+di$, and $u=e+fi$. Then
+\[
+  w+u=(c+e)+(d+f)i.
+\]
+Hence
+\[
+\begin{aligned}
+  z(w+u)
+    &= (a+bi)\bigl((c+e)+(d+f)i\bigr) \\
+    &= \bigl(a(c+e)-b(d+f)\bigr)
+       +\bigl(a(d+f)+b(c+e)\bigr)i \\
+    &= (ac-bd)+(ad+bc)i+(ae-bf)+(af+be)i \\
+    &= zw+zu.
+\end{aligned}
+\]
+\end{proof}
+
+\begin{proposition}[$\C$ is a field]
+With the addition and multiplication defined above, $\C$ is a field.
+\end{proposition}
+
+\begin{proof}
+The additive identity is $0=0+0i$, and the multiplicative identity is $1=1+0i$.
+Associativity, commutativity, and distributivity follow by direct expansion from the corresponding real-number laws.
+If $z=a+bi$, then the additive inverse is
+\[
+  -z := (-a)+(-b)i.
+\]
+If $z\ne0$, then $a^{2}+b^{2}>0$ and the multiplicative inverse is
+\[
+  z^{-1}:=\frac{a}{a^{2}+b^{2}}-\frac{b}{a^{2}+b^{2}}i.
+\]
+A direct multiplication gives $zz^{-1}=1$.
+\end{proof}
+
+\begin{definition}[Complex subtraction]
+For $z,w\in\C$, define
+\[
+  z-w := z+(-w).
+\]
+If $z=a+bi$ and $w=c+di$, then
+\[
+  z-w=(a-c)+(b-d)i.
+\]
+\end{definition}
+
+\section{Conjugates and Modulus}
+
+\begin{definition}[Complex conjugate]
+If $z=a+bi$, define the complex conjugate of $z$ by
+\[
+  \conj{z}:=a-bi.
+\]
+\end{definition}
+
+\begin{proposition}[Basic conjugate identities]
+For all $z,w\in\C$,
+\[
+  \conj{z+w}=\conj{z}+\conj{w},
+  \qquad
+  \conj{zw}=\conj{z}\,\conj{w},
+  \qquad
+  \conj{\conj{z}}=z.
+\]
+\end{proposition}
+
+\begin{proof}
+Each identity follows by writing $z=a+bi$ and $w=c+di$ and comparing real and imaginary parts.
+\end{proof}
+
+\begin{proposition}[Real part from conjugation]
+For every $z\in\C$,
+\[
+  z+\conj{z}=2\Real(z).
+\]
+\end{proposition}
+
+\begin{proof}
+If $z=a+bi$, then
+\[
+  z+\conj{z}=(a+bi)+(a-bi)=2a=2\Real(z).
+\]
+\end{proof}
+
+\begin{definition}[Complex modulus]
+If $z=a+bi$, define the modulus of $z$ by
+\[
+  \abs{z}:=\sqrt{a^{2}+b^{2}}.
+\]
+\end{definition}
+
+\begin{proposition}[Modulus squared]
+For every $z\in\C$,
+\[
+  \abs{z}^{2}=z\conj{z}.
+\]
+\end{proposition}
+
+\begin{proof}
+If $z=a+bi$, then
+\[
+  z\conj{z}=(a+bi)(a-bi)=a^{2}+b^{2}=\abs{z}^{2}.
+\]
+\end{proof}
+
+\begin{proposition}[Product rule for modulus]
+For all $z,w\in\C$,
+\[
+  \abs{zw}=\abs{z}\abs{w}.
+\]
+\end{proposition}
+
+\begin{proof}
+Using the conjugate product identity,
+\[
+  \abs{zw}^{2}
+  = zw\,\conj{zw}
+  = zw\,\conj{z}\conj{w}
+  = (z\conj{z})(w\conj{w})
+  = \abs{z}^{2}\abs{w}^{2}.
+\]
+Both sides are nonnegative, so taking square roots gives $\abs{zw}=\abs{z}\abs{w}$.
+\end{proof}
+
+\begin{proposition}[Powers and modulus]
+For every $z\in\C$ and $n\in\N$,
+\[
+  \abs{z^{n}}=\abs{z}^{n}.
+\]
+\end{proposition}
+
+\begin{proof}
+This follows by induction from the product rule:
+\[
+  \abs{z^{n+1}}=\abs{z^{n}z}=\abs{z^{n}}\abs{z}=\abs{z}^{n+1}.
+\]
+\end{proof}
+
+\begin{proposition}[Real and imaginary parts are bounded by the modulus]
+If $z\in\C$, then
+\[
+  \abs{\Real(z)}\le \abs{z},
+  \qquad
+  \abs{\Imag(z)}\le \abs{z}.
+\]
+\end{proposition}
+
+\begin{proof}
+If $z=a+bi$, then $a^{2}\le a^{2}+b^{2}$ and $b^{2}\le a^{2}+b^{2}$.
+Taking square roots gives the result.
+\end{proof}
+
+\begin{proposition}[Triangle inequality]
+For all $z,w\in\C$,
+\[
+  \abs{z+w}\le \abs{z}+\abs{w}.
+\]
+\end{proposition}
+
+\begin{proof}
+Since $\Real(\alpha)\le \abs{\alpha}$ for every $\alpha\in\C$,
+\[
+\begin{aligned}
+  \abs{z+w}^{2}
+    &= (z+w)(\conj{z}+\conj{w}) \\
+    &= \abs{z}^{2}+\abs{w}^{2}+z\conj{w}+w\conj{z} \\
+    &= \abs{z}^{2}+\abs{w}^{2}+2\Real(z\conj{w}) \\
+    &\le \abs{z}^{2}+\abs{w}^{2}+2\abs{z\conj{w}} \\
+    &= \abs{z}^{2}+\abs{w}^{2}+2\abs{z}\abs{w} \\
+    &= (\abs{z}+\abs{w})^{2}.
+\end{aligned}
+\]
+Taking square roots gives the triangle inequality.
+\end{proof}
+
+\begin{proposition}[Reverse triangle inequality]
+For all $z,w\in\C$,
+\[
+  \bigl|\abs{z}-\abs{w}\bigr|\le \abs{z-w}.
+\]
+\end{proposition}
+
+\begin{proof}
+By the triangle inequality,
+\[
+  \abs{z}=\abs{(z-w)+w}\le \abs{z-w}+\abs{w},
+\]
+so $\abs{z}-\abs{w}\le \abs{z-w}$.
+Interchanging $z$ and $w$ gives
+\[
+  \abs{w}-\abs{z}\le \abs{w-z}=\abs{z-w}.
+\]
+Therefore $\bigl|\abs{z}-\abs{w}\bigr|\le \abs{z-w}$.
+\end{proof}
+
+\section{Reciprocals and Division}
+
+\begin{definition}[Complex reciprocal]
+If $z\in\C$ and $z\ne0$, define
+\[
+  \frac{1}{z}:=\frac{\conj{z}}{\abs{z}^{2}}.
+\]
+\end{definition}
+
+\begin{proposition}[The reciprocal is the multiplicative inverse]
+If $z\ne0$, then
+\[
+  z\cdot\frac{1}{z}=1.
+\]
+\end{proposition}
+
+\begin{proof}
+Using $\abs{z}^{2}=z\conj{z}$,
+\[
+  z\cdot\frac{1}{z}
+  = z\cdot\frac{\conj{z}}{\abs{z}^{2}}
+  = \frac{z\conj{z}}{\abs{z}^{2}}
+  = 1.
+\]
+\end{proof}
+
+\begin{definition}[Complex division]
+For $w,z\in\C$ with $z\ne0$, define
+\[
+  \frac{w}{z}:=w\cdot\frac{1}{z}
+  =\frac{w\conj{z}}{\abs{z}^{2}}.
+\]
+\end{definition}
+
+\section{Complex Sequences}
+
+\begin{definition}[Complex sequence]
+A complex sequence is a function
+\[
+  z:\N\to\C.
+\]
+We write $z_{n}$ for $z(n)$.
+If $z_{n}=a_{n}+ib_{n}$, then $(a_{n})$ and $(b_{n})$ are real sequences, and
+\[
+  a_{n}=\Real(z_{n}),
+  \qquad
+  b_{n}=\Imag(z_{n}).
+\]
+\end{definition}
+
+\begin{definition}[$\varepsilon$-$N$ convergence in $\C$]
+Let $(z_{n})$ be a complex sequence and let $z\in\C$.
+We say
+\[
+  z_{n}\to z
+\]
+if for every $\varepsilon>0$, there exists $N\in\N$ such that
+\[
+  n>N \quad\Longrightarrow\quad \abs{z_{n}-z}<\varepsilon.
+\]
+\end{definition}
+
+\begin{proposition}[Convergence as distance to the limit]
+Let $(z_{n})$ be a complex sequence and let $z\in\C$.
+Then
+\[
+  z_{n}\to z
+  \quad\Longleftrightarrow\quad
+  \abs{z_{n}-z}\to0
+\]
+as a real sequence.
+\end{proposition}
+
+\begin{proof}
+The sequence $\bigl(\abs{z_{n}-z}\bigr)$ is a real sequence because each term is a nonnegative real number.
+
+First suppose $z_{n}\to z$ in $\C$.
+By definition, for every $\varepsilon>0$, there exists $N\in\N$ such that
+\[
+  n>N\quad\Longrightarrow\quad \abs{z_{n}-z}<\varepsilon.
+\]
+This is exactly the statement that the real sequence $\abs{z_{n}-z}$ converges to $0$.
+
+Conversely, suppose $\abs{z_{n}-z}\to0$ as a real sequence.
+Then for every $\varepsilon>0$, there exists $N\in\N$ such that
+\[
+  n>N\quad\Longrightarrow\quad
+  \bigl|\abs{z_{n}-z}-0\bigr|<\varepsilon.
+\]
+Since $\abs{z_{n}-z}\ge0$,
+\[
+  \bigl|\abs{z_{n}-z}-0\bigr|=\abs{z_{n}-z}.
+\]
+Thus
+\[
+  n>N\quad\Longrightarrow\quad \abs{z_{n}-z}<\varepsilon,
+\]
+which is precisely $z_{n}\to z$ in $\C$.
+\end{proof}
+
+\begin{theorem}[Componentwise convergence]
+Let $z_{n}=a_{n}+ib_{n}$ and $z=a+ib$.
+Then
+\[
+  z_{n}\to z
+  \quad\Longleftrightarrow\quad
+  a_{n}\to a\ \text{and}\ b_{n}\to b.
+\]
+Equivalently,
+\[
+  z_{n}\to z
+  \quad\Longleftrightarrow\quad
+  \Real(z_{n})\to\Real(z)\ \text{and}\ \Imag(z_{n})\to\Imag(z).
+\]
+\end{theorem}
+
+\begin{proof}
+First suppose $z_{n}\to z$.
+Since
+\[
+  \abs{a_{n}-a}=\abs{\Real(z_{n}-z)}\le \abs{z_{n}-z},
+  \qquad
+  \abs{b_{n}-b}=\abs{\Imag(z_{n}-z)}\le \abs{z_{n}-z},
+\]
+the $\varepsilon$-$N$ definition for $z_{n}\to z$ implies $a_{n}\to a$ and $b_{n}\to b$.
+
+Conversely, suppose $a_{n}\to a$ and $b_{n}\to b$.
+Let $\varepsilon>0$.
+Choose $N_{1}$ such that
+\[
+  n>N_{1}\quad\Longrightarrow\quad \abs{a_{n}-a}<\frac{\varepsilon}{2},
+\]
+and choose $N_{2}$ such that
+\[
+  n>N_{2}\quad\Longrightarrow\quad \abs{b_{n}-b}<\frac{\varepsilon}{2}.
+\]
+Let $N=\max\{N_{1},N_{2}\}$.
+Then for $n>N$,
+\[
+\begin{aligned}
+  \abs{z_{n}-z}
+    &=\abs{(a_{n}-a)+i(b_{n}-b)} \\
+    &=\sqrt{(a_{n}-a)^{2}+(b_{n}-b)^{2}} \\
+    &\le \abs{a_{n}-a}+\abs{b_{n}-b} \\
+    &<\varepsilon.
+\end{aligned}
+\]
+Therefore $z_{n}\to z$.
+\end{proof}
+
+\begin{theorem}[Uniqueness of limits]
+If $z_{n}\to z$ and $z_{n}\to w$, then $z=w$.
+\end{theorem}
+
+\begin{proof}
+Write
+\[
+  z=a+ib,
+  \qquad
+  w=c+id,
+  \qquad
+  z_{n}=a_{n}+ib_{n}.
+\]
+By componentwise convergence,
+\[
+  a_{n}\to a,\quad b_{n}\to b,
+  \qquad
+  a_{n}\to c,\quad b_{n}\to d.
+\]
+Real limits are unique, so $a=c$ and $b=d$.
+Therefore $z=w$.
+\end{proof}
+
+\begin{theorem}[Convergent sequences are bounded]
+If $z_{n}\to z$, then $(z_{n})$ is bounded: there exists $M>0$ such that
+\[
+  \abs{z_{n}}\le M
+  \qquad
+  \forall n\in\N.
+\]
+\end{theorem}
+
+\begin{proof}
+Since $z_{n}\to z$, choose $N\in\N$ such that
+\[
+  n>N\quad\Longrightarrow\quad \abs{z_{n}-z}<1.
+\]
+For $n>N$, the triangle inequality gives
+\[
+  \abs{z_{n}}
+  =\abs{(z_{n}-z)+z}
+  \le \abs{z_{n}-z}+\abs{z}
+  <1+\abs{z}.
+\]
+Now define
+\[
+  M:=\max\{\abs{z_{1}},\abs{z_{2}},\dots,\abs{z_{N}},1+\abs{z}\}.
+\]
+Then $\abs{z_{n}}\le M$ for every $n\in\N$.
+\end{proof}
+
+\begin{definition}[Subsequence]
+Let $(z_{n})$ be a complex sequence.
+A subsequence is a sequence of the form
+\[
+  z_{n_{k}},
+\]
+where
+\[
+  n_{1}<n_{2}<n_{3}<\cdots
+\]
+is a strictly increasing sequence of natural numbers.
+\end{definition}
+
+\begin{proposition}[Subsequences preserve limits]
+If $z_{n}\to z$, then every subsequence $z_{n_{k}}$ also converges to $z$.
+\end{proposition}
+
+\begin{proof}
+Let $\varepsilon>0$.
+Choose $N\in\N$ such that
+\[
+  n>N\quad\Longrightarrow\quad \abs{z_{n}-z}<\varepsilon.
+\]
+Since $n_{k}\ge k$, every $k>N$ satisfies $n_{k}>N$.
+Thus
+\[
+  k>N\quad\Longrightarrow\quad \abs{z_{n_{k}}-z}<\varepsilon.
+\]
+Therefore $z_{n_{k}}\to z$.
+\end{proof}
+
+\begin{definition}[Cauchy sequence in $\C$]
+A complex sequence $(z_{n})$ is Cauchy if for every $\varepsilon>0$, there exists $N\in\N$ such that
+\[
+  m,n>N\quad\Longrightarrow\quad \abs{z_{n}-z_{m}}<\varepsilon.
+\]
+\end{definition}
+
+\begin{theorem}[Cauchy criterion in $\C$]
+A complex sequence $(z_{n})$ converges if and only if it is Cauchy.
+\end{theorem}
+
+\begin{proof}
+Write $z_{n}=a_{n}+ib_{n}$.
+
+Suppose $z_{n}\to z$.
+Every convergent sequence is Cauchy: given $\varepsilon>0$, choose $N$ such that
+\[
+  n>N\quad\Longrightarrow\quad \abs{z_{n}-z}<\frac{\varepsilon}{2}.
+\]
+Then for $m,n>N$,
+\[
+  \abs{z_{n}-z_{m}}
+  \le \abs{z_{n}-z}+\abs{z_{m}-z}
+  <\varepsilon.
+\]
+
+Conversely, suppose $(z_{n})$ is Cauchy.
+Since
+\[
+  \abs{a_{n}-a_{m}}\le \abs{z_{n}-z_{m}},
+  \qquad
+  \abs{b_{n}-b_{m}}\le \abs{z_{n}-z_{m}},
+\]
+the real sequences $(a_{n})$ and $(b_{n})$ are Cauchy.
+Because $\R$ is complete, there exist $a,b\in\R$ such that
+\[
+  a_{n}\to a,
+  \qquad
+  b_{n}\to b.
+\]
+By componentwise convergence, $z_{n}\to a+ib$.
+\end{proof}
+
+\begin{theorem}[Limit algebra]
+Suppose $z_{n}\to z$ and $w_{n}\to w$ in $\C$, and let $\alpha\in\C$.
+Then
+\[
+  z_{n}+w_{n}\to z+w,
+  \qquad
+  z_{n}-w_{n}\to z-w,
+  \qquad
+  \alpha z_{n}\to \alpha z,
+  \qquad
+  z_{n}w_{n}\to zw.
+\]
+If $w\ne0$ and $w_{n}\ne0$ eventually, then
+\[
+  \frac{z_{n}}{w_{n}}\to\frac{z}{w}.
+\]
+\end{theorem}
+
+\begin{proof}
+For sums,
+\[
+  \abs{(z_{n}+w_{n})-(z+w)}
+  \le \abs{z_{n}-z}+\abs{w_{n}-w}\to0.
+\]
+Subtraction follows from addition and scalar multiplication by $-1$.
+For scalar multiplication,
+\[
+  \abs{\alpha z_{n}-\alpha z}
+  =\abs{\alpha}\abs{z_{n}-z}\to0.
+\]
+For products,
+\[
+\begin{aligned}
+  z_{n}w_{n}-zw
+    &=z_{n}w_{n}-z_{n}w+z_{n}w-zw \\
+    &=z_{n}(w_{n}-w)+(z_{n}-z)w.
+\end{aligned}
+\]
+Since $(z_{n})$ is convergent, it is bounded; choose $M>0$ such that $\abs{z_{n}}\le M$ for all $n$.
+Then
+\[
+  \abs{z_{n}w_{n}-zw}
+  \le M\abs{w_{n}-w}+\abs{w}\abs{z_{n}-z}\to0.
+\]
+
+For reciprocals, assume $w\ne0$.
+Since $w_{n}\to w$, choose $N$ such that
+\[
+  n>N\quad\Longrightarrow\quad \abs{w_{n}-w}<\frac{\abs{w}}{2}.
+\]
+Then for $n>N$,
+\[
+  \abs{w_{n}}\ge \abs{w}-\abs{w_{n}-w}>\frac{\abs{w}}{2}.
+\]
+Therefore
+\[
+  \abs{\frac{1}{w_{n}}-\frac{1}{w}}
+  =\abs{\frac{w-w_{n}}{w_{n}w}}
+  =\frac{\abs{w_{n}-w}}{\abs{w_{n}}\abs{w}}
+  \le \frac{2}{\abs{w}^{2}}\abs{w_{n}-w}\to0.
+\]
+Thus $1/w_{n}\to1/w$, and the quotient rule follows from the product rule:
+\[
+  \frac{z_{n}}{w_{n}}=z_{n}\cdot\frac{1}{w_{n}}\to z\cdot\frac{1}{w}.
+\]
+\end{proof}
+
+\begin{proposition}[Limit of the modulus]
+If $z_{n}\to z$, then
+\[
+  \abs{z_{n}}\to \abs{z}.
+\]
+\end{proposition}
+
+\begin{proof}
+By the reverse triangle inequality,
+\[
+  \bigl|\abs{z_{n}}-\abs{z}\bigr|\le \abs{z_{n}-z}.
+\]
+Since $\abs{z_{n}-z}\to0$, it follows that $\abs{z_{n}}\to\abs{z}$.
+\end{proof}
+
+\begin{proposition}[Limit of the conjugate]
+If $z_{n}\to z$, then
+\[
+  \conj{z_{n}}\to \conj{z}.
+\]
+\end{proposition}
+
+\begin{proof}
+Since
+\[
+  \abs{\conj{z_{n}}-\conj{z}}
+  =\abs{\conj{z_{n}-z}}
+  =\abs{z_{n}-z},
+\]
+we have $\conj{z_{n}}\to\conj{z}$.
+\end{proof}
+
+\section{Complex Series}
+
+\begin{definition}[Partial sum sequence]
+Let $(z_{n})_{n=0}^{\infty}$ be a complex sequence.
+The associated partial sum sequence $(s_{N})_{N=0}^{\infty}$ is defined by
+\[
+  s_{N}:=\sum_{n=0}^{N} z_{n}
+  =z_{0}+z_{1}+\cdots+z_{N}.
+\]
+\end{definition}
+
+\begin{definition}[Infinite sum]
+Let $(z_{n})_{n=0}^{\infty}$ be a complex sequence with partial sums
+\[
+  s_{N}=\sum_{n=0}^{N}z_{n}.
+\]
+If the partial sum sequence converges to some $S\in\C$, then the infinite series converges and we write
+\[
+  \sum_{n=0}^{\infty}z_{n}=S.
+\]
+Equivalently,
+\[
+  \sum_{n=0}^{\infty}z_{n}=S
+  \quad\Longleftrightarrow\quad
+  \lim_{N\to\infty}\sum_{n=0}^{N}z_{n}=S.
+\]
+\end{definition}
+
+\begin{definition}[Absolute convergence]
+A complex series $\sum_{n=0}^{\infty}z_{n}$ is absolutely convergent if the real series
+\[
+  \sum_{n=0}^{\infty}\abs{z_{n}}
+\]
+converges.
+\end{definition}
+
+\begin{theorem}[Absolute convergence implies convergence]
+If $\sum_{n=0}^{\infty}z_{n}$ is absolutely convergent, then $\sum_{n=0}^{\infty}z_{n}$ converges.
+\end{theorem}
+
+\begin{proof}
+Let
+\[
+  s_{N}:=\sum_{n=0}^{N}z_{n},
+  \qquad
+  t_{N}:=\sum_{n=0}^{N}\abs{z_{n}}.
+\]
+Since $\sum\abs{z_{n}}$ converges in $\R$, the real partial sums $(t_{N})$ are Cauchy.
+Let $\varepsilon>0$.
+Choose $N\in\N$ such that
+\[
+  q>p>N
+  \quad\Longrightarrow\quad
+  \sum_{n=p+1}^{q}\abs{z_{n}}
+  =t_{q}-t_{p}<\varepsilon.
+\]
+Then for $q>p>N$,
+\[
+  \abs{s_{q}-s_{p}}
+  =\abs{\sum_{n=p+1}^{q}z_{n}}
+  \le \sum_{n=p+1}^{q}\abs{z_{n}}
+  <\varepsilon.
+\]
+Thus $(s_{N})$ is Cauchy in $\C$, so it converges by the Cauchy criterion in $\C$.
+Therefore $\sum z_{n}$ converges.
+\end{proof}
+
+\begin{theorem}[Reordering absolutely convergent series]
+Suppose $\sum_{n=0}^{\infty}z_{n}$ is absolutely convergent and
+\[
+  \sum_{n=0}^{\infty}z_{n}=S.
+\]
+If $\sigma:\N_{0}\to\N_{0}$ is a bijection, then
+\[
+  \sum_{n=0}^{\infty}z_{\sigma(n)}
+\]
+also converges absolutely, and
+\[
+  \sum_{n=0}^{\infty}z_{\sigma(n)}=S.
+\]
+\end{theorem}
+
+\begin{proof}
+First, the reordered absolute series converges.
+For every $N$, the finite set $\{\sigma(0),\dots,\sigma(N)\}$ is contained in $\{0,\dots,M\}$ for some $M$, so
+\[
+  \sum_{n=0}^{N}\abs{z_{\sigma(n)}}
+  \le \sum_{n=0}^{M}\abs{z_{n}}
+  \le \sum_{n=0}^{\infty}\abs{z_{n}}.
+\]
+Thus the partial sums of $\sum\abs{z_{\sigma(n)}}$ are increasing and bounded, hence converge.
+
+Now let
+\[
+  s_{N}:=\sum_{n=0}^{N}z_{n},
+  \qquad
+  r_{N}:=\sum_{n=0}^{N}z_{\sigma(n)}.
+\]
+Let $\varepsilon>0$.
+Since $\sum\abs{z_{n}}$ converges and $s_{K}\to S$, choose $K$ such that
+\[
+  \sum_{j=K+1}^{\infty}\abs{z_{j}}<\varepsilon
+  \qquad\text{and}\qquad
+  \abs{s_{K}-S}<\varepsilon.
+\]
+Choose $N$ large enough that
+\[
+  \{0,1,\dots,K\}\subseteq \{\sigma(0),\sigma(1),\dots,\sigma(N)\}.
+\]
+For $m>N$, the difference $r_{m}-s_{K}$ is a finite sum of terms $z_{j}$ with $j>K$.
+Therefore
+\[
+  \abs{r_{m}-s_{K}}
+  \le \sum_{\substack{j>K\\ j\in\{\sigma(0),\dots,\sigma(m)\}}}\abs{z_{j}}
+  \le \sum_{j=K+1}^{\infty}\abs{z_{j}}
+  \le \varepsilon.
+\]
+Then for $m>N$,
+\[
+  \abs{r_{m}-S}
+  \le \abs{r_{m}-s_{K}}+\abs{s_{K}-S}
+  <2\varepsilon.
+\]
+Hence $r_{m}\to S$, so the reordered series converges to the same sum.
+\end{proof}
+
+\begin{theorem}[Ratio test]
+Let $\sum_{n=0}^{\infty}z_{n}$ be a complex series, and suppose $z_{n}\ne0$ for all sufficiently large $n$.
+If
+\[
+  \lim_{n\to\infty}\frac{\abs{z_{n+1}}}{\abs{z_{n}}}=L,
+\]
+then:
+\[
+\begin{array}{ll}
+  L<1 & \Longrightarrow \sum_{n=0}^{\infty}z_{n}\ \text{converges absolutely},\\[4pt]
+  L>1 & \Longrightarrow \sum_{n=0}^{\infty}z_{n}\ \text{diverges},\\[4pt]
+  L=1 & \Longrightarrow \text{the test is inconclusive}.
+\end{array}
+\]
+\end{theorem}
+
+\begin{proof}
+First suppose $L<1$.
+Choose $r$ such that
+\[
+  L<r<1.
+\]
+Since $\abs{z_{n+1}}/\abs{z_{n}}\to L$, there exists $N\in\N$ such that
+\[
+  n>N
+  \quad\Longrightarrow\quad
+  \frac{\abs{z_{n+1}}}{\abs{z_{n}}}<r.
+\]
+Thus, for $k\ge1$,
+\[
+  \abs{z_{N+k}}
+  < r^{k}\abs{z_{N}}.
+\]
+Therefore
+\[
+  \sum_{k=1}^{\infty}\abs{z_{N+k}}
+  \le \abs{z_{N}}\sum_{k=1}^{\infty}r^{k}<\infty.
+\]
+Adding finitely many initial terms does not affect convergence, so $\sum\abs{z_{n}}$ converges.
+Hence $\sum z_{n}$ converges absolutely.
+
+Now suppose $L>1$.
+Choose $r>1$ such that
+\[
+  1<r<L.
+\]
+Then for all sufficiently large $n$,
+\[
+  \frac{\abs{z_{n+1}}}{\abs{z_{n}}}>r,
+\]
+so $\abs{z_{n+1}}>r\abs{z_{n}}$ eventually.
+In particular, $\abs{z_{n}}$ does not converge to $0$.
+Hence $z_{n}$ does not converge to $0$, so the series $\sum z_{n}$ diverges.
+
+When $L=1$, the test gives no conclusion.
+For example, $\sum 1/n$ diverges but $\sum 1/n^{2}$ converges, and both have ratio limit $1$.
+\end{proof}
+
+\section{The Complex Exponential and Euler's Formula}
+
+\begin{theorem}[Binomial theorem over $\C$]
+For all $z,w\in\C$ and $n\in\N$,
+\[
+  (z+w)^{n}=\sum_{k=0}^{n}\binom{n}{k}z^{k}w^{n-k}.
+\]
+\end{theorem}
+
+\begin{proof}
+The proof is the same induction as over $\R$, using that $\C$ is a commutative field.
+For $n=1$, the statement is immediate.
+Assume it holds for $n$.
+Then
+\[
+\begin{aligned}
+  (z+w)^{n+1}
+    &= (z+w)\sum_{k=0}^{n}\binom{n}{k}z^{k}w^{n-k} \\
+    &= \sum_{k=0}^{n}\binom{n}{k}z^{k+1}w^{n-k}
+       +\sum_{k=0}^{n}\binom{n}{k}z^{k}w^{n+1-k}.
+\end{aligned}
+\]
+Collecting equal powers and using Pascal's identity gives
+\[
+  (z+w)^{n+1}
+  =\sum_{k=0}^{n+1}\binom{n+1}{k}z^{k}w^{n+1-k}.
+\]
+\end{proof}
+
+\begin{theorem}[Cauchy product theorem]
+Suppose $\sum_{n=0}^{\infty}a_{n}$ and $\sum_{n=0}^{\infty}b_{n}$ are absolutely convergent complex series, and define
+\[
+  c_{n}:=\sum_{k=0}^{n}a_{k}b_{n-k}.
+\]
+Then $\sum c_{n}$ converges absolutely and
+\[
+  \sum_{n=0}^{\infty}c_{n}
+  =
+  \left(\sum_{n=0}^{\infty}a_{n}\right)
+  \left(\sum_{n=0}^{\infty}b_{n}\right).
+\]
+\end{theorem}
+
+\begin{proof}
+Let
+\[
+  A_{*}:=\sum_{n=0}^{\infty}\abs{a_{n}},
+  \qquad
+  B_{*}:=\sum_{n=0}^{\infty}\abs{b_{n}}.
+\]
+For every $N$,
+\[
+  \sum_{n=0}^{N}\abs{c_{n}}
+  \le
+  \sum_{n=0}^{N}\sum_{k=0}^{n}\abs{a_{k}}\abs{b_{n-k}}
+  \le A_{*}B_{*}.
+\]
+Thus $\sum c_{n}$ is absolutely convergent.
+
+Let
+\[
+  A=\sum_{n=0}^{\infty}a_{n},
+  \qquad
+  B=\sum_{n=0}^{\infty}b_{n},
+\]
+and define
+\[
+  A_{N}:=\sum_{n=0}^{N}a_{n},
+  \qquad
+  B_{N}:=\sum_{n=0}^{N}b_{n},
+  \qquad
+  C_{N}:=\sum_{n=0}^{N}c_{n}.
+\]
+Then
+\[
+  A_{N}B_{N}
+  =
+  \sum_{\substack{0\le k\le N\\0\le j\le N}}a_{k}b_{j},
+  \qquad
+  C_{N}
+  =
+  \sum_{\substack{k,j\ge0\\k+j\le N}}a_{k}b_{j}.
+\]
+Choose $K$ so large that both tails
+\[
+  \sum_{k>K}\abs{a_{k}},
+  \qquad
+  \sum_{j>K}\abs{b_{j}}
+\]
+are small. If $N>2K$, then every pair satisfying $0\le k,j\le N$ and $k+j>N$ has either $k>K$ or $j>K$.
+Hence
+\[
+  \abs{A_{N}B_{N}-C_{N}}
+  \le
+  B_{*}\sum_{k>K}\abs{a_{k}}
+  +
+  A_{*}\sum_{j>K}\abs{b_{j}},
+\]
+which can be made arbitrarily small.
+Since $A_{N}\to A$ and $B_{N}\to B$, we have $A_{N}B_{N}\to AB$.
+Therefore $C_{N}\to AB$.
+\end{proof}
+
+\begin{definition}[The complex exponential]
+For $z\in\C$, define
+\[
+  \exp(z):=\sum_{n=0}^{\infty}\frac{z^{n}}{n!}.
+\]
+\end{definition}
+
+\begin{proposition}[The exponential series converges absolutely]
+For every $z\in\C$, the series
+\[
+  \sum_{n=0}^{\infty}\frac{z^{n}}{n!}
+\]
+converges absolutely.
+\end{proposition}
+
+\begin{proof}
+If $z=0$, then
+\[
+  \sum_{n=0}^{\infty}\frac{z^{n}}{n!}=1+0+0+\cdots
+\]
+is absolutely convergent.
+
+Now suppose $z\ne0$.
+Let
+\[
+  a_{n}:=\frac{z^{n}}{n!}.
+\]
+Then $a_{n}\ne0$ for every $n$, and
+\[
+  \frac{\abs{a_{n+1}}}{\abs{a_{n}}}
+  =
+  \frac{\abs{z^{n+1}}}{(n+1)!}\frac{n!}{\abs{z^{n}}}
+  =
+  \frac{\abs{z}}{n+1}
+  \to0.
+\]
+By the ratio test, $\sum a_{n}$ converges absolutely.
+\end{proof}
+
+\begin{theorem}[Exponential addition law]
+For all $z,w\in\C$,
+\[
+  \exp(z+w)=\exp(z)\exp(w).
+\]
+\end{theorem}
+
+\begin{proof}
+The exponential series for $z$ and $w$ converge absolutely, so their product is given by the Cauchy product:
+\[
+\begin{aligned}
+  \exp(z)\exp(w)
+    &=
+    \left(\sum_{n=0}^{\infty}\frac{z^{n}}{n!}\right)
+    \left(\sum_{n=0}^{\infty}\frac{w^{n}}{n!}\right) \\
+    &=
+    \sum_{n=0}^{\infty}
+    \sum_{k=0}^{n}
+    \frac{z^{k}}{k!}\frac{w^{n-k}}{(n-k)!}.
+\end{aligned}
+\]
+Since
+\[
+  \frac{1}{k!(n-k)!}
+  =
+  \frac{1}{n!}\binom{n}{k},
+\]
+we get
+\[
+\begin{aligned}
+  \exp(z)\exp(w)
+    &=
+    \sum_{n=0}^{\infty}\frac{1}{n!}
+    \sum_{k=0}^{n}\binom{n}{k}z^{k}w^{n-k} \\
+    &=
+    \sum_{n=0}^{\infty}\frac{(z+w)^{n}}{n!} \\
+    &= \exp(z+w),
+\end{aligned}
+\]
+where the binomial theorem was used in the second-to-last line.
+\end{proof}
+
+\begin{definition}[Sine and cosine by power series]
+For $\theta\in\R$, define
+\[
+  \cos\theta
+  :=\sum_{n=0}^{\infty}(-1)^{n}\frac{\theta^{2n}}{(2n)!},
+  \qquad
+  \sin\theta
+  :=\sum_{n=0}^{\infty}(-1)^{n}\frac{\theta^{2n+1}}{(2n+1)!}.
+\]
+\end{definition}
+
+\begin{theorem}[Euler's formula]
+For every $\theta\in\R$,
+\[
+  \exp(i\theta)=\cos\theta+i\sin\theta.
+\]
+\end{theorem}
+
+\begin{proof}
+By definition,
+\[
+  \exp(i\theta)=\sum_{n=0}^{\infty}\frac{(i\theta)^{n}}{n!}.
+\]
+This series is absolutely convergent by the previous proposition, so its terms may be reordered and grouped without changing the sum.
+Separate the even and odd powers:
+\[
+\begin{aligned}
+  \exp(i\theta)
+    &= \sum_{n=0}^{\infty}\frac{(i\theta)^{2n}}{(2n)!}
+       +\sum_{n=0}^{\infty}\frac{(i\theta)^{2n+1}}{(2n+1)!}.
+\end{aligned}
+\]
+Since
+\[
+  i^{2n}=(-1)^{n},
+  \qquad
+  i^{2n+1}=i(-1)^{n},
+\]
+we get
+\[
+\begin{aligned}
+  \exp(i\theta)
+    &= \sum_{n=0}^{\infty}(-1)^{n}\frac{\theta^{2n}}{(2n)!}
+       + i\sum_{n=0}^{\infty}(-1)^{n}\frac{\theta^{2n+1}}{(2n+1)!} \\
+    &= \cos\theta+i\sin\theta.
+\end{aligned}
+\]
+\end{proof}
+
+\begin{theorem}[Real and imaginary parts of $\exp z$]
+Let $z=a+ib$ with $a,b\in\R$.
+Then
+\[
+  \exp(z)=\exp(a)(\cos b+i\sin b).
+\]
+Consequently,
+\[
+  \Real(\exp z)=\exp(a)\cos b,
+  \qquad
+  \Imag(\exp z)=\exp(a)\sin b.
+\]
+Equivalently,
+\[
+  \Real(\exp z)=\exp(\Real z)\cos(\Imag z),
+  \qquad
+  \Imag(\exp z)=\exp(\Real z)\sin(\Imag z).
+\]
+\end{theorem}
+
+\begin{proof}
+Using the exponential addition law and Euler's formula,
+\[
+  \exp(z)=\exp(a+ib)=\exp(a)\exp(ib)=\exp(a)(\cos b+i\sin b).
+\]
+Since $\exp(a)$, $\cos b$, and $\sin b$ are real,
+\[
+  \exp(z)=\exp(a)\cos b+i\exp(a)\sin b.
+\]
+Reading off real and imaginary parts gives the result.
+\end{proof}
+
+\begin{theorem}[Modulus of the complex exponential]
+For every $z\in\C$,
+\[
+  \abs{\exp(z)}=\exp(\Real z).
+\]
+In particular, for every $\theta\in\R$,
+\[
+  \abs{\exp(i\theta)}=1.
+\]
+\end{theorem}
+
+\begin{proof}
+Write $z=a+ib$ with $a,b\in\R$.
+From the previous theorem,
+\[
+  \exp(z)=\exp(a)(\cos b+i\sin b).
+\]
+Thus
+\[
+\begin{aligned}
+  \abs{\exp(z)}
+    &= \abs{\exp(a)}\abs{\cos b+i\sin b} \\
+    &= \exp(a)\sqrt{\cos^{2}b+\sin^{2}b} \\
+    &= \exp(a).
+\end{aligned}
+\]
+Here we use the standard real-analysis facts that $\exp(a)>0$ for real $a$ and $\cos^{2}b+\sin^{2}b=1$.
+Since $a=\Real z$, this proves $\abs{\exp(z)}=\exp(\Real z)$.
+If $z=i\theta$, then $\Real(i\theta)=0$, so
+\[
+  \abs{\exp(i\theta)}=\exp(0)=1.
+\]
+\end{proof}
+
+\section{Argument, Polar Form, and De Moivre's Theorem}
+
+\begin{definition}[Argument]
+Let $z\in\C$ with $z\ne0$.
+An argument of $z$ is any real number $\theta$ such that
+\[
+  z=\abs{z}(\cos\theta+i\sin\theta).
+\]
+The set of all arguments of $z$ is denoted
+\[
+  \arg(z).
+\]
+Arguments are not unique: if $\theta\in\arg(z)$, then
+\[
+  \arg(z)=\{\theta+2\pi k:k\in\Z\}.
+\]
+\end{definition}
+
+\begin{definition}[Polar form]
+If $z\ne0$ and $\theta\in\arg(z)$, then the polar form of $z$ is
+\[
+  z=r(\cos\theta+i\sin\theta),
+  \qquad
+  r=\abs{z}>0.
+\]
+Using Euler's formula, this can also be written as
+\[
+  z=re^{i\theta}.
+\]
+\end{definition}
+
+\begin{proposition}[Existence of polar form]
+Every nonzero complex number has a polar form.
+\end{proposition}
+
+\begin{proof}
+Let $z=a+ib\ne0$ and set $r=\abs{z}=\sqrt{a^{2}+b^{2}}$.
+Then $r>0$, and
+\[
+  \left(\frac{a}{r}\right)^{2}+\left(\frac{b}{r}\right)^{2}=1.
+\]
+By the standard real parametrization of the unit circle, there exists $\theta\in\R$ such that
+\[
+  \cos\theta=\frac{a}{r},
+  \qquad
+  \sin\theta=\frac{b}{r}.
+\]
+Therefore
+\[
+  z=a+ib=r(\cos\theta+i\sin\theta)=re^{i\theta}.
+\]
+\end{proof}
+
+\begin{proposition}[Multiplication in polar form]
+If
+\[
+  z=re^{i\theta},
+  \qquad
+  w=se^{i\phi},
+\]
+with $r,s>0$, then
+\[
+  zw=rs\,e^{i(\theta+\phi)}.
+\]
+\end{proposition}
+
+\begin{proof}
+Using the exponential addition law,
+\[
+  zw=(re^{i\theta})(se^{i\phi})=rs\,e^{i\theta}e^{i\phi}=rs\,e^{i(\theta+\phi)}.
+\]
+\end{proof}
+
+\begin{theorem}[De Moivre's theorem]
+For every $\theta\in\R$ and $n\in\N$,
+\[
+  (\cos\theta+i\sin\theta)^{n}
+  =
+  \cos(n\theta)+i\sin(n\theta).
+\]
+Equivalently,
+\[
+  (e^{i\theta})^{n}=e^{in\theta}.
+\]
+\end{theorem}
+
+\begin{proof}
+By Euler's formula,
+\[
+  \cos\theta+i\sin\theta=e^{i\theta}.
+\]
+Using the exponential addition law repeatedly,
+\[
+  (e^{i\theta})^{n}
+  =
+  \underbrace{e^{i\theta}\cdots e^{i\theta}}_{n\ \text{factors}}
+  =
+  e^{i(\theta+\cdots+\theta)}
+  =
+  e^{in\theta}.
+\]
+Applying Euler's formula again gives
+\[
+  e^{in\theta}=\cos(n\theta)+i\sin(n\theta).
+\]
+\end{proof}
+
+\newpage
+\section*{Useful Real and Imaginary Parts}
+
+\[
+\begin{array}{c|c|c}
+\text{Expression} & \Real(\cdot) & \Imag(\cdot) \\
+\hline
+z=a+bi & a & b \\
+\conj{z}=a-bi & a & -b \\
+z+w,\ w=c+di & a+c & b+d \\
+zw,\ w=c+di & ac-bd & ad+bc \\
+z^{-1},\ z\ne0 & \dfrac{a}{a^{2}+b^{2}} & -\dfrac{b}{a^{2}+b^{2}} \\
+\dfrac{w}{z},\ z\ne0 & \dfrac{ac+bd}{a^{2}+b^{2}} & \dfrac{ad-bc}{a^{2}+b^{2}} \\
+\exp(a+bi) & \exp(a)\cos b & \exp(a)\sin b \\
+\exp(i\theta) & \cos\theta & \sin\theta \\
+r e^{i\theta},\ r>0 & r\cos\theta & r\sin\theta
+\end{array}
+\]
+
+\end{document}
