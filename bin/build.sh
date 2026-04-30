@@ -44,14 +44,6 @@ if [[ ! -f "$MAIN_TEX" ]]; then
   exit 1
 fi
 
-MAIN_STEM="$(basename "$MAIN_TEX")"
-MAIN_STEM="${MAIN_STEM%.tex}"
-OUTPUT_PDF="${BUILD_DIR}/${MAIN_STEM}.pdf"
-if [[ -f "$OUTPUT_PDF" ]]; then
-  echo "Backing up existing $(basename "$OUTPUT_PDF") to $(basename "$OUTPUT_PDF").bak"
-  cp "$OUTPUT_PDF" "${OUTPUT_PDF}.bak"
-fi
-
 echo "Building $(basename "$MAIN_TEX") for project '$PROJECT'..."
 latexmk -pdf -silent -output-directory="$BUILD_DIR" "$MAIN_TEX"
 echo "Done. Output in $BUILD_DIR"
