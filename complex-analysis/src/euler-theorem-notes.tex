@@ -27,28 +27,33 @@
 
 \section{Complex Numbers}
 
-\begin{definition}[The imaginary unit]
-Define
-\[
-  i := (0,1).
-\]
-After defining multiplication on ordered pairs, we will verify that
-\[
-  i^{2} = -1.
-\]
-Thus the notation $i=\sqrt{-1}$ is a useful shorthand, but the rigorous construction starts from the ordered pair $(0,1)$.
-\end{definition}
-
 \begin{definition}[The complex numbers]
-Define the set of complex numbers by
+Define the complex numbers by
 \[
-  \C := \{(a,b): a,b\in\R\}.
+  \boxed{
+    \C=\R^{2}
+    \text{ with the usual vector addition and real scalar multiplication}
+  }.
 \]
-We write $(a,b)$ in the form
+Equip this real vector space with multiplication
 \[
-  a+bi.
+  \boxed{
+    (a,b)(c,d)=(ac-bd,ad+bc),
+    \qquad
+    1=(1,0),
+    \qquad
+    i=(0,1)
+  }.
 \]
-Under this notation, a real number $a\in\R$ is identified with the complex number $a+0i$.
+With this multiplication,
+\[
+  i^{2}=(0,1)(0,1)=(-1,0).
+\]
+After identifying $a\in\R$ with $(a,0)\in\C$, this says $i^{2}=-1$.
+Every element $(a,b)\in\R^{2}$ can be written as
+\[
+  (a,b)=a(1,0)+b(0,1)=a+bi.
+\]
 \end{definition}
 
 \begin{definition}[Real and imaginary parts]
@@ -75,14 +80,10 @@ For $z=a+bi$ and $w=c+di$, define
 \]
 \end{definition}
 
-\begin{definition}[Complex multiplication]
+\begin{definition}[Complex multiplication in $a+bi$ notation]
 For $z=a+bi$ and $w=c+di$, define
 \[
   zw := (ac-bd)+(ad+bc)i.
-\]
-In particular,
-\[
-  i^{2}=(0+1i)(0+1i)=-1+0i=-1.
 \]
 \end{definition}
 
