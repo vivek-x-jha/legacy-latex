@@ -73,19 +73,31 @@ Two complex numbers are equal precisely when their real and imaginary parts are 
 
 \section{Algebraic Operations}
 
-\begin{definition}[Complex addition]
-For $z=a+bi$ and $w=c+di$, define
+\begin{proposition}[Complex addition in $a+bi$ notation]
+For $z=a+bi$ and $w=c+di$,
 \[
-  z+w := (a+c)+(b+d)i.
+  z+w=(a+c)+(b+d)i.
 \]
-\end{definition}
+\end{proposition}
 
-\begin{definition}[Complex multiplication in $a+bi$ notation]
-For $z=a+bi$ and $w=c+di$, define
+\begin{proof}
+This is the usual vector addition on $\R^{2}$ written in the notation $(a,b)=a+bi$.
+\end{proof}
+
+\begin{proposition}[Complex multiplication in $a+bi$ notation]
+For $z=a+bi$ and $w=c+di$,
 \[
-  zw := (ac-bd)+(ad+bc)i.
+  zw=(ac-bd)+(ad+bc)i.
 \]
-\end{definition}
+\end{proposition}
+
+\begin{proof}
+This is exactly the multiplication
+\[
+  (a,b)(c,d)=(ac-bd,ad+bc)
+\]
+written in the notation $(a,b)=a+bi$.
+\end{proof}
 
 \begin{proposition}[Distributive law]
 For all $z,w,u\in\C$,
@@ -110,24 +122,6 @@ Hence
     &= zw+zu.
 \end{aligned}
 \]
-\end{proof}
-
-\begin{proposition}[$\C$ is a field]
-With the addition and multiplication defined above, $\C$ is a field.
-\end{proposition}
-
-\begin{proof}
-The additive identity is $0=0+0i$, and the multiplicative identity is $1=1+0i$.
-Associativity, commutativity, and distributivity follow by direct expansion from the corresponding real-number laws.
-If $z=a+bi$, then the additive inverse is
-\[
-  -z := (-a)+(-b)i.
-\]
-If $z\ne0$, then $a^{2}+b^{2}>0$ and the multiplicative inverse is
-\[
-  z^{-1}:=\frac{a}{a^{2}+b^{2}}-\frac{b}{a^{2}+b^{2}}i.
-\]
-A direct multiplication gives $zz^{-1}=1$.
 \end{proof}
 
 \begin{definition}[Complex subtraction]
@@ -314,6 +308,21 @@ Using $\abs{z}^{2}=z\conj{z}$,
   = \frac{z\conj{z}}{\abs{z}^{2}}
   = 1.
 \]
+\end{proof}
+
+\begin{proposition}[$\C$ is a field]
+With the addition and multiplication defined above, $\C$ is a field.
+\end{proposition}
+
+\begin{proof}
+The additive identity is $0=0+0i$, and the multiplicative identity is $1=1+0i$.
+Associativity and commutativity follow by direct expansion from the corresponding real-number laws, and distributivity was proved above.
+If $z=a+bi$, then the additive inverse is
+\[
+  -z=(-a)+(-b)i.
+\]
+If $z\ne0$, then the reciprocal theorem gives a multiplicative inverse.
+Therefore $\C$ is a field.
 \end{proof}
 
 \begin{definition}[Complex division]
@@ -1033,35 +1042,67 @@ where the binomial theorem was used in the second-to-last line.
 \end{proof}
 
 \begin{definition}[Sine and cosine by power series]
-For $\theta\in\R$, define
+For $z\in\C$, define
 \[
-  \cos\theta
-  :=\sum_{n=0}^{\infty}(-1)^{n}\frac{\theta^{2n}}{(2n)!},
+  \cos z
+  :=\sum_{n=0}^{\infty}(-1)^{n}\frac{z^{2n}}{(2n)!},
   \qquad
-  \sin\theta
-  :=\sum_{n=0}^{\infty}(-1)^{n}\frac{\theta^{2n+1}}{(2n+1)!}.
+  \sin z
+  :=\sum_{n=0}^{\infty}(-1)^{n}\frac{z^{2n+1}}{(2n+1)!}.
 \]
 \end{definition}
 
-\begin{theorem}[Euler's formula]
-For every $\theta\in\R$,
+\begin{proposition}[The sine and cosine series converge absolutely]
+For every $z\in\C$, the series defining $\cos z$ and $\sin z$ converge absolutely.
+\end{proposition}
+
+\begin{proof}
+If $z=0$, convergence is immediate.
+Assume $z\ne0$.
+For the cosine series, let
 \[
-  \exp(i\theta)=\cos\theta+i\sin\theta.
+  a_{n}:=(-1)^{n}\frac{z^{2n}}{(2n)!}.
+\]
+Then
+\[
+  \frac{\abs{a_{n+1}}}{\abs{a_{n}}}
+  =
+  \frac{\abs{z}^{2}}{(2n+2)(2n+1)}
+  \to0.
+\]
+For the sine series, let
+\[
+  b_{n}:=(-1)^{n}\frac{z^{2n+1}}{(2n+1)!}.
+\]
+Then
+\[
+  \frac{\abs{b_{n+1}}}{\abs{b_{n}}}
+  =
+  \frac{\abs{z}^{2}}{(2n+3)(2n+2)}
+  \to0.
+\]
+Both series converge absolutely by the ratio test.
+\end{proof}
+
+\begin{theorem}[Euler's formula over $\C$]
+For every $z\in\C$,
+\[
+  \exp(iz)=\cos z+i\sin z.
 \]
 \end{theorem}
 
 \begin{proof}
 By definition,
 \[
-  \exp(i\theta)=\sum_{n=0}^{\infty}\frac{(i\theta)^{n}}{n!}.
+  \exp(iz)=\sum_{n=0}^{\infty}\frac{(iz)^{n}}{n!}.
 \]
-This series is absolutely convergent by the previous proposition, so its terms may be reordered and grouped without changing the sum.
+This exponential series is absolutely convergent, so its terms may be reordered and grouped without changing the sum.
 Separate the even and odd powers:
 \[
 \begin{aligned}
-  \exp(i\theta)
-    &= \sum_{n=0}^{\infty}\frac{(i\theta)^{2n}}{(2n)!}
-       +\sum_{n=0}^{\infty}\frac{(i\theta)^{2n+1}}{(2n+1)!}.
+  \exp(iz)
+    &= \sum_{n=0}^{\infty}\frac{(iz)^{2n}}{(2n)!}
+       +\sum_{n=0}^{\infty}\frac{(iz)^{2n+1}}{(2n+1)!}.
 \end{aligned}
 \]
 Since
@@ -1073,12 +1114,55 @@ Since
 we get
 \[
 \begin{aligned}
-  \exp(i\theta)
-    &= \sum_{n=0}^{\infty}(-1)^{n}\frac{\theta^{2n}}{(2n)!}
-       + i\sum_{n=0}^{\infty}(-1)^{n}\frac{\theta^{2n+1}}{(2n+1)!} \\
-    &= \cos\theta+i\sin\theta.
+  \exp(iz)
+    &= \sum_{n=0}^{\infty}(-1)^{n}\frac{z^{2n}}{(2n)!}
+       + i\sum_{n=0}^{\infty}(-1)^{n}\frac{z^{2n+1}}{(2n+1)!} \\
+    &= \cos z+i\sin z.
 \end{aligned}
 \]
+\end{proof}
+
+\begin{theorem}[Exponential formulas for sine and cosine]
+For every $z\in\C$,
+\[
+  \boxed{\cos z=\frac{\exp(iz)+\exp(-iz)}{2}},
+  \qquad
+  \boxed{\sin z=\frac{\exp(iz)-\exp(-iz)}{2i}}.
+\]
+\end{theorem}
+
+\begin{proof}
+From the power-series definitions,
+\[
+  \cos(-z)=\cos z,
+  \qquad
+  \sin(-z)=-\sin z.
+\]
+Euler's formula applied to $z$ and $-z$ gives
+\[
+  \exp(iz)=\cos z+i\sin z,
+  \qquad
+  \exp(-iz)=\cos z-i\sin z.
+\]
+Adding these identities gives
+\[
+  \exp(iz)+\exp(-iz)=2\cos z.
+\]
+Subtracting gives
+\[
+  \exp(iz)-\exp(-iz)=2i\sin z.
+\]
+\end{proof}
+
+\begin{theorem}[Euler's identity for real angles]
+For every $\theta\in\R$,
+\[
+  \exp(i\theta)=\cos\theta+i\sin\theta.
+\]
+\end{theorem}
+
+\begin{proof}
+This is the special case of Euler's formula over $\C$ with $z=\theta\in\R$.
 \end{proof}
 
 \begin{theorem}[Real and imaginary parts of $\exp z$]
@@ -1102,11 +1186,11 @@ Equivalently,
 \end{theorem}
 
 \begin{proof}
-Using the exponential addition law and Euler's formula,
+Using the exponential addition law and Euler's identity for real angles,
 \[
   \exp(z)=\exp(a+ib)=\exp(a)\exp(ib)=\exp(a)(\cos b+i\sin b).
 \]
-Since $\exp(a)$, $\cos b$, and $\sin b$ are real,
+Since $a,b\in\R$, the power-series definitions give $\exp(a),\cos b,\sin b\in\R$, so
 \[
   \exp(z)=\exp(a)\cos b+i\exp(a)\sin b.
 \]
