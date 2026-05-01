@@ -1339,7 +1339,32 @@ Applying Euler's formula again gives
 \end{proof}
 
 \newpage
-\section*{Useful Real and Imaginary Parts}
+\section*{Common Forms and Functions}
+
+Let
+\[
+  z=a+bi=re^{i\theta}=r(\cos\theta+i\sin\theta),
+  \qquad
+  r=\abs{z}>0,
+  \qquad
+  \theta\in\arg(z).
+\]
+
+\[
+\begin{array}{c|c|c}
+\text{Object} & \text{Cartesian form} & \text{Polar/exponential form} \\
+\hline
+z & a+bi & re^{i\theta} \\
+\abs{z} & \sqrt{a^{2}+b^{2}} & r \\
+\arg(z) & \theta\ \text{s.t. } \cos\theta=a/r,\ \sin\theta=b/r
+        & \{\theta+2\pi k:k\in\Z\} \\
+\dfrac{1}{z} & \dfrac{a-bi}{a^{2}+b^{2}} & r^{-1}e^{-i\theta} \\
+\exp(z) & \exp(a)(\cos b+i\sin b) & \exp(a)e^{ib} \\
+z^{n} & (a+bi)^{n} & r^{n}e^{in\theta} \\
+\cos z & \dfrac{\exp(iz)+\exp(-iz)}{2} & \dfrac{e^{iz}+e^{-iz}}{2} \\
+\sin z & \dfrac{\exp(iz)-\exp(-iz)}{2i} & \dfrac{e^{iz}-e^{-iz}}{2i}
+\end{array}
+\]
 
 \[
 \begin{array}{c|c|c}
@@ -1347,14 +1372,11 @@ Applying Euler's formula again gives
 \hline
 z=a+bi & a & b \\
 \conj{z}=a-bi & a & -b \\
-z+w,\ w=c+di & a+c & b+d \\
-zw,\ w=c+di & ac-bd & ad+bc \\
-z^{-1},\ z\ne0 & \dfrac{a}{a^{2}+b^{2}} & -\dfrac{b}{a^{2}+b^{2}} \\
-\dfrac{w}{z},\ z\ne0 & \dfrac{ac+bd}{a^{2}+b^{2}} & \dfrac{ad-bc}{a^{2}+b^{2}} \\
 \exp(a+bi) & \exp(a)\cos b & \exp(a)\sin b \\
-\exp(i\theta) & \cos\theta & \sin\theta \\
-r e^{i\theta},\ r>0 & r\cos\theta & r\sin\theta
+r e^{i\theta} & r\cos\theta & r\sin\theta \\
+z^{n}=r^{n}e^{in\theta} & r^{n}\cos(n\theta) & r^{n}\sin(n\theta)
 \end{array}
 \]
+
 
 \end{document}
